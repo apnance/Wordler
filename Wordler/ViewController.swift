@@ -12,6 +12,7 @@ typealias Row = Int
 class ViewController: UIViewController {
 
     // MARK: - Properties
+    private let solver = Solver.shared
     private var currentRow = 0
     private var rowToButton = [Row : [UIButton]]()
     private var goButton: UIButton { rowToButton[currentRow]![5] }
@@ -45,14 +46,12 @@ class ViewController: UIViewController {
     
     
     // MARK: - Overrides
-    let solver = Solver.shared
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         uiInit()
         resetBoard()
-        
+    
     }
     
     
@@ -91,7 +90,7 @@ class ViewController: UIViewController {
         
     }
     
-    func uiVolatile() {
+    private func uiVolatile() {
         
         // Go/Clear
         for rowNum in 0...5 {
@@ -108,7 +107,7 @@ class ViewController: UIViewController {
         
     }
     
-    @objc func dismissKeyboard() { textField.resignFirstResponder() }
+    @objc private func dismissKeyboard() { textField.resignFirstResponder() }
     
     private func resetBoard() {
         
