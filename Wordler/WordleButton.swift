@@ -74,10 +74,10 @@ class WordleButton: UIButton {
             
             case .blank:
                 backgroundColor     = UIColor(named: "WordleBlack")
-                layer.borderColor   = UIColor(named: "WordleGray")?.cgColor
+                layer.borderColor   = UIColor(named: "WordleGrayLight")?.cgColor
             
             case .exclude:
-                backgroundColor     = UIColor(named: "WordleGray")
+                backgroundColor     = UIColor(named: "WordleGrayDark")
                 layer.borderWidth   = 0
             
             case .include:
