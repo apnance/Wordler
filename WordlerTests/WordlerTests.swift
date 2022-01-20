@@ -12,14 +12,7 @@ class WordlerTests: XCTestCase {
     
     func testOutcomes() {
         
-        print("----")
-        let unop = outcomes(with: Configs.Defaults.initialGuessesOLD, title: "Results: Un-Optimized")
-        print("----")
-        let op = outcomes(with: Configs.Defaults.initialGuesses, title: "Results: Optimized")
-        print("----")
-        
-        print(unop)
-        print(op)
+        print(outcomes(with: Configs.Defaults.initialGuesses, title: "Results: Optimized"))
         
     }
     
