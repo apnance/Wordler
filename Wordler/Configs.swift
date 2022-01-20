@@ -34,8 +34,9 @@ struct Configs {
     struct Test {
         
         static var echoTestMessages = false
-        static var runSuite         = true
-        static let runs             = 10000
+        
+        static let runs             = 100
+        static let sampleSize: Int  = runs / 10
         
         static func getTestCouplet(_ i: Int) -> (answer: Word, firstGuess: Word)? {
             
