@@ -17,6 +17,7 @@
 		930C2C24278E3375009B111C /* words.wordle.txt in Resources */ = {isa = PBXBuildFile; fileRef = 930C2C23278E3375009B111C /* words.wordle.txt */; };
 		930C2C30278EAD19009B111C /* APNUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930C2C2C278EAD0E009B111C /* APNUtils.framework */; };
 		930C2C31278EAD19009B111C /* APNUtils.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 930C2C2C278EAD0E009B111C /* APNUtils.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93DF7636278FDABD001234EC /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7635278FDABD001234EC /* Configs.swift */; };
 		93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF76392790A9C8001234EC /* WordleButton.swift */; };
 		93DF765B27974732001234EC /* WordlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF764C27973B90001234EC /* WordlerTests.swift */; };
@@ -72,6 +73,7 @@
 		930C2C12278E28DE009B111C /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		930C2C23278E3375009B111C /* words.wordle.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.wordle.txt; sourceTree = "<group>"; };
 		930C2C26278EAD0E009B111C /* APNUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = APNUtils.xcodeproj; path = ../Frameworks/APNUtils/APNUtils.xcodeproj; sourceTree = "<group>"; };
+		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93DF7635278FDABD001234EC /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93DF76392790A9C8001234EC /* WordleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleButton.swift; sourceTree = "<group>"; };
 		93DF764A27973B90001234EC /* WordlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				93DF764C27973B90001234EC /* WordlerTests.swift */,
+				93CB47FF2799FD0400A5CD8F /* Configs.swift */,
 			);
 			path = WordlerTests;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93DF765B27974732001234EC /* WordlerTests.swift in Sources */,
+				93CB48032799FD0700A5CD8F /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

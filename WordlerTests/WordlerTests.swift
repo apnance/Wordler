@@ -12,7 +12,7 @@ class WordlerTests: XCTestCase {
     
     func testOutcomes() {
         
-        print(outcomes(with: Configs.Defaults.initialGuesses, title: "Results: Optimized"))
+        print(outcomes(with: Wordler.Configs.Defaults.initialGuesses, title: "Results: Optimized"))
         
     }
     
@@ -72,7 +72,7 @@ extension WordlerTests {
             case 2:
                 var answerGuess = [Word]()
                 
-                for _ in 0..<Configs.Test.runs {
+                for _ in 0..<Configs.runs {
                     
                     answerGuess.append(Solver.shared.allWords.randomElement!.uppercased())
                     answerGuess.append(initialGuesses.randomElement!.uppercased())
@@ -81,7 +81,7 @@ extension WordlerTests {
                 
                 return answerGuess
                 
-            default: return Configs.Test.data
+            default: return Configs.data
                 
             }
             
@@ -106,7 +106,7 @@ extension WordlerTests {
         for runNum in 0..<totalGames
         {
             
-            if runNum % Configs.Test.sampleSize == 0 {
+            if runNum % Configs.sampleSize == 0 {
                 print("\(title) - \(runNum.percent(of: totalGames, roundedTo: 1))% Complete")
                 
             }
@@ -164,7 +164,7 @@ extension WordlerTests {
                 
             }
             
-            if Configs.Test.echoTestMessages {
+            if Configs.echoTestMessages {
                 
                 print("""
                     
