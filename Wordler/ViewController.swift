@@ -58,8 +58,12 @@ class ViewController: UIViewController {
     // MARK: - Custom Methods
     private func uiInit() {
         
-        textField.delegate = self
+        textView.layer.borderColor = UIColor(named: "WordleGray")!.cgColor
+        textView.layer.borderWidth = Configs.UI.standardBorderWidth
         
+        textField.layer.borderColor = UIColor(named: "WordleGray")!.cgColor
+        textField.layer.borderWidth = Configs.UI.standardBorderWidth
+        textField.delegate = self
         textField.addTarget(self,
                             action: #selector(ViewController.textFieldDidChange(_:)),
                             for: .editingChanged)

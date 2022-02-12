@@ -27,6 +27,8 @@ struct Configs {
         
     }
     
+    struct UI { static var standardBorderWidth = 1.5 }
+    
     struct Test { static var echoTestMessages = false }
     
 }
