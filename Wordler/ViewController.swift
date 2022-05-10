@@ -221,15 +221,14 @@ class ViewController: UIViewController {
         
         textView.text = """
                         --------------------------------------
-                                  SUGGESTION: \(suggested)
-                        --------------------------------------
                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
                         --------------------------------------
 
                         --------------------------------------
-                               \(remaining.count) REMAINING CANDIDATES
+                         CANDIDATES REMAINING: \(remaining.count)
+                                   SUGGESTION: \(suggested)
                         --------------------------------------
                         \(possibles)
                         
