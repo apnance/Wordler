@@ -212,7 +212,7 @@ class ViewController: UIViewController {
         textField.text = suggested.uppercased()
         textFieldDidChange(textField)
         
-        var possibles = "\(remaining.count) REMAINING CANDIDATES:\n"
+        var possibles = ""
         
         Array(remaining)
             .sorted{ $0.value > $1.value }
@@ -220,15 +220,17 @@ class ViewController: UIViewController {
             .forEach{ possibles += $0 }
         
         textView.text = """
-                        
                         --------------------------------------
-                                 SUGGESTION: \(suggested)
+                                  SUGGESTION: \(suggested)
                         --------------------------------------
                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
                         --------------------------------------
-                        
+
+                        --------------------------------------
+                               \(remaining.count) REMAINING CANDIDATES
+                        --------------------------------------
                         \(possibles)
                         
                         """
