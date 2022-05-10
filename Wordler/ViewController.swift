@@ -203,7 +203,7 @@ class ViewController: UIViewController {
                                                      inclusionsX: inclusions,
                                                      exactsX: exacts)
         
-        let suggested = possibleSolutions.suggested
+        let suggested = possibleSolutions.suggested.uppercased()
         let remaining = possibleSolutions.remaining
         
         // Advance Current Row
@@ -212,22 +212,25 @@ class ViewController: UIViewController {
         textField.text = suggested.uppercased()
         textFieldDidChange(textField)
         
+        var possibles = "\(remaining.count) REMAINING CANDIDATES:\n"
+        
+        Array(remaining)
+            .sorted{ $0.value > $1.value }
+            .map{ "\($0.key.uppercased()):\($0.value) "}
+            .forEach{ possibles += $0 }
+        
         textView.text = """
-                            Exclusions:
-                            [\(exclusions.joined(separator: ","))]
-                            
-                            Inclusions:
-                            [\(inclusions.joined(separator: ","))]
-                            
-                            Exacts:
-                            [\(exacts.joined(separator: ","))]
                         
+                        --------------------------------------
+                                 SUGGESTION: \(suggested)
+                        --------------------------------------
+                         EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
+                         INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
+                         EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
+                        --------------------------------------
                         
-                            Suggested Next Word:
-                            \(suggested)
+                        \(possibles)
                         
-                            Possible Solutions[\(remaining.count)]:
-                            \(Array(remaining).sorted{ $0.value > $1.value } )
                         """
         
         if remaining.count == 1 { victory() }
