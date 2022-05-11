@@ -13,7 +13,7 @@ typealias Letter = String
 typealias Count = Int
 
 class Solver {
-    
+  
     // MARK: - Properties
     static var shared = Solver()
     private var getCounter = 0 { didSet { checkGetCount() } }
@@ -25,7 +25,7 @@ class Solver {
     
     
     // MARK: - Custom Methods
-    /// Helper method for checking that `getGords()` and `getSolutions()` aren't called more
+    /// Helper method for checking that `getWords()` and `getSolutions()` aren't called more
     /// than once each.
     private func checkGetCount() {
         
@@ -70,7 +70,7 @@ class Solver {
         return _allWords /*EXIT*/
         
     }
-    
+        
     func resetMatches() {
         
         wordHopper = Set<Word>(allWords)
