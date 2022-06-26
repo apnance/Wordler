@@ -15,7 +15,9 @@ class WordleButton: UIButton {
     var isClose: Bool { toggleState == .include }
     var isWrong: Bool { toggleState == .exclude }
     
-    private var toggleState = ToggleState.exclude
+    var letter: String { titleLabel?.text ?? "" }
+    
+    private(set) var toggleState = ToggleState.exclude
     var row = 0
     
     override init(frame: CGRect) {
@@ -55,7 +57,6 @@ class WordleButton: UIButton {
                     
                 case .exclude: toggleState  = .exact
                     
-
                 case .exact: toggleState    = .include
                     
                 case .include: toggleState  = .exclude

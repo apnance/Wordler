@@ -13,7 +13,7 @@ typealias Letter = String
 typealias Count = Int
 
 class Solver {
-  
+    
     // MARK: - Properties
     static var shared = Solver()
     private var getCounter = 0 { didSet { checkGetCount() } }
@@ -71,21 +71,31 @@ class Solver {
         
     }
         
-    func resetMatches() {
+    /// Checks that the specified input is a five letter word contained in the Wordle answer list
+    func validate(input: String?) -> String {
         
-        wordHopper = Set<Word>(allWords)
+        if input == nil { return "Nil Input is Invalid." /*EXIT*/ }
+        
+        if input!.count != 5 { return "Input must be 5 letters not \(input!.count)." }
+        
+        if !allWords.contains(input!.lowercased()) { return "\(input!) is not contained in Worlde answer list.  Try another 5 letter word." /*EXIT*/ }
+        
+        return Configs.successMessage
         
     }
     
-    // TODO: Clean Up - remove -X postfix from params
-    func updateMatches(exclusionsX: [Letter],
-                       inclusionsX: [Letter],
+    
+    /// Resets solver - should be called before each new game
+    func resetMatches() { wordHopper = Set<Word>(allWords) }
+    
+    func updateMatches(exclusions: [Letter],
+                       inclusions: [Letter],
                        exactsX: [Letter]) -> (remaining: [Word : Score], suggested: Word) {
         
         if wordHopper.count == 0 { resetMatches() }
         
-        let exclusions  = exclusionsX.map{ $0.lowercased() }
-        let inclusions  = inclusionsX.map{ $0.lowercased() }
+        let exclusions  = exclusions.map{ $0.lowercased() }
+        let inclusions  = inclusions.map{ $0.lowercased() }
         let exacts      = exactsX.map{ $0.lowercased() }
         
         // Exacts - Right Letter, Right Spot

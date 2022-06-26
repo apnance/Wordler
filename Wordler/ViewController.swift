@@ -10,15 +10,16 @@ import APNUtils
 
 typealias Row = Int
 class ViewController: UIViewController {
-
+    
     // MARK: - Properties
     private let solver = Solver.shared
     private var currentRow = 0
-    private var rowToButton = [Row : [UIButton]]()
-    private var goButton: UIButton { rowToButton[currentRow]![5] }
+    private var rowToButton = [Row : [WordleButton]]()
     
     
     // MARK: - Outlets
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var rows: [UIStackView]!
@@ -27,9 +28,29 @@ class ViewController: UIViewController {
     // MARK: - Actions
     @IBAction func tapButton(_ sender: WordleButton) {
         
-        if sender.row != currentRow { return /*EXIT*/ }
+        currentRow = sender.row
         
-        sender.toggle()
+        if isValid(rowNum: currentRow) {
+            
+            sender.toggle()
+            
+        }
+        
+    }
+    
+    func isValid(rowNum: Int) -> Bool {
+        
+        if rowNum >= rows.count { return false /*EXIT*/ }
+        
+        let row = rowToButton[rowNum]!
+        
+        for button in row {
+            
+            if button.letter == "" { return false /*EXIT*/ }
+            
+        }
+        
+        return true
         
     }
     
@@ -39,7 +60,6 @@ class ViewController: UIViewController {
         
         check()
         
-        uiVolatile()
     }
     
     @IBAction func tapClear(_ sender: UIButton) { resetBoard() }
@@ -51,17 +71,23 @@ class ViewController: UIViewController {
         
         uiInit()
         resetBoard()
-    
+        
     }
     
     
     // MARK: - Custom Methods
     private func uiInit() {
         
-        textView.layer.borderColor = UIColor(named: "WordleGray")!.cgColor
+        goButton.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
+        goButton.layer.borderWidth = Configs.UI.standardBorderWidth
+        
+        clearButton.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
+        clearButton.layer.borderWidth = Configs.UI.standardBorderWidth
+        
+        textView.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
         textView.layer.borderWidth = Configs.UI.standardBorderWidth
         
-        textField.layer.borderColor = UIColor(named: "WordleGray")!.cgColor
+        textField.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
         textField.layer.borderWidth = Configs.UI.standardBorderWidth
         textField.delegate = self
         textField.addTarget(self,
@@ -78,32 +104,15 @@ class ViewController: UIViewController {
             
             for view in row.subviews {
                 
-                let button = view as! UIButton
+                let button = view as! WordleButton
                 
                 if rowToButton[rowNum] == nil {
-                    rowToButton[rowNum] = [UIButton]()
+                    rowToButton[rowNum] = [WordleButton]()
                 }
                 
-                (button as? WordleButton)?.row = rowNum
+                button.row = rowNum
                 
                 rowToButton[rowNum]!.append(button)
-                
-            }
-            
-        }
-        
-    }
-    
-    private func uiVolatile() {
-        
-        // Go/Clear
-        for rowNum in 0...5 {
-            
-            let row = rowToButton[rowNum]!
-            
-            for colNum in 5...6 {
-                
-                row[colNum].alpha = currentRow == rowNum ? 1 : 0
                 
             }
             
@@ -129,16 +138,13 @@ class ViewController: UIViewController {
             let row = rowToButton[rowNum]!
             for button in row {
                 
-                if let wb = button as? WordleButton {
-                    wb.resetTo(toggleState)
-                }
+                button.resetTo(toggleState)
                 
             }
             
         }
         
         uiSyncButtonAndTextField()
-        uiVolatile()
         
     }
     
@@ -152,80 +158,143 @@ class ViewController: UIViewController {
         
         var letters = Array(textField.text!)
         
-        goButton.isEnabled = letters.count == 5
-        
-        letters.padTo(finalCount: 5, with: "-")
+        letters.padTo(finalCount: 5, with: " ")
         
         for colNum in 0...4 {
-            
+        
             let letter = String(letters[colNum]).uppercased()
             
             let row = rowToButton[currentRow]!
             let button = row[colNum]
             button.setTitle(letter, for: .normal)
             
+            if currentRow > 0 {
+                
+                let master = (rowToButton[currentRow - 1])![colNum]
+
+                if master.letter == letter {
+                    
+                    button.toggle(master.toggleState)
+                    
+                }
+                
+            }
+            
         }
         
     }
     
+    
+    /*
+     I. Step through row by row:
+     
+     1. Check each row for victory conditions
+     
+     if yes:
+     a. end
+     
+     if no:
+     a. go to next step
+     
+     2. Check if row is empty:
+     
+     if yes:
+     a. add suggestion from previous row
+     
+     if no:
+     a. send current row to solver
+     
+     3. copy state info for matching letters from previous row
+     
+     4. clear(empty text, set state to blank) all subsquent rows
+     
+     Repeat 3-6 until victory or have used up 6 guesses
+     
+     */
+    
     private func check() {
         
-        textView.text = ""
-        
-        guard let guess = textField.text, guess.count == 5
-        else {
+        DispatchQueue.main.async {
             
-            textView.text = "Guess must be exactly 5 letters."
-            return /*EXIT*/
+            // victory check
+            if self.victoryCheck() { return /*EXIT*/ }
             
-        }
-        
-        let letters = Array(textField.text!)
-        
-        var exacts      = ["-", "-", "-", "-", "-"]
-        var inclusions  = ["-", "-", "-", "-", "-"]
-        var exclusions  = ["-", "-", "-", "-", "-"]
-        
-        for colNum in 0...4 {
+            self.textView.text = ""
             
-            let row = rowToButton[currentRow]!
-            let button = row[colNum] as! WordleButton
+            let validationMessage = self.solver.validate(input: self.textField.text)
+            if validationMessage != Configs.successMessage{
+                
+                self.textView.text = validationMessage
+                return /*EXIT*/
+                
+            }
             
-            let letter = String(letters[colNum]).uppercased()
-                        
-            if button.isWrong {         exclusions[colNum] = letter }
-            else if button.isClose {    inclusions[colNum] = letter  }
-            else if button.isExact {    exacts[colNum] = letter  }
+            self.solver.resetMatches()
             
-        }
-        
-        let possibleSolutions = solver.updateMatches(exclusionsX: exclusions,
-                                                     inclusionsX: inclusions,
-                                                     exactsX: exacts)
-        
-        let suggested = possibleSolutions.suggested.uppercased()
-        let remaining = possibleSolutions.remaining
-        
-        // Advance Current Row
-        currentRow = currentRow < 5 ? currentRow + 1 : currentRow
-        
-        textField.text = suggested.uppercased()
-        textFieldDidChange(textField)
-        
-        var possibles = ""
-        
-        Array(remaining)
-            .sorted{ $0.value > $1.value }
-            .map{ "\($0.key.uppercased()):\($0.value) "}
-            .forEach{ possibles += $0 }
-        
-        textView.text = """
+            var suggested = ""
+            var remaining = [Word : Score]()
+            
+            var possibleSolutions: (remaining: [Word : Score], suggested: Word) = ([Word:Score](),"")
+            
+            var exacts      = ["-", "-", "-", "-", "-"]
+            var inclusions  = ["-", "-", "-", "-", "-"]
+            var exclusions  = ["-", "-", "-", "-", "-"]
+            
+            for row in 0..<self.rowToButton.count {
+                
+                let row = self.rowToButton[row]!
+                
+                for colNum in 0...4 {
+                    
+                    let button = row[colNum]
+                    
+                    let letter = button.titleLabel?.text?.uppercased() ?? "-?-"
+                    
+                    if button.isWrong {         exclusions[colNum] = letter }
+                    else if button.isClose {    inclusions[colNum] = letter  }
+                    else if button.isExact {    exacts[colNum] = letter  }
+                    
+                }
+                
+                possibleSolutions = self.solver.updateMatches(exclusions: exclusions,
+                                                              inclusions: inclusions,
+                                                              exactsX: exacts)
+                
+                suggested = possibleSolutions.suggested.uppercased()
+                remaining = possibleSolutions.remaining
+                
+            }
+            
+            if suggested == "" {
+                
+                self.textView.text = "Entry Error: Please Check Your Button States"
+                
+                return
+            }
+            
+            // Advance Current Row
+            self.currentRow = self.currentRow < 5 ? self.currentRow + 1 : self.currentRow
+            
+            // Grab Next Suggestion
+            self.textField.text = suggested.uppercased()
+            
+            // Fill Buttons with Suggested Word Letters
+            self.textFieldDidChange(self.textField)
+            
+            var possibles = ""
+            
+            Array(remaining)
+                .sorted{ $0.value > $1.value }
+                .map{ "\($0.key.uppercased()):\($0.value) "}
+                .forEach{ possibles += $0 }
+            
+            self.textView.text = """
                         --------------------------------------
                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
                         --------------------------------------
-
+                        
                         --------------------------------------
                          CANDIDATES REMAINING: \(remaining.count)
                                    SUGGESTION: \(suggested)
@@ -233,20 +302,32 @@ class ViewController: UIViewController {
                         \(possibles)
                         
                         """
-        
-        if remaining.count == 1 { victory() }
+            
+            if remaining.count == 1 { self.victoryCheck(force: true) }
+            
+        }
         
     }
     
-    private func victory() {
+    @discardableResult private func victoryCheck(force: Bool = false ) -> Bool {
         
-        goButton.isEnabled = false
+        if !force {
+            
+            for button in self.rowToButton[self.currentRow]! {
+                
+                if button.toggleState != .exact { return false /*EXIT*/ }
+                
+            }
+            
+        }
         
         textView.text = "V-I-C-T-O-R-Y"
         
         // Set Buttons Green
         let buttons = rowToButton[currentRow]!
-        buttons.forEach{($0 as? WordleButton)?.toggle(.exact) }
+        buttons.forEach{ $0.toggle(.exact) }
+        
+        return true /*EXIT*/
         
     }
     

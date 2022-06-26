@@ -132,8 +132,8 @@ extension WordlerTests {
                     
                     let (exc, inc, exa) = analyze(guess: guess, answer: answer)
                     
-                    possibleSolutions = Solver.shared.updateMatches(exclusionsX: exc,
-                                                                    inclusionsX: inc,
+                    possibleSolutions = Solver.shared.updateMatches(exclusions: exc,
+                                                                    inclusions: inc,
                                                                     exactsX: exa)
                     
                     guess = possibleSolutions.suggested.uppercased()

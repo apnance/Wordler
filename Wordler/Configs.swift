@@ -9,6 +9,8 @@ import Foundation
 
 struct Configs {
     
+    static var successMessage = "Input is Valid."
+    
     struct Defaults {
         
         static func randomStarter() -> Word { initialGuesses.randomElement! }
