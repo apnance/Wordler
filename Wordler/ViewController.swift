@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import APNUtils
+import APNUtil
 
 typealias Row = Int
 class ViewController: UIViewController {
