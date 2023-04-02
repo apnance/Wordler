@@ -63,7 +63,7 @@ class Solver {
         // Validate
         for word in _allWords {
             
-            assert(word.count == 5, "Word\(word) has invalid length of \(word.count)")
+            assert(word.count == 5, "Word \(word) has invalid length of \(word.count)")
             
         }
         
