@@ -229,8 +229,6 @@ class ViewController: UIViewController {
                 
             }
             
-            self.solver.resetMatches()
-            
             var suggested = ""
             var remaining = [Word : Score]()
             
