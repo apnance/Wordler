@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930B96B129B10779000546DD /* ReadMe.txt in Sources */ = {isa = PBXBuildFile; fileRef = 930B96B029B10779000546DD /* ReadMe.txt */; };
 		930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2BFE278E27E7009B111C /* AppDelegate.swift */; };
 		930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2C00278E27E7009B111C /* SceneDelegate.swift */; };
 		930C2C03278E27E7009B111C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2C02278E27E7009B111C /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		930B96B029B10779000546DD /* ReadMe.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		930C2BFB278E27E7009B111C /* Wordler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wordler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		930C2BFE278E27E7009B111C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		930C2C00278E27E7009B111C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,8 +144,8 @@
 		930C2C17278E2906009B111C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93A8EF9429D492A400052D79 /* Words */,
 				93CB48052799FF3300A5CD8F /* iOS */,
-				930C2C23278E3375009B111C /* words.wordle.txt */,
 				930C2C07278E27E9009B111C /* Assets.xcassets */,
 				93DF7635278FDABD001234EC /* Configs.swift */,
 			);
@@ -155,6 +157,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93A8EF9429D492A400052D79 /* Words */ = {
+			isa = PBXGroup;
+			children = (
+				930B96B029B10779000546DD /* ReadMe.txt */,
+				930C2C23278E3375009B111C /* words.wordle.txt */,
+			);
+			name = Words;
 			sourceTree = "<group>";
 		};
 		93CB48042799FF1B00A5CD8F /* iOS */ = {
@@ -311,6 +322,7 @@
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
+				930B96B129B10779000546DD /* ReadMe.txt in Sources */,
 				930C2C13278E28DE009B111C /* Solver.swift in Sources */,
 				930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */,
 			);
