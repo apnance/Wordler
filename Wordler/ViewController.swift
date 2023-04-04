@@ -50,7 +50,7 @@ class ViewController: UIViewController {
             
         }
         
-        return true
+        return true /*EXIT*/
         
     }
     
@@ -267,7 +267,8 @@ class ViewController: UIViewController {
                 
                 self.textView.text = "Entry Error: Please Check Your Button States"
                 
-                return
+                return /*EXIT*/
+                
             }
             
             // Advance Current Row
