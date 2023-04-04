@@ -80,17 +80,15 @@ class ViewController: UIViewController {
     // MARK: - Custom Methods
     private func uiInit() {
         
-        goButton.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
-        goButton.layer.borderWidth = Configs.UI.standardBorderWidth
+        let toStyle: [UIView] = [goButton, clearButton, textView, textField, textSummaryView]
         
-        clearButton.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
-        clearButton.layer.borderWidth = Configs.UI.standardBorderWidth
+        for view in toStyle {
+            
+            view.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
+            view.layer.borderWidth = Configs.UI.standardBorderWidth
+            
+        }
         
-        textView.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
-        textView.layer.borderWidth = Configs.UI.standardBorderWidth
-        
-        textField.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
-        textField.layer.borderWidth = Configs.UI.standardBorderWidth
         textField.delegate = self
         textField.addTarget(self,
                             action: #selector(ViewController.textFieldDidChange(_:)),
@@ -224,7 +222,8 @@ class ViewController: UIViewController {
     
     private func syncTextSummary() {
         
-        textSummaryView.text = "\(textView.text ?? "")\n\(textSummaryView.text ?? "")"
+        let lineFeed = textSummaryView.text.isEmpty ? "" : "\n\n"
+        textSummaryView.text += "\(lineFeed)\(textView.text ?? "")"
         
     }
     
@@ -283,7 +282,7 @@ class ViewController: UIViewController {
             
             if suggested == "" {
                 
-                self.textView.text = "Entry Error: Please Check Your Button States"
+                self.textView.text = "Entry Error: \"\(self.textField.text ?? "-?-")\" - Please Check Your Button States"
                 self.syncTextSummary()
                 
                 return /*EXIT*/
@@ -307,18 +306,17 @@ class ViewController: UIViewController {
                 .forEach{ possibles += $0 }
             
             self.textView.text = """
-                        --------------------------------------
+                        --------------------#\(self.currentRow)--------------------
                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
-                        --------------------------------------
-                        
-                        --------------------------------------
-                         CANDIDATES REMAINING: \(remaining.count)
-                                   SUGGESTION: \(suggested)
-                        --------------------------------------
+                        - - - - - - - - - - - - - - - - - - - -
+                         SUGGESTION: \(suggested)
+                        - - - - - - - - - - - - - - - - - - - -
+                         CANDIDATES REMAINING(\(remaining.count)):
+                        - - - - -
                         \(possibles)
-                        
+                        ------------------------------------------
                         """
             
             self.syncTextSummary()
@@ -342,6 +340,7 @@ class ViewController: UIViewController {
         }
         
         textView.text = "V-I-C-T-O-R-Y"
+        syncTextSummary()
         
         // Set Buttons Green
         let buttons = rowToButton[currentRow]!
