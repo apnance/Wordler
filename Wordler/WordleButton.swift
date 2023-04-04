@@ -75,7 +75,7 @@ class WordleButton: UIButton {
             
             case .blank:
                 backgroundColor     = UIColor(named: "WordleBackgroundGray")
-                layer.borderColor   = UIColor(named: "WordleGray")?.cgColor
+                layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
             
             case .exclude:
                 backgroundColor     = UIColor(named: "WordleGrayDark")
@@ -103,7 +103,7 @@ class WordleButton: UIButton {
     
     private func uiInit() {
         
-        layer.borderColor   = UIColor.darkGray.cgColor
+        layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
         layer.borderWidth   = Configs.UI.standardBorderWidth
         backgroundColor     = UIColor(named: "WordleBackgroundGray")
     
