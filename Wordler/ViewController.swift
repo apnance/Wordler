@@ -307,14 +307,14 @@ class ViewController: UIViewController {
             
             self.textView.text = """
                         --------------------#\(self.currentRow)--------------------
-                         EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
-                         INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
-                         EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
-                        - - - - - - - - - - - - - - - - - - - -
-                         SUGGESTION: \(suggested)
-                        - - - - - - - - - - - - - - - - - - - -
-                         CANDIDATES REMAINING(\(remaining.count)):
-                        - - - - -
+                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
+                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
+                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
+                         - - - - - - - - - -
+                          SUGGESTION: \(suggested)
+                         - - - - - - - - - -
+                          CANDIDATES REMAINING(\(remaining.count)):
+                         - - - - -
                         \(possibles)
                         ------------------------------------------
                         """
