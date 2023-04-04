@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet var rows: [UIStackView]!
+    @IBOutlet weak var popScreenView: UIView!
+    @IBOutlet weak var textSummaryView: UITextView!
     
     
     // MARK: - Actions
@@ -99,6 +101,11 @@ class ViewController: UIViewController {
         
         view.addGestureRecognizer(tap)
         
+        textView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                             action: #selector(showHidePopUp)))
+        popScreenView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                  action: #selector(showHidePopUp)))
+        
         // Build rowToButton
         for (rowNum, row) in rows.enumerated() {
             
@@ -128,8 +135,9 @@ class ViewController: UIViewController {
         
         solver.resetMatches()
         
-        textField.text = Configs.Defaults.randomStarter()
-        textView.text = ""
+        textField.text          = Configs.Defaults.randomStarter()
+        textView.text           = ""
+        textSummaryView.text    = ""
         
         for rowNum in 0...5 {
             
@@ -147,6 +155,8 @@ class ViewController: UIViewController {
         uiSyncButtonAndTextField()
         
     }
+    
+    @objc private func showHidePopUp() { popScreenView.toggleHidden() }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
         
@@ -212,6 +222,12 @@ class ViewController: UIViewController {
      
      */
     
+    private func syncTextSummary() {
+        
+        textSummaryView.text = "\(textView.text ?? "")\n\(textSummaryView.text ?? "")"
+        
+    }
+    
     private func check() {
         
         DispatchQueue.main.async {
@@ -225,6 +241,8 @@ class ViewController: UIViewController {
             if validationMessage != Configs.successMessage{
                 
                 self.textView.text = validationMessage
+                self.syncTextSummary()
+                
                 return /*EXIT*/
                 
             }
@@ -266,6 +284,7 @@ class ViewController: UIViewController {
             if suggested == "" {
                 
                 self.textView.text = "Entry Error: Please Check Your Button States"
+                self.syncTextSummary()
                 
                 return /*EXIT*/
                 
@@ -301,6 +320,8 @@ class ViewController: UIViewController {
                         \(possibles)
                         
                         """
+            
+            self.syncTextSummary()
             
             if remaining.count == 1 { self.victoryCheck(force: true) }
             

@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -515,30 +514,54 @@
                                     <constraint firstItem="RMG-hk-qv2" firstAttribute="height" secondItem="Unb-Bm-9gI" secondAttribute="height" id="7fw-FI-1yE"/>
                                 </constraints>
                             </stackView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="E Plurubus Unum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WRk-bn-yg4">
+                            <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" text="E Plurubus Unum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRk-bn-yg4">
                                 <rect key="frame" x="10" y="612" width="394" height="271.5"/>
                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="8"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQp-gO-k92">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" editable="NO" text="E Plurubus Unum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvV-GI-iyP">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="846"/>
+                                        <color key="backgroundColor" name="WordleBackgroundGray"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="8"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" name="WordleBackgroundGray"/>
+                                <constraints>
+                                    <constraint firstItem="JvV-GI-iyP" firstAttribute="leading" secondItem="ZQp-gO-k92" secondAttribute="leading" id="7Q7-eM-BJJ"/>
+                                    <constraint firstItem="JvV-GI-iyP" firstAttribute="top" secondItem="ZQp-gO-k92" secondAttribute="top" constant="50" id="K3p-z1-Bsj"/>
+                                    <constraint firstAttribute="trailing" secondItem="JvV-GI-iyP" secondAttribute="trailing" id="fur-FT-wOu"/>
+                                    <constraint firstAttribute="bottom" secondItem="JvV-GI-iyP" secondAttribute="bottom" id="y0I-4R-45i"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="H2u-e0-mQw"/>
                         <color key="backgroundColor" name="WordleBackgroundGray"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WRk-bn-yg4" secondAttribute="trailing" constant="10" id="2Mn-qi-Uur"/>
+                            <constraint firstItem="ZQp-gO-k92" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8XE-is-mD3"/>
                             <constraint firstItem="GJF-rb-zyE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="BUm-k8-KPL"/>
                             <constraint firstAttribute="trailing" secondItem="GJF-rb-zyE" secondAttribute="trailing" constant="10" id="Dpd-1b-wYD"/>
+                            <constraint firstAttribute="bottom" secondItem="ZQp-gO-k92" secondAttribute="bottom" id="Ejx-Kf-UjP"/>
+                            <constraint firstAttribute="trailing" secondItem="ZQp-gO-k92" secondAttribute="trailing" id="Uy1-fX-szr"/>
                             <constraint firstItem="WRk-bn-yg4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="brF-7I-5pi"/>
                             <constraint firstItem="WRk-bn-yg4" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="bottom" constant="4" id="juo-sd-Bqf"/>
                             <constraint firstItem="WRk-bn-yg4" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-12.5" id="pZ4-hK-eoT"/>
+                            <constraint firstItem="ZQp-gO-k92" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rDW-Ft-T4A"/>
                             <constraint firstItem="GJF-rb-zyE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="xfO-Wh-Jsz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="clearButton" destination="gPL-Cd-urh" id="OQa-OE-X1t"/>
                         <outlet property="goButton" destination="ETF-Sl-PZq" id="fki-g9-Sxh"/>
+                        <outlet property="popScreenView" destination="ZQp-gO-k92" id="QZa-GL-Ner"/>
                         <outlet property="textField" destination="YGo-IR-vKp" id="Sup-73-rm8"/>
+                        <outlet property="textSummaryView" destination="JvV-GI-iyP" id="3Km-DR-mmu"/>
                         <outlet property="textView" destination="WRk-bn-yg4" id="j4A-CQ-mZL"/>
                         <outletCollection property="rows" destination="Unb-Bm-9gI" collectionClass="NSMutableArray" id="gxN-cj-5HB"/>
                         <outletCollection property="rows" destination="tjV-Pr-RDy" collectionClass="NSMutableArray" id="JCT-A8-lHV"/>

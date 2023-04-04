@@ -105,7 +105,6 @@ class WordleButton: UIButton {
         
         layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
         layer.borderWidth   = Configs.UI.standardBorderWidth
-        backgroundColor     = UIColor(named: "WordleBackgroundGray")
     
         resetTo(.blank)
         
