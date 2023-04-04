@@ -59,7 +59,6 @@ class ViewController: UIViewController {
     @IBAction func tapGo(_ sender: UIButton) {
         
         dismissKeyboard()
-        
         check()
         
     }
@@ -179,7 +178,7 @@ class ViewController: UIViewController {
             if currentRow > 0 {
                 
                 let master = (rowToButton[currentRow - 1])![colNum]
-
+                
                 if master.letter == letter {
                     
                     button.toggle(master.toggleState)
@@ -249,7 +248,8 @@ class ViewController: UIViewController {
             var suggested = ""
             var remaining = [Word : Score]()
             
-            var possibleSolutions: (remaining: [Word : Score], suggested: Word) = ([Word:Score](),"")
+            var possibleSolutions: (remaining: [Word : Score],
+                                    suggested: Word) = ([Word:Score](),"")
             
             var exacts      = ["-", "-", "-", "-", "-"]
             var inclusions  = ["-", "-", "-", "-", "-"]
