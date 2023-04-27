@@ -18,14 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="GJF-rb-zyE">
-                                <rect key="frame" x="10" y="55" width="394" height="553"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="GJF-rb-zyE">
+                                <rect key="frame" x="12" y="55" width="390" height="548.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="RMG-hk-qv2">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="75.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="73"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="gPL-Cd-urh">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="gPL-Cd-urh" secondAttribute="height" multiplier="1:1" id="QfC-ud-sIt"/>
@@ -40,14 +40,14 @@
                                                 </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ABOUT" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="YGo-IR-vKp">
-                                                <rect key="frame" x="79.5" y="0.0" width="235" height="75.5"/>
+                                                <rect key="frame" x="77" y="0.0" width="236" height="73"/>
                                                 <color key="backgroundColor" name="WordleBlack"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="43"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="yes" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ETF-Sl-PZq">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleGreenDark"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ETF-Sl-PZq" secondAttribute="height" multiplier="1:1" id="6Qi-wn-4cn"/>
@@ -66,11 +66,11 @@
                                             <constraint firstItem="gPL-Cd-urh" firstAttribute="width" secondItem="gPL-Cd-urh" secondAttribute="height" multiplier="1:1" id="Zov-3d-Wh4"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-Bm-9gI" userLabel="Row 1">
-                                        <rect key="frame" x="0.0" y="79.5" width="394" height="75.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-Bm-9gI" userLabel="Row 1">
+                                        <rect key="frame" x="0.0" y="79" width="390" height="73.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KLT-qI-9yu" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="KLT-qI-9yu" secondAttribute="height" multiplier="1:1" id="IOl-f1-RFe"/>
@@ -85,7 +85,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muA-br-gtf" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -97,7 +97,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVf-AP-dp6" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="75.5"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -109,7 +109,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rfC-nl-sHT" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -121,7 +121,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqH-f1-u0r" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -133,6 +133,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="muA-br-gtf" firstAttribute="width" secondItem="muA-br-gtf" secondAttribute="height" multiplier="1:1" id="0tJ-Ch-mRU"/>
                                             <constraint firstItem="JqH-f1-u0r" firstAttribute="width" secondItem="JqH-f1-u0r" secondAttribute="height" multiplier="1:1" id="2lr-ec-wuR"/>
@@ -140,11 +141,11 @@
                                             <constraint firstItem="rfC-nl-sHT" firstAttribute="width" secondItem="rfC-nl-sHT" secondAttribute="height" multiplier="1:1" id="b9c-Vb-EiR"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tjV-Pr-RDy" userLabel="Row 2">
-                                        <rect key="frame" x="0.0" y="159" width="394" height="76"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="tjV-Pr-RDy" userLabel="Row 2">
+                                        <rect key="frame" x="0.0" y="158.5" width="390" height="73"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmS-AJ-usj" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="76"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="CmS-AJ-usj" secondAttribute="height" multiplier="1:1" id="ARi-0Y-77Z"/>
@@ -159,7 +160,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uC9-IM-6jW" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="76"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -171,7 +172,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXX-qI-DAE" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="76"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -183,7 +184,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rm-gO-6gR" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="76"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -195,7 +196,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHl-TA-XP2" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="76"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -207,6 +208,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="6rm-gO-6gR" firstAttribute="width" secondItem="6rm-gO-6gR" secondAttribute="height" multiplier="1:1" id="Mo7-2r-wVO"/>
                                             <constraint firstItem="dXX-qI-DAE" firstAttribute="width" secondItem="dXX-qI-DAE" secondAttribute="height" multiplier="1:1" id="kIf-UW-wDP"/>
@@ -214,11 +216,11 @@
                                             <constraint firstItem="QHl-TA-XP2" firstAttribute="width" secondItem="QHl-TA-XP2" secondAttribute="height" multiplier="1:1" id="vuz-eT-Dww"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="5EE-GY-vfs" userLabel="Row 3">
-                                        <rect key="frame" x="0.0" y="239" width="394" height="75.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="5EE-GY-vfs" userLabel="Row 3">
+                                        <rect key="frame" x="0.0" y="237.5" width="390" height="73.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-5Y-gtJ" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="kZF-5Y-gtJ" secondAttribute="height" multiplier="1:1" id="wf8-jj-E94"/>
@@ -233,7 +235,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5X9-cA-o5A" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -245,7 +247,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-Kl-gj8" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="75.5"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -257,7 +259,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxO-jn-MId" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -269,7 +271,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XYi-Gm-azq" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -281,6 +283,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="I4O-Kl-gj8" firstAttribute="width" secondItem="I4O-Kl-gj8" secondAttribute="height" multiplier="1:1" id="AEL-tg-hZQ"/>
                                             <constraint firstItem="XYi-Gm-azq" firstAttribute="width" secondItem="XYi-Gm-azq" secondAttribute="height" multiplier="1:1" id="UzS-NE-arh"/>
@@ -288,11 +291,11 @@
                                             <constraint firstItem="FxO-jn-MId" firstAttribute="width" secondItem="FxO-jn-MId" secondAttribute="height" multiplier="1:1" id="xzG-2k-LQy"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fzh-dD-PY7" userLabel="Row 4">
-                                        <rect key="frame" x="0.0" y="318.5" width="394" height="75.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="fzh-dD-PY7" userLabel="Row 4">
+                                        <rect key="frame" x="0.0" y="317" width="390" height="73"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Edm-Lk-UyA" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Edm-Lk-UyA" secondAttribute="height" multiplier="1:1" id="a1G-ep-Ma6"/>
@@ -307,7 +310,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Kl-ci-5To" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -319,7 +322,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ntZ-ci-gpO" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="75.5"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -331,7 +334,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NsX-k4-sQU" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -343,7 +346,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6v-WS-Cwv" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -355,6 +358,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="A6v-WS-Cwv" firstAttribute="width" secondItem="A6v-WS-Cwv" secondAttribute="height" multiplier="1:1" id="6hA-3b-Pv8"/>
                                             <constraint firstItem="ntZ-ci-gpO" firstAttribute="width" secondItem="ntZ-ci-gpO" secondAttribute="height" multiplier="1:1" id="IXJ-IB-kvA"/>
@@ -362,11 +366,11 @@
                                             <constraint firstItem="4Kl-ci-5To" firstAttribute="width" secondItem="4Kl-ci-5To" secondAttribute="height" multiplier="1:1" id="qTO-At-LlA"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="t1e-b5-roN" userLabel="Row 5">
-                                        <rect key="frame" x="0.0" y="398" width="394" height="75.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="t1e-b5-roN" userLabel="Row 5">
+                                        <rect key="frame" x="0.0" y="396" width="390" height="73"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePd-aT-iwl" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ePd-aT-iwl" secondAttribute="height" multiplier="1:1" id="gHX-HM-NMw"/>
@@ -381,7 +385,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jw7-JB-nTn" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -393,7 +397,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="65g-dx-Cme" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="75.5"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -405,7 +409,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b7C-gR-W2f" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -417,7 +421,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8z9-Y0-3Mk" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -429,6 +433,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Jw7-JB-nTn" firstAttribute="width" secondItem="Jw7-JB-nTn" secondAttribute="height" multiplier="1:1" id="0EQ-XS-h5d"/>
                                             <constraint firstItem="b7C-gR-W2f" firstAttribute="width" secondItem="b7C-gR-W2f" secondAttribute="height" multiplier="1:1" id="40Z-7f-oyR"/>
@@ -436,11 +441,11 @@
                                             <constraint firstItem="65g-dx-Cme" firstAttribute="width" secondItem="65g-dx-Cme" secondAttribute="height" multiplier="1:1" id="k9E-jd-4QI"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ZoX-yr-BbH" userLabel="Row 6">
-                                        <rect key="frame" x="0.0" y="477.5" width="394" height="75.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ZoX-yr-BbH" userLabel="Row 6">
+                                        <rect key="frame" x="0.0" y="475" width="390" height="73.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hID-QB-ZcV" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="hID-QB-ZcV" secondAttribute="height" multiplier="1:1" id="pg5-qN-Vax"/>
@@ -455,7 +460,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WGY-0s-U1Y" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="79.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="79" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -467,7 +472,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJL-nf-2Ll" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="159" y="0.0" width="76" height="75.5"/>
+                                                <rect key="frame" x="158.5" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -479,7 +484,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loe-pv-T3R" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="239" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="237.5" y="0.0" width="73.5" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -491,7 +496,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q65-bl-SsV" customClass="WordleButton" customModule="Wordler" customModuleProvider="target">
-                                                <rect key="frame" x="318.5" y="0.0" width="75.5" height="75.5"/>
+                                                <rect key="frame" x="317" y="0.0" width="73" height="73.5"/>
                                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -503,6 +508,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="WGY-0s-U1Y" firstAttribute="width" secondItem="WGY-0s-U1Y" secondAttribute="height" multiplier="1:1" id="cbT-j6-uyr"/>
                                             <constraint firstItem="cJL-nf-2Ll" firstAttribute="width" secondItem="cJL-nf-2Ll" secondAttribute="height" multiplier="1:1" id="eOO-mu-B7y"/>
@@ -511,12 +517,13 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="RMG-hk-qv2" firstAttribute="height" secondItem="Unb-Bm-9gI" secondAttribute="height" id="7fw-FI-1yE"/>
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" contentMode="scaleToFill" editable="NO" text="E Plurubus Unum" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRk-bn-yg4">
-                                <rect key="frame" x="10" y="612" width="394" height="271.5"/>
+                                <rect key="frame" x="10" y="607.5" width="394" height="276"/>
                                 <color key="backgroundColor" name="WordleBackgroundGray"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="8"/>
@@ -547,7 +554,7 @@
                             <constraint firstItem="ZQp-gO-k92" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8XE-is-mD3"/>
                             <constraint firstItem="GJF-rb-zyE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="BUm-k8-KPL"/>
                             <constraint firstItem="JvV-GI-iyP" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="top" id="CAl-Wx-MFT"/>
-                            <constraint firstAttribute="trailing" secondItem="GJF-rb-zyE" secondAttribute="trailing" constant="10" id="Dpd-1b-wYD"/>
+                            <constraint firstAttribute="trailing" secondItem="GJF-rb-zyE" secondAttribute="trailing" constant="12" id="Dpd-1b-wYD"/>
                             <constraint firstAttribute="bottom" secondItem="ZQp-gO-k92" secondAttribute="bottom" id="Ejx-Kf-UjP"/>
                             <constraint firstAttribute="trailing" secondItem="ZQp-gO-k92" secondAttribute="trailing" id="Uy1-fX-szr"/>
                             <constraint firstItem="JvV-GI-iyP" firstAttribute="bottom" secondItem="WRk-bn-yg4" secondAttribute="bottom" id="ZB6-f7-TfG"/>
@@ -555,7 +562,7 @@
                             <constraint firstItem="WRk-bn-yg4" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="bottom" constant="4" id="juo-sd-Bqf"/>
                             <constraint firstItem="WRk-bn-yg4" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" constant="-12.5" id="pZ4-hK-eoT"/>
                             <constraint firstItem="ZQp-gO-k92" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rDW-Ft-T4A"/>
-                            <constraint firstItem="GJF-rb-zyE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="xfO-Wh-Jsz"/>
+                            <constraint firstItem="GJF-rb-zyE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="xfO-Wh-Jsz"/>
                         </constraints>
                     </view>
                     <connections>

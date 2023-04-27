@@ -29,7 +29,7 @@ struct Configs {
         
     }
     
-    struct UI { static var standardBorderWidth = 2.0 }
+    struct UI { static var standardBorderWidth = 2.5 }
     
     struct Test { static var echoTestMessages = false }
     
