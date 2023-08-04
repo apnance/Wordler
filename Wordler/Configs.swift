@@ -5,7 +5,7 @@
 //  Created by Aaron Nance on 1/12/22.
 //
 
-import Foundation
+import UIKit
 
 struct Configs {
     
@@ -29,7 +29,22 @@ struct Configs {
         
     }
     
-    struct UI { static var standardBorderWidth = 2.5 }
+    struct UI {
+        
+        static var standardBorderWidth = 2.0
+        
+        struct Color {
+            
+            static let wordleGray           = UIColor(named: "WordleGray")
+            static let wordleGrayLight      = UIColor(named: "WordleGrayLight")
+            static let wordleGrayDark       = UIColor(named: "WordleGrayDark")
+            static let wordleGreen          = UIColor(named: "WordleGreen")
+            static let wordleYellow         = UIColor(named: "WordleYellow")
+            static let wordleBackgroundGray = UIColor(named: "WordleBackgroundGray")
+            
+        }
+        
+    }
     
     struct Test { static var echoTestMessages = false }
     
