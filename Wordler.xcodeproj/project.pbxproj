@@ -16,6 +16,8 @@
 		930C2C0B278E27E9009B111C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 930C2C09278E27E9009B111C /* LaunchScreen.storyboard */; };
 		930C2C13278E28DE009B111C /* Solver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2C12278E28DE009B111C /* Solver.swift */; };
 		930C2C24278E3375009B111C /* words.wordle.txt in Resources */ = {isa = PBXBuildFile; fileRef = 930C2C23278E3375009B111C /* words.wordle.txt */; };
+		9344DE332A7C2D1700E4D8CE /* ProgressIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */; };
+		9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 93CEF95D28E83F6E009C1A07 /* APNUtil */; };
 		93DF7636278FDABD001234EC /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7635278FDABD001234EC /* Configs.swift */; };
@@ -58,6 +60,8 @@
 		930C2C0C278E27E9009B111C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		930C2C12278E28DE009B111C /* Solver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solver.swift; sourceTree = "<group>"; };
 		930C2C23278E3375009B111C /* words.wordle.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.wordle.txt; sourceTree = "<group>"; };
+		9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicator.xib; sourceTree = "<group>"; };
+		9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93CEF95C28E83F57009C1A07 /* APNUtil */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APNUtil; path = ../Frameworks/APNUtil; sourceTree = "<group>"; };
 		93DF7635278FDABD001234EC /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
@@ -130,6 +134,8 @@
 			children = (
 				93CB48062799FF4900A5CD8F /* iOS */,
 				93DF76392790A9C8001234EC /* WordleButton.swift */,
+				9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */,
+				9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */,
 			);
 			name = V;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9344DE332A7C2D1700E4D8CE /* ProgressIndicator.xib in Resources */,
 				930C2C24278E3375009B111C /* words.wordle.txt in Resources */,
 				930C2C0B278E27E9009B111C /* LaunchScreen.storyboard in Resources */,
 				930C2C08278E27E9009B111C /* Assets.xcassets in Resources */,
@@ -322,6 +329,7 @@
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
+				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
 				930B96B129B10779000546DD /* ReadMe.txt in Sources */,
 				930C2C13278E28DE009B111C /* Solver.swift in Sources */,
 				930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */,
