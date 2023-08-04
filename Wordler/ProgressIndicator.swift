@@ -82,16 +82,17 @@ class ProgressIndicator: UIView {
 class IndicatorRowView: UIView {
     
     var bar: UIView!
+    var label: UILabel!
     
     override func awakeFromNib() {
         
-        layer.borderWidth   = 2
-        layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
+        layer.borderWidth   = Configs.UI.standardBorderWidth
+        layer.borderColor   = Configs.UI.Color.wordleGrayDark?.cgColor
         
-        (subviews.first as? UILabel)?.text = ""
+        label       = subviews.first as? UILabel
+        label?.text = ""
         
         bar = UIView(frame: CGRect.zero)
-        bar.backgroundColor = UIColor(named: "WordleGreen")
         
         addSubview(bar!)
         sendSubviewToBack(bar!)
@@ -100,9 +101,39 @@ class IndicatorRowView: UIView {
     
     func setBar(num: Int, of total: Int) {
         
-        let width = frame.width * (num.double / total.double)
+// TODO: Clean Up - delete
+//        let maxVal: Double
+        var barWidth: Double
         
-        bar?.frame = CGRect(width: width, height: frame.height)
+        switch num {
+                
+            case 0:
+// TODO: Clean Up - delete
+//                maxVal  = 0
+                barWidth = 0
+                bar?.backgroundColor = Configs.UI.Color.wordleGrayLight
+
+            case 1:
+// TODO: Clean Up - delete
+//                maxVal                  = frame.width
+                barWidth = frame.width
+                bar?.backgroundColor    = UIColor.systemBlue
+                label.textColor         = .white
+                
+            default:
+// TODO: Clean Up - delete
+//                maxVal          =  3.0
+                barWidth = max(3.0, frame.width * (num.double / total.double))
+                bar?.backgroundColor = Configs.UI.Color.wordleGrayLight
+                label.textColor = (num.double / total.double) < 0.5 ? Configs.UI.Color.wordleGrayLight : Configs.UI.Color.wordleGrayDark
+                
+        }
+        
+// TODO: Clean Up - delete
+//        bar?.frame = CGRect(width: max(maxVal, frame.width * (num.double / total.double)),
+//                            height: frame.height)
+        bar?.frame = CGRect(width: barWidth,
+                            height: frame.height)
         
     }
     

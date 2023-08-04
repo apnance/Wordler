@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private var currentRow = 0
     private var rowToButton = [Row : [WordleButton]]()
     
+    private weak var progressIndicator: ProgressIndicator?
         
     // MARK: - Outlets
     @IBOutlet weak var goButton: UIButton!
@@ -25,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet var rows: [UIStackView]!
     @IBOutlet weak var popScreenView: UIView!
     @IBOutlet weak var textSummaryView: UITextView!
+    @IBOutlet weak var progressIndicatorContainerView: UIView!
     
     
     // MARK: - Actions
@@ -122,6 +124,10 @@ class ViewController: UIViewController {
             
         }
         
+        // Build Progress Indicator
+        progressIndicator = ProgressIndicator.make(targetView: progressIndicatorContainerView,
+                                                   totalWordCount: solver.allWords.count)
+        
     }
     
     @objc private func dismissKeyboard() { textField.resignFirstResponder() }
@@ -131,10 +137,15 @@ class ViewController: UIViewController {
         currentRow = 0
         
         solver.resetMatches()
+        progressIndicator?.reset()
         
-        textField.text          = Configs.Defaults.randomStarter()
+        let starterWord         = Configs.Defaults.randomStarter()
+        textField.text          = starterWord
         textView.text           = ""
         textSummaryView.text    = ""
+        
+        progressIndicator?.update(word: starterWord,
+                                  remaining: solver.allWords.count)
         
         for rowNum in 0...5 {
             
@@ -297,6 +308,9 @@ class ViewController: UIViewController {
             
             // Fill Buttons with Suggested Word Letters
             self.textFieldDidChange(self.textField)
+            
+            // Update Progress Indicator
+            self.progressIndicator?.update(word: suggested, remaining: remaining.count)
             
             var possibles = ""
             
