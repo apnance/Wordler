@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     private var currentRow = 0
     private var rowToButton = [Row : [WordleButton]]()
     
-    
+        
     // MARK: - Outlets
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         
         for view in toStyle {
             
-            view.layer.borderColor = UIColor(named: "WordleGrayDark")!.cgColor
+            view.layer.borderColor = Configs.UI.Color.wordleGrayDark?.cgColor
             view.layer.borderWidth = Configs.UI.standardBorderWidth
             
         }

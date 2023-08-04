@@ -74,19 +74,19 @@ class WordleButton: UIButton {
         switch toggleState {
             
             case .blank:
-                backgroundColor     = UIColor(named: "WordleBackgroundGray")
-                layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
+                backgroundColor     = Configs.UI.Color.wordleBackgroundGray
+                layer.borderColor   = Configs.UI.Color.wordleGrayDark?.cgColor
             
             case .exclude:
-                backgroundColor     = UIColor(named: "WordleGrayDark")
+                backgroundColor     = Configs.UI.Color.wordleGrayDark
                 layer.borderColor   = UIColor.clear.cgColor
             
             case .include:
-                backgroundColor     = UIColor(named: "WordleYellow")
+                backgroundColor     = Configs.UI.Color.wordleYellow
                 layer.borderColor   = UIColor.clear.cgColor
             
             case .exact:
-                backgroundColor     = UIColor(named: "WordleGreen")
+                backgroundColor     = Configs.UI.Color.wordleGreen
                 layer.borderColor   = UIColor.clear.cgColor
             
         }
@@ -103,7 +103,7 @@ class WordleButton: UIButton {
     
     private func uiInit() {
         
-        layer.borderColor   = UIColor(named: "WordleGrayDark")?.cgColor
+        layer.borderColor   = Configs.UI.Color.wordleGrayDark?.cgColor
         layer.borderWidth   = Configs.UI.standardBorderWidth
     
         resetTo(.blank)
