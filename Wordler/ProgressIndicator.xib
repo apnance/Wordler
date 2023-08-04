@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProgressIndicator" customModule="Wordler" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="ProgressIndicator" customModule="Wordler" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="345" height="400"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="srl-mK-T4g">
+                    <rect key="frame" x="0.0" y="0.0" width="345" height="400"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8v-2C-44i" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-oJ-cCw">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstItem="mUr-oJ-cCw" firstAttribute="top" secondItem="j8v-2C-44i" secondAttribute="top" id="IA7-TE-kbu"/>
+                                <constraint firstItem="mUr-oJ-cCw" firstAttribute="leading" secondItem="j8v-2C-44i" secondAttribute="leading" id="JZW-ig-YK1"/>
+                                <constraint firstAttribute="bottom" secondItem="mUr-oJ-cCw" secondAttribute="bottom" id="SCw-7A-b7N"/>
+                                <constraint firstAttribute="trailing" secondItem="mUr-oJ-cCw" secondAttribute="trailing" id="a4g-Tz-Y19"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3f5-Lb-iOP" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="67.333333333333329" width="345" height="63.333333333333329"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="QDn-Ab-w0O">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="QDn-Ab-w0O" secondAttribute="bottom" id="1jb-Kw-zMF"/>
+                                <constraint firstItem="QDn-Ab-w0O" firstAttribute="top" secondItem="3f5-Lb-iOP" secondAttribute="top" id="aDM-12-o1L"/>
+                                <constraint firstAttribute="trailing" secondItem="QDn-Ab-w0O" secondAttribute="trailing" id="ldC-VZ-t5w"/>
+                                <constraint firstItem="QDn-Ab-w0O" firstAttribute="leading" secondItem="3f5-Lb-iOP" secondAttribute="leading" id="raZ-c3-tTQ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTD-0n-16w" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="134.66666666666666" width="345" height="63.333333333333343"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="VIJ-Ua-KED">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstItem="VIJ-Ua-KED" firstAttribute="top" secondItem="mTD-0n-16w" secondAttribute="top" id="0q3-QK-Dd7"/>
+                                <constraint firstItem="VIJ-Ua-KED" firstAttribute="leading" secondItem="mTD-0n-16w" secondAttribute="leading" id="KbO-x4-2ru"/>
+                                <constraint firstAttribute="trailing" secondItem="VIJ-Ua-KED" secondAttribute="trailing" id="YDJ-xq-0cI"/>
+                                <constraint firstAttribute="bottom" secondItem="VIJ-Ua-KED" secondAttribute="bottom" id="tc5-LX-Nbi"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEt-QT-CMO" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="202" width="345" height="63.333333333333314"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="VMX-4y-shg">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="VMX-4y-shg" secondAttribute="bottom" id="54i-gR-iny"/>
+                                <constraint firstItem="VMX-4y-shg" firstAttribute="top" secondItem="CEt-QT-CMO" secondAttribute="top" id="5ka-1T-Deo"/>
+                                <constraint firstAttribute="trailing" secondItem="VMX-4y-shg" secondAttribute="trailing" id="Dqz-Rq-71T"/>
+                                <constraint firstItem="VMX-4y-shg" firstAttribute="leading" secondItem="CEt-QT-CMO" secondAttribute="leading" id="l36-QE-F4c"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyf-sh-XyO" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="269.33333333333331" width="345" height="63.333333333333314"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="egF-Z3-5RO">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="egF-Z3-5RO" secondAttribute="trailing" id="Fom-9o-l7K"/>
+                                <constraint firstAttribute="bottom" secondItem="egF-Z3-5RO" secondAttribute="bottom" id="fFD-qX-CRy"/>
+                                <constraint firstItem="egF-Z3-5RO" firstAttribute="top" secondItem="jyf-sh-XyO" secondAttribute="top" id="mtC-jp-K9q"/>
+                                <constraint firstItem="egF-Z3-5RO" firstAttribute="leading" secondItem="jyf-sh-XyO" secondAttribute="leading" id="xFK-S1-khZ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFq-Lq-9Nn" customClass="IndicatorRowView" customModule="Wordler" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="336.66666666666669" width="345" height="63.333333333333314"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="WORD6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Kaw-Oh-Ez4">
+                                    <rect key="frame" x="0.0" y="0.0" width="345" height="63.333333333333336"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
+                                    <color key="textColor" name="WordleGrayLight"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="WordleGray"/>
+                            <constraints>
+                                <constraint firstItem="Kaw-Oh-Ez4" firstAttribute="leading" secondItem="NFq-Lq-9Nn" secondAttribute="leading" id="RLg-BV-zta"/>
+                                <constraint firstItem="Kaw-Oh-Ez4" firstAttribute="top" secondItem="NFq-Lq-9Nn" secondAttribute="top" id="o9D-Nb-cla"/>
+                                <constraint firstAttribute="trailing" secondItem="Kaw-Oh-Ez4" secondAttribute="trailing" id="ogC-hj-a2V"/>
+                                <constraint firstAttribute="bottom" secondItem="Kaw-Oh-Ez4" secondAttribute="bottom" id="yhq-wA-HRG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="srl-mK-T4g" secondAttribute="trailing" id="Ryj-5i-VHZ"/>
+                <constraint firstAttribute="bottom" secondItem="srl-mK-T4g" secondAttribute="bottom" id="TxN-Ff-KyJ"/>
+                <constraint firstItem="srl-mK-T4g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="XQC-LD-uZM"/>
+                <constraint firstItem="srl-mK-T4g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xBU-e4-WZO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-378" y="-70"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="WordleGray">
+            <color red="0.52549019607843139" green="0.53333333333333333" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WordleGrayLight">
+            <color red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
