@@ -30,7 +30,7 @@ class ProgressIndicator: UIView {
     }
     
     var words = [(String, Int)]()
-  
+    
     public func reset() {
         
         words.removeAll()
@@ -68,7 +68,7 @@ class ProgressIndicator: UIView {
         for view in subviews.first!.subviews {
             
             if let view = view as? IndicatorRowView {
-             
+                
                 rowViews.append(view)
                 
             }
@@ -101,37 +101,31 @@ class IndicatorRowView: UIView {
     
     func setBar(num: Int, of total: Int) {
         
-// TODO: Clean Up - delete
-//        let maxVal: Double
         var barWidth: Double
         
         switch num {
                 
             case 0:
-// TODO: Clean Up - delete
-//                maxVal  = 0
+                
                 barWidth = 0
                 bar?.backgroundColor = Configs.UI.Color.wordleGrayLight
-
+                
             case 1:
-// TODO: Clean Up - delete
-//                maxVal                  = frame.width
-                barWidth = frame.width
+                
+                barWidth                = frame.width
                 bar?.backgroundColor    = UIColor.systemBlue
                 label.textColor         = .white
                 
             default:
-// TODO: Clean Up - delete
-//                maxVal          =  3.0
-                barWidth = max(3.0, frame.width * (num.double / total.double))
-                bar?.backgroundColor = Configs.UI.Color.wordleGrayLight
-                label.textColor = (num.double / total.double) < 0.5 ? Configs.UI.Color.wordleGrayLight : Configs.UI.Color.wordleGrayDark
+                
+                barWidth                = max(3.0, frame.width * (num.double / total.double))
+                bar?.backgroundColor    = Configs.UI.Color.wordleGrayLight
+                label.textColor         = (num.double / total.double) < 0.5
+                                        ? Configs.UI.Color.wordleGrayLight
+                                        : Configs.UI.Color.wordleGrayDark
                 
         }
         
-// TODO: Clean Up - delete
-//        bar?.frame = CGRect(width: max(maxVal, frame.width * (num.double / total.double)),
-//                            height: frame.height)
         bar?.frame = CGRect(width: barWidth,
                             height: frame.height)
         
