@@ -1327,7 +1327,6 @@ korun
 krill
 krona
 krone
-kugel
 label
 labor
 laced
