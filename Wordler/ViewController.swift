@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var textSummaryView: UITextView!
     @IBOutlet weak var progressIndicatorContainerView: UIView!
     
+    @IBOutlet weak var versionLabel: UILabel!
     
     // MARK: - Actions
     @IBAction func tapButton(_ sender: WordleButton) {
@@ -79,6 +80,7 @@ class ViewController: UIViewController {
     
     
     // MARK: - Custom Methods
+    
     private func uiInit() {
         
         let toStyle: [UIView] = [goButton, clearButton, textView, textField, textSummaryView]
@@ -127,6 +129,27 @@ class ViewController: UIViewController {
         // Build Progress Indicator
         progressIndicator = ProgressIndicator.make(targetView: progressIndicatorContainerView,
                                                    totalWordCount: solver.allWords.count)
+        
+        uiSetVersion()
+        
+    }
+    
+    private func uiSetVersion() {
+        
+        var formatted = AttributedString("")
+        
+        let version = "v\(Bundle.appVersion)"
+        
+        for (i, char) in version.enumerated() {
+            
+            var att = AttributedString(String(char))
+            att.foregroundColor = i % 2 == 0 ? Configs.UI.Color.wordleGray : Configs.UI.Color.wordleGrayLight
+            
+            formatted.append(att)
+            
+        }
+        
+        versionLabel.attributedText = NSAttributedString(formatted)
         
     }
     
