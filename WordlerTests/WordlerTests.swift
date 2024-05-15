@@ -10,12 +10,6 @@ import XCTest
 
 class WordlerTests: XCTestCase {
     
-    func testOutcomes() {
-        
-        print(outcomes(with: Wordler.Configs.Defaults.initialGuesses, title: "Results: Optimized"))
-        
-    }
-    
     func testLetterFrequency() { letterFrequency() }
 
 }
@@ -74,7 +68,7 @@ extension WordlerTests {
                 
                 for _ in 0..<Configs.runs {
                     
-                    answerGuess.append(Solver.shared.allWords.randomElement!.uppercased())
+                    answerGuess.append(Solver.shared.allWords.randomElement()!.uppercased())
                     answerGuess.append(initialGuesses.randomElement!.uppercased())
                     
                 }
@@ -120,7 +114,8 @@ extension WordlerTests {
             let initialGuess = guess
             
             var possibleSolutions: (remaining: [Word : Score],
-                                    suggested: Word) = ([:], "")
+                                    suggested: Word,
+                                    repeatedAnswer: Answer?) = ([:], "", nil)
             
             var attempts = 1
             
@@ -279,9 +274,9 @@ extension WordlerTests {
         letterFreq["X"] = 0
         letterFreq["Y"] = 0
         letterFreq["Z"] = 0
-
+        
         let words = Solver.shared.allWords
-
+        
         // Build Freq Dict
         for word in words {
             
