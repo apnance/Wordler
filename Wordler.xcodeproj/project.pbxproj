@@ -18,9 +18,10 @@
 		930C2C24278E3375009B111C /* words.wordle.txt in Resources */ = {isa = PBXBuildFile; fileRef = 930C2C23278E3375009B111C /* words.wordle.txt */; };
 		9344DE332A7C2D1700E4D8CE /* ProgressIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */; };
 		9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */; };
+		9376B9C62BF5225200695BF7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376B9C52BF5225200695BF7 /* Answer.swift */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 93CEF95D28E83F6E009C1A07 /* APNUtil */; };
-		93D882992BF033400087C924 /* words.wordle.previous.answers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93D882982BF033400087C924 /* words.wordle.previous.answers.txt */; };
+		93D882992BF033400087C924 /* words.wordle.remembered.answers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */; };
 		93DF7636278FDABD001234EC /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7635278FDABD001234EC /* Configs.swift */; };
 		93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF76392790A9C8001234EC /* WordleButton.swift */; };
 		93DF765B27974732001234EC /* WordlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF764C27973B90001234EC /* WordlerTests.swift */; };
@@ -63,9 +64,10 @@
 		930C2C23278E3375009B111C /* words.wordle.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.wordle.txt; sourceTree = "<group>"; };
 		9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicator.xib; sourceTree = "<group>"; };
 		9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
+		9376B9C52BF5225200695BF7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93CEF95C28E83F57009C1A07 /* APNUtil */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APNUtil; path = ../Frameworks/APNUtil; sourceTree = "<group>"; };
-		93D882982BF033400087C924 /* words.wordle.previous.answers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.wordle.previous.answers.txt; sourceTree = "<group>"; };
+		93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.wordle.remembered.answers.txt; sourceTree = "<group>"; };
 		93DF7635278FDABD001234EC /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93DF76392790A9C8001234EC /* WordleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleButton.swift; sourceTree = "<group>"; };
 		93DF764A27973B90001234EC /* WordlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 		930C2C16278E28F3009B111C /* M */ = {
 			isa = PBXGroup;
 			children = (
+				9376B9C52BF5225200695BF7 /* Answer.swift */,
 			);
 			name = M;
 			sourceTree = "<group>";
@@ -172,7 +175,7 @@
 			children = (
 				930B96B029B10779000546DD /* ReadMe.txt */,
 				930C2C23278E3375009B111C /* words.wordle.txt */,
-				93D882982BF033400087C924 /* words.wordle.previous.answers.txt */,
+				93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */,
 			);
 			name = Words;
 			sourceTree = "<group>";
@@ -311,7 +314,7 @@
 				930C2C0B278E27E9009B111C /* LaunchScreen.storyboard in Resources */,
 				930C2C08278E27E9009B111C /* Assets.xcassets in Resources */,
 				930C2C06278E27E7009B111C /* Main.storyboard in Resources */,
-				93D882992BF033400087C924 /* words.wordle.previous.answers.txt in Resources */,
+				93D882992BF033400087C924 /* words.wordle.remembered.answers.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +335,7 @@
 				93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */,
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
+				9376B9C62BF5225200695BF7 /* Answer.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
 				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
 				930B96B129B10779000546DD /* ReadMe.txt in Sources */,
@@ -501,7 +505,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56S32J5CWV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wordler/Info.plist;
@@ -516,7 +520,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaron.nance.Wordler1.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -531,7 +535,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 56S32J5CWV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wordler/Info.plist;
@@ -546,7 +550,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaron.nance.Wordler1.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

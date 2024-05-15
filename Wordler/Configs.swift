@@ -11,21 +11,23 @@ struct Configs {
     
     static var successMessage = "Input is Valid."
     
-    struct Defaults {
+    struct Settings {
         
-        static func randomStarter() -> Word { initialGuesses.randomElement! }
+        struct Puzzle {
+            
+            /// The answer to the very first Wordle puzzle.
+            static let historicalFirstWord = "cigar"
+            
+        }
         
-        static var initialGuesses = ["SANER",    // Frequency Score: 4355
-                                     "RENAL",    // Frequency Score: 4405
-                                     "LEARN",    // Frequency Score: 4405
-                                     "ARISE",    // Frequency Score: 4451
-                                     "RAISE",    // Frequency Score: 4451
-                                     "STARE",    // Frequency Score: 4509
-                                     "IRATE",    // Frequency Score: 4511
-                                     "AROSE",    // Frequency Score: 4534
-                                     "ALERT",    // Frequency Score: 4559
-                                     "LATER",    // Frequency Score: 4559
-                                     "ALTER"]    // Frequency Score: 4559
+        struct File {
+            
+            static let archivedAnswers      = (name: "Answers",
+                                               subDir: "Data")
+            static let rememberedAnswers    = (name:"words.wordle.remembered.answers",
+                                               type: "txt")
+            
+        }
         
     }
     

@@ -129,7 +129,7 @@ extension WordlerTests {
                     
                     possibleSolutions = Solver.shared.updateMatches(exclusions: exc,
                                                                     inclusions: inc,
-                                                                    exactsX: exa)
+                                                                    exacts: exa)
                     
                     guess = possibleSolutions.suggested.uppercased()
                     
