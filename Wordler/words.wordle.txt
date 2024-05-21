@@ -2346,7 +2346,6 @@ steep
 steer
 stein
 stern
-stich
 stick
 stiff
 still
