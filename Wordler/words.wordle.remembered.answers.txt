@@ -1062,4 +1062,16 @@ media;1056;may 10,2024
 tidal;1057;may 11,2024
 outer;1058;may 12, 2024
 cumin;1059;may 13, 2024
-amass;1060;May 14, 2024
+amass;1060;may 14, 2024
+pinch;1061;may 15, 2024
+stall;1062;may 16, 2024
+tutor;1063;may 17, 2024
+briny;1064;may 18, 2024
+hitch;1065;may 19, 2024
+nicer;1066;may 20, 2024
+dingo;1067;may 21, 2024
+exalt;1068;may 22, 2024
+swish;1069;may 23, 2024
+glide;1070;may 24, 2024
+titan;1071;may 25, 2024
+bevel;1072;may 26, 2024
