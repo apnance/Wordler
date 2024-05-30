@@ -1075,3 +1075,5 @@ swish;1069;may 23, 2024
 glide;1070;may 24, 2024
 titan;1071;may 25, 2024
 bevel;1072;may 26, 2024
+minus;1073;may 27, 2024
+papal;1074;may 28, 2024
