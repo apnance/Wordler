@@ -1075,5 +1075,12 @@ swish;1069;may 23, 2024
 glide;1070;may 24, 2024
 titan;1071;may 25, 2024
 bevel;1072;may 26, 2024
-minus;1073;may 27, 2024
-papal;1074;may 28, 2024
+skier;1073;may 27, 2024
+minus;1074;may 28, 2024
+papal;1075;may 29, 2024
+gummy;1076;may 30, 2024
+chaos;1077;may 31, 2024
+basin;1078;june 01, 2024
+bravo;1079;june 02, 2024
+stark;1080;june 03, 2024
+groom;1081;june 04, 2024
