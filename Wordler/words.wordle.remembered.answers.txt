@@ -1084,3 +1084,9 @@ basin;1078;june 01, 2024
 bravo;1079;june 02, 2024
 stark;1080;june 03, 2024
 groom;1081;june 04, 2024
+organ;1082;june 04, 2024
+ether;1083;june 04, 2024
+melon;1084;june 04, 2024
+hence;1085;june 04, 2024
+crowd;1086;june 04, 2024
+manga;1087;june 04, 2024
