@@ -16,6 +16,9 @@ typealias Count = Int
 class Solver {
     
     // MARK: - Properties
+    
+    
+    /// Manages archival of `rememberedAnswers`.
     var archivedAnswers: ManagedCollection<Answer> = ManagedCollection.load(file: Configs.Settings.File.archivedAnswers.name,
                                                                             inSubDir: Configs.Settings.File.archivedAnswers.subDir)
     
@@ -89,6 +92,68 @@ class Solver {
             //      add commands to list remembered answers, delete remembered answer add remembered answer, help,
             // TODO: Clean Up - implement ability to wipe archived words, atleast those not in wrods.wordle.previous.answers.txt
     
+    func getLast(_ rememberedCount: Int) -> [Answer] {
+        
+        var last = [Answer]()
+        
+        let remembered = Array(_rememberedAnswers).sorted(by: { $0.date! < $1.date! })
+        
+        return remembered.last(rememberedCount)
+        
+        
+    }
+    
+    
+    /// Attempts to delete the remembered `Answer` with matching `Word`
+    /// - Returns: success flag, `true` if word was deleted, `false` otherwise.
+    func delRememberedByWord(_ withWord: Word) -> Bool {
+        
+        let word = withWord.lowercased()
+        
+        for answer in rememberedAnswers {
+            
+            if answer.word.lowercased() == word {
+                
+                if archivedAnswers.delete(answer) {
+                    
+                    _rememberedAnswers.remove(answer)
+                    return true /*EXIT*/
+                    
+                }
+                
+            }
+            
+        }
+        
+        return false /*EXIT*/
+        
+    }
+    
+    /// Attempts to delete the remembered `Answer` with matching `date`
+    /// - Returns: success flag, `true` if word(s) was deleted, `false` otherwise.
+    func delRememberedByDate(_ date: Date) -> [Word] {
+        
+        var deleted = [Word]()
+        
+        for answer in rememberedAnswers {
+            
+            if answer.date?.simple == date.simple {
+                
+                if archivedAnswers.delete(answer) {
+                    
+                    deleted.append(answer.word)
+                    _rememberedAnswers.remove(answer)
+                    
+                }
+                
+            }
+            
+        }
+        
+        return deleted /*EXIT*/
+        
+    }
+    
     // TODO: Clean Up - Factor into sub-funcs
     private func getRememberedAnswers() -> Set<Answer> {
         
@@ -156,7 +221,7 @@ class Solver {
                     
                     
                     let answer = Answer(managedID: nil,
-                                        word: word,
+                                        word: word.uppercased(),
                                         answerNum: answerNum,
                                         date: answerDate)
                     
@@ -406,7 +471,7 @@ class Solver {
     /// Confirms the user wants to archive the specified `Word` and  if
     /// confirmed archives it.
     /// - Parameter word: winning answer `Word` to archive.
-    func archive(_ word: Word) {
+    func archive(_ word: Word, confirmAdd: Bool = true) {
         
         let text: AlertText = (title: "Remember '\(word.uppercased())' As a Previous Winning Answer?",
                                message: """
@@ -417,7 +482,7 @@ class Solver {
                                             """)
         
         let answer = Answer(managedID: nil,
-                            word: word,
+                            word: word.uppercased(),
                             answerNum: nil,
                             date: Date().simple.simpleDate)
         
@@ -435,26 +500,37 @@ class Solver {
         
         if !alreadyArchived {
             
-            Alert.yesno(text,
-                        yesHandler: {
-                            (UIAlertAction)->()
-                            
-                            in
-                            
-                            let id = self.archivedAnswers.add(answer,
-                                                              allowDuplicates: false,
-                                                              shouldArchive: true)
-                            
-                            self._rememberedAnswers.insert(self.archivedAnswers.entryFor(id)!) },
-                        
-                        noHandler: {
+            if !confirmAdd { 
                 
-                        (UIAlertAction)->()
-                        
-                        in
-                        
-                        self._rememberedAnswers.insert(answer)
-            })
+                let id = self.archivedAnswers.add(answer,
+                                                  allowDuplicates: false,
+                                                  shouldArchive: true)
+                
+                self._rememberedAnswers.insert(self.archivedAnswers.entryFor(id)!)
+                
+            } else {
+                Alert.yesno(text,
+                            yesHandler: {
+                    (UIAlertAction)->()
+                    
+                    in
+                    
+                    let id = self.archivedAnswers.add(answer,
+                                                      allowDuplicates: false,
+                                                      shouldArchive: true)
+                    
+                    self._rememberedAnswers.insert(self.archivedAnswers.entryFor(id)!) },
+                            
+                            noHandler: {
+                    
+                    (UIAlertAction)->()
+                    
+                    in
+                    
+                    self._rememberedAnswers.insert(answer)
+                })
+                
+            }
             
         }
         

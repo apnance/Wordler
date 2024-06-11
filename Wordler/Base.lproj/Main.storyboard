@@ -604,17 +604,35 @@
                                     <constraint firstAttribute="trailing" secondItem="JvV-GI-iyP" secondAttribute="trailing" constant="10" id="fur-FT-wOu"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-gc-Xi5">
+                                <rect key="frame" x="169.5" y="800" width="75" height="35"/>
+                                <color key="backgroundColor" name="WordleGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Rz0-rc-uRT"/>
+                                    <constraint firstAttribute="width" constant="75" id="a8u-HM-fDp"/>
+                                </constraints>
+                                <color key="tintColor" name="WordleBlack"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="XHY-9a-xPE" kind="popoverPresentation" popoverAnchorView="bhy-gc-Xi5" id="mpz-gU-pW7">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jW2-La-TwM"/>
                         <color key="backgroundColor" name="WordleBackgroundGray"/>
                         <constraints>
                             <constraint firstItem="A8A-w8-45s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1ZV-W4-XZQ"/>
                             <constraint firstItem="eDx-gY-HJU" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="bottom" constant="6" id="2Qw-Y8-LNm"/>
+                            <constraint firstItem="bhy-gc-Xi5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2kP-0r-AkU"/>
                             <constraint firstItem="ZQp-gO-k92" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8XE-is-mD3"/>
                             <constraint firstItem="GJF-rb-zyE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="55" id="BUm-k8-KPL"/>
                             <constraint firstItem="JvV-GI-iyP" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="top" id="CAl-Wx-MFT"/>
                             <constraint firstAttribute="trailing" secondItem="GJF-rb-zyE" secondAttribute="trailing" constant="12" id="Dpd-1b-wYD"/>
                             <constraint firstAttribute="bottom" secondItem="ZQp-gO-k92" secondAttribute="bottom" id="Ejx-Kf-UjP"/>
+                            <constraint firstItem="jW2-La-TwM" firstAttribute="bottom" secondItem="bhy-gc-Xi5" secondAttribute="bottom" constant="27" id="HbO-ip-vZa"/>
                             <constraint firstAttribute="trailing" secondItem="ZQp-gO-k92" secondAttribute="trailing" id="Uy1-fX-szr"/>
                             <constraint firstItem="eDx-gY-HJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="12" id="X1W-zy-eEM"/>
                             <constraint firstAttribute="trailing" secondItem="eDx-gY-HJU" secondAttribute="trailing" constant="12" id="Xum-Nu-Vhp"/>
@@ -645,6 +663,36 @@
             </objects>
             <point key="canvasLocation" x="-162.31884057971016" y="-29.464285714285712"/>
         </scene>
+        <!--Console View Controller-->
+        <scene sceneID="1BR-qN-fCe">
+            <objects>
+                <viewController id="XHY-9a-xPE" customClass="ConsoleViewController" customModule="Wordler" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LmU-7A-8Rp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2c-ar-5mE" customClass="APNConsoleView" customModule="APNConsoleView">
+                                <rect key="frame" x="10" y="10" width="394" height="311"/>
+                                <color key="backgroundColor" name="WordleBackgroundGray"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3JI-f1-IUL"/>
+                        <color key="backgroundColor" name="WordleBlack"/>
+                        <constraints>
+                            <constraint firstItem="3JI-f1-IUL" firstAttribute="trailing" secondItem="x2c-ar-5mE" secondAttribute="trailing" constant="10" id="4Sf-Fw-sIZ"/>
+                            <constraint firstItem="3JI-f1-IUL" firstAttribute="bottom" secondItem="x2c-ar-5mE" secondAttribute="bottom" constant="565" id="5yl-gX-DvR"/>
+                            <constraint firstItem="x2c-ar-5mE" firstAttribute="leading" secondItem="3JI-f1-IUL" secondAttribute="leading" constant="10" id="9hs-qk-bga"/>
+                            <constraint firstItem="x2c-ar-5mE" firstAttribute="top" secondItem="3JI-f1-IUL" secondAttribute="top" constant="10" id="dTd-bn-nQD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="consoleView" destination="x2c-ar-5mE" id="w3b-Cr-PPK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rAf-hD-U7K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="754" y="-29"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="WordleBackgroundGray">
@@ -652,6 +700,9 @@
         </namedColor>
         <namedColor name="WordleBlack">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WordleGray">
+            <color red="0.52549019607843139" green="0.53333333333333333" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="WordleGreenDark">
             <color red="0.32549019607843138" green="0.55294117647058827" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

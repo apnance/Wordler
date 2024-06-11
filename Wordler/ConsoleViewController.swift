@@ -9,7 +9,7 @@ import UIKit
 import APNUtil
 import APNConsoleView
 
-class TestViewController: UIViewController {
+class ConsoleViewController: UIViewController {
     
     @IBOutlet weak var consoleView: APNConsoleView!
     private let solver = Solver.shared
@@ -22,22 +22,21 @@ class TestViewController: UIViewController {
         // TODO: Clean Up - rename TestViewConroller, finalize UI for summoning/managing the console view.
         fatalError("HERE!")
         
+        // Init Console
         consoleView.set(delegate: self)
-        
-        uiInit()
-        
-    }
-    
-    func uiInit() {
-        
         consoleView.layer.borderColor = Configs.UI.Color.wordleGrayDark?.cgColor
         consoleView.layer.borderWidth = Configs.UI.standardBorderWidth
         
     }
     
+}
+
+// - MARK: Commands
+extension ConsoleViewController {
+    
     func comLast(_ args:[String]?) -> CommandOutput {
         
-        var output = ""
+        var output = AttributedString("")
         
         var k = 1
         if let args = args, 
@@ -48,13 +47,14 @@ class TestViewController: UIViewController {
             guard let lastCount = Int(arg1)
             else {
                 
-                return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. Specify Integer count value.]") // EXIT
+                return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. Specify Integer count value.") // EXIT
                 
             }
-                if lastCount < 1 {
-                    
-                    return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. [Error] specify count argument > 0]]") // EXIT
-                }
+            
+            if lastCount < 1 {
+                
+                return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. [Error] specify count argument > 0") // EXIT
+            }
             
             k = lastCount
             
@@ -62,28 +62,35 @@ class TestViewController: UIViewController {
         
         let lastK = Array(solver.rememberedAnswers).sorted(by: { $0.date! < $1.date! }).last(k)
         
-        output += "\nLast \(lastK.count) Remembered Word(s)"
+        output += consoleView.formatCommandOutput("\nLast \(lastK.count) Remembered Word(s)")
         
-        for remembered in lastK {
+        for (i, remembered) in lastK.enumerated() {
             
-                output += """
-                            
-                            \t#:\t\(remembered.answerNum ?? -1279)
-                            \tWord:\t\(remembered.word.uppercased())
-                            \tDate:\t\(remembered.date?.simple ?? "?")
-                            """
-                
-            }
+            let rowColor = (i % 2 == 0) ? configs!.fgColorScreenOutput.halfAlpha : configs!.fgColorScreenOutput.pointEightAlpha
+            
+            let word = consoleView.formatCommandOutput("""
+                                                        
+                                                       \t#:\t\(remembered.answerNum ?? -1279)
+                                                       \tWord:\t\(remembered.word.uppercased())
+                                                       \tDate:\t\(remembered.date?.simple ?? "?")
+                                                       """,
+                                                       overrideColor: rowColor)
+            
+            output += word
+            
+        }
         
         if lastK.count != k {
-            output += """
+            
+            output += consoleView.formatCommandOutput("""
                         
                         
                         Note: Requested(\(k)) > Total(\(lastK.count))
-                        """
+                        """)
+            
         }
         
-        return consoleView.formatCommandOutput(output)
+        return output
         
     }
     
@@ -196,18 +203,20 @@ class TestViewController: UIViewController {
         }
         
         for word in words {
-            solver.archive(word.uppercased(), confirmAdd: false)
+            
+            let word = word.uppercased()
+            solver.archive(word, confirmAdd: false)
             output += "\nAdded Word: \(word)"
+            
         }
         
         return consoleView.formatCommandOutput(output)
         
     }
-
     
 }
 
-extension TestViewController: APNConsoleViewDelegate {
+extension ConsoleViewController: APNConsoleViewDelegate {
     
     var commands: [Command] {
         [
@@ -235,7 +244,7 @@ extension TestViewController: APNConsoleViewDelegate {
             Command(token: Configs.Settings.Console.Commands.Tokens.add,
                     process: comRememberedAdd,
                     category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.add),
+                    helpText:  Configs.Settings.Console.Commands.HelpText.add)
             
         ]
     }
@@ -254,13 +263,16 @@ extension TestViewController: APNConsoleViewDelegate {
         configs.fontName            = "Menlo"
         configs.fontSize            = 9
         
-        configs.defaultScreenText = """
-                                     ___       __
-                                      \\\\  /\\\\  /
-                                       \\\\/  \\\\/ ORDLER v\(Bundle.appVersion)
-                                     
-                                     """
-        
+        configs.aboutScreen = """
+                                #     # ####### ######  ######  #       ####### ######
+                                #  #  # #     # #     # #     # #       #       #     #
+                                #  #  # #     # #     # #     # #       #       #     #
+                                #  #  # #     # ######  #     # #       #####   ######
+                                #  #  # #     # #   #   #     # #       #       #   #
+                                #  #  # #     # #    #  #     # #       #       #    #
+                                 ## ##  ####### #     # ######  ####### ####### #     #
+                                                                        version \(Bundle.appVersion)
+                             """
         
         return configs
         
