@@ -28,41 +28,50 @@ struct Configs {
                 
                 struct Tokens {
                     
+                    static var add  = "add"
                     static var last = "last"
                     static var rem  = "rem"
                     static var csv  = "csv"
                     static var del  = "del"
-                    static var add  = "add"
-                    
+                    static var nuke = "nuke"
                     
                 }
                 
                 struct HelpText {
+                    
+                    static var add  = """
+                                        Attemps to add the specified word(s) to remembered words list.
+                                        \tUsage:
+                                        \t* 'add BLANK GONGS TITAN' adds words BLANK, GONGS, and TITAN
+                                        \t  to rememered words list.
+                                        """
                     
                     static var last = """
                                         Echoes last chronological answer(s).
                                         \tUsage:
                                         \t* 'last' echoes last answer "remembered."
                                         \t* 'last 5' echoes last 5 answers "remembered."
-                                        
                                         """
-                    static var rem  = "Echoes all remembered(i.e. answers to past World puzzles) answers to screen."
+                    
+                    static var rem  = """
+                                        Echoes remembered commands.
+                                        \t Usage:
+                                        \t* 'rem' echoes all "remembered"(i.e. answers to past World puzzles)
+                                        \t  answers to screen.
+                                        \t* 'rem count' echoes count of all "remembered".
+                                        """
+                    
                     static var csv  = "Formats remembered answer as CSV and copies to pasteboard."
+                    
                     static var del  = """
                                         Attemps to delete the specified word from remembered words list.
                                         \tUsage:
                                         \t* 'del TRUCK TRIPS ZONKS' attempts to delete words TRUCK
                                         \t  TRIPS and ZONKS from remembered words.
                                         \t* 'del 05-23-12' attempts to delete all words added on 05-23-12
-                                        
                                         """
-                    static var add  = """
-                                        Attemps to add the specified word(s) to remembered words list.
-                                        \tUsage:
-                                        \t* 'add BLANK GONGS TITAN' adds words BLANK, GONGS, and TITAN
-                                        \t  to rememered words list.
-                                        
-                                        """
+                    
+                    static var nuke =   "**CAUTION** this command *deletes all* user saved answers."
                     
                 }
                 

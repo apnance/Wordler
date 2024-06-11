@@ -18,9 +18,8 @@ class ConsoleViewController: UIViewController {
         super.viewDidLoad()
         
         // HERE...
-        // TODO: Clean Up - finish implementing console commands....
-        // TODO: Clean Up - rename TestViewConroller, finalize UI for summoning/managing the console view.
-        fatalError("HERE!")
+        // TODO: Clean Up - finalize UI for summoning/managing the console view.
+        //        fatalError("HERE!")
         
         // Init Console
         consoleView.set(delegate: self)
@@ -94,7 +93,21 @@ extension ConsoleViewController {
         
     }
     
-    func comRemembered(_:[String]?) -> CommandOutput {
+    func comRemembered(args :[String]?) -> CommandOutput {
+        
+        if let args = args,
+           args.count > 0 { 
+            
+            let arg1 = args.first!.lowercased()
+            
+            if arg1 == "count" {
+                
+                return consoleView.formatCommandOutput("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
+                
+            }
+            
+        }
+        
         
         var remembered = Array(solver.rememberedAnswers)
             .sorted{ $0.date! < $1.date! }
@@ -128,6 +141,16 @@ extension ConsoleViewController {
         atts.foregroundColor    = UIColor.lightGray
         
         return atts
+        
+    }
+    
+    func comRememberedWipe(_ args:[String]?) -> CommandOutput {
+        
+        let startCount  = solver.archivedAnswers.count
+        solver.setRememberedAnswers(revertToFile: true)
+        let deleteCount = startCount - solver.archivedAnswers.count 
+        
+        return consoleView.formatCommandOutput("Deleted \(deleteCount) user saved answers.")
         
     }
     
@@ -221,6 +244,11 @@ extension ConsoleViewController: APNConsoleViewDelegate {
     var commands: [Command] {
         [
             
+            Command(token: Configs.Settings.Console.Commands.Tokens.add,
+                    process: comRememberedAdd,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.add),
+            
             Command(token: Configs.Settings.Console.Commands.Tokens.last,
                     process: comLast,
                     category: Configs.Settings.Console.Commands.category,
@@ -241,10 +269,10 @@ extension ConsoleViewController: APNConsoleViewDelegate {
                     category: Configs.Settings.Console.Commands.category,
                     helpText:  Configs.Settings.Console.Commands.HelpText.del),
             
-            Command(token: Configs.Settings.Console.Commands.Tokens.add,
-                    process: comRememberedAdd,
+            Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
+                    process: comRememberedWipe,
                     category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.add)
+                    helpText:  Configs.Settings.Console.Commands.HelpText.nuke)
             
         ]
     }

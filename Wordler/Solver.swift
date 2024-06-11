@@ -31,7 +31,7 @@ class Solver {
     /// Set containing a list of all *remembered* `Answer`s for previous puzzles.
     /// - Note: When Wordler solves a puzzle he asks the user to confirm addition of
     /// that word to the archive.  This is how Wordler *remembers* previous answers.
-    var rememberedAnswers: Set<Answer>  { getRememberedAnswers() }
+    var rememberedAnswers: Set<Answer>  { setRememberedAnswers() }
     private var _rememberedAnswers  = Set<Answer>()
     
     lazy private var wordHopper     = Set<Word>(allWords)
@@ -87,11 +87,6 @@ class Solver {
         
     }
     
-    //        HERE... Add console mode with help and command line prompt...
-            // TODO: Clean Up - add command line mode:
-            //      add commands to list remembered answers, delete remembered answer add remembered answer, help,
-            // TODO: Clean Up - implement ability to wipe archived words, atleast those not in wrods.wordle.previous.answers.txt
-    
     func getLast(_ rememberedCount: Int) -> [Answer] {
         
         var last = [Answer]()
@@ -100,9 +95,7 @@ class Solver {
         
         return remembered.last(rememberedCount)
         
-        
     }
-    
     
     /// Attempts to delete the remembered `Answer` with matching `Word`
     /// - Returns: success flag, `true` if word was deleted, `false` otherwise.
@@ -155,7 +148,21 @@ class Solver {
     }
     
     // TODO: Clean Up - Factor into sub-funcs
-    private func getRememberedAnswers() -> Set<Answer> {
+    /// Sets `_rememberedAnswers` with archived values.  Archived values include
+    /// all hard-coded as well as user saved (aka "remembered") `Answer`s.
+    /// - Parameter revertToFile: flag that triggers deletion of all user 
+    /// "remembered" `Answer`s.
+    /// Setting this to `true` restores the remembered answers to the state of a fresh install of the app.
+    /// - Returns: Set of all "remembered" `Answer`s.
+    @discardableResult func setRememberedAnswers(revertToFile: Bool = false) -> Set<Answer> {
+        
+        // Wipe user saved Answers?
+        if revertToFile {
+            
+            _rememberedAnswers.removeAll()
+            archivedAnswers.deleteAll()
+            
+        }
         
         if _rememberedAnswers.isEmpty {         // Load
             
