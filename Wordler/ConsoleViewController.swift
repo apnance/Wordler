@@ -19,7 +19,7 @@ class ConsoleViewController: UIViewController {
         
         // HERE...
         // TODO: Clean Up - finalize UI for summoning/managing the console view.
-        //        fatalError("HERE!")
+//               fatalError("Working on expectedCommand callback mechanism in ConsoleView, get that working first....")
         
         // Init Console
         consoleView.set(delegate: self)
@@ -144,13 +144,44 @@ extension ConsoleViewController {
         
     }
     
-    func comRememberedWipe(_ args:[String]?) -> CommandOutput {
+    func comRememberedNuke(_ args:[String]?) -> CommandOutput {
         
-        let startCount  = solver.archivedAnswers.count
-        solver.setRememberedAnswers(revertToFile: true)
-        let deleteCount = startCount - solver.archivedAnswers.count 
+        var commandOutput = ""
+        var expectedResponses = ["Y","N"]
         
-        return consoleView.formatCommandOutput("Deleted \(deleteCount) user saved answers.")
+        if let arg1 = args?.first {
+             
+            
+            switch arg1 {
+                case "Y":
+                    
+                    let startCount  = solver.archivedAnswers.count
+                    solver.setRememberedAnswers(revertToFile: true)
+                    let deleteCount = startCount - solver.archivedAnswers.count
+                    
+                    commandOutput = "Nuke successful: \(deleteCount) user saved answers deleted."
+                    
+                default:
+                    
+                    commandOutput = "Nuke operation aborted."
+                    
+                    
+            }
+            
+        } else {
+            
+            consoleView.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
+                                        expectingResponse: expectedResponses)
+            
+            commandOutput = """
+                            [Warning] Nuking cannot be undone and will *DELETE ALL* user-saved answers.
+                            
+                            'N' to abort - 'Y' to proceed.
+                            """
+            
+        }
+        
+        return consoleView.formatCommandOutput(commandOutput)
         
     }
     
@@ -270,7 +301,7 @@ extension ConsoleViewController: APNConsoleViewDelegate {
                     helpText:  Configs.Settings.Console.Commands.HelpText.del),
             
             Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
-                    process: comRememberedWipe,
+                    process: comRememberedNuke,
                     category: Configs.Settings.Console.Commands.category,
                     helpText:  Configs.Settings.Console.Commands.HelpText.nuke)
             
