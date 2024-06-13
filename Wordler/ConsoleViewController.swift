@@ -147,7 +147,7 @@ extension ConsoleViewController {
     func comRememberedNuke(_ args:[String]?) -> CommandOutput {
         
         var commandOutput = ""
-        var expectedResponses = ["Y","N"]
+        let expectedResponses = ["Y","N"]
         
         if let arg1 = args?.first {
              
