@@ -160,7 +160,7 @@ class Solver {
         if revertToFile {
             
             _rememberedAnswers.removeAll()
-            archivedAnswers.deleteAll()
+            archivedAnswers.reset()
             
         }
         
@@ -227,14 +227,14 @@ class Solver {
                     let answerDate  = String(data[2]).simpleDate
                     
                     
-                    let answer = Answer(managedID: nil,
+                    var answer = Answer(managedID: nil,
                                         word: word.uppercased(),
                                         answerNum: answerNum,
                                         date: answerDate)
                     
-                    archivedAnswers.add(answer,
-                                        allowDuplicates: false,
-                                        shouldArchive: false )
+                    answer.managedID =  archivedAnswers.add(answer,
+                                                            allowDuplicates: false,
+                                                            shouldArchive: false )
                     
                     _rememberedAnswers.insert(answer)
                     
