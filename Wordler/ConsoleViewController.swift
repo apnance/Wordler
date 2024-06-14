@@ -17,9 +17,10 @@ class ConsoleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // HERE...
+//         HERE...
+//        fatalError("Working on expectedCommand callback mechanism in APNConsoleView, get that working first....")
         // TODO: Clean Up - finalize UI for summoning/managing the console view.
-//               fatalError("Working on expectedCommand callback mechanism in ConsoleView, get that working first....")
+//               fatalError("BUG: unable to delete words, REPRO: in cosole type 'del MANGA' type 'last 4' observe that MANGA has not been deleted.")
         
         // Init Console
         consoleView.set(delegate: self)
@@ -213,14 +214,36 @@ extension ConsoleViewController {
             
         } else {
             
-            for word in args {
+            var deleted = Array(repeating: false, count: args.count)
+            
+            for (i, word) in args.enumerated() {
                 
                 if solver.delRememberedByWord(word) {
                     
-                    output += "\nDeleted Word: \(word.uppercased())"
+                    deleted[i] = true
                     
                 }
                 
+            }
+            
+            
+            var (matched, unmatched) = ([String](), [String]())
+            
+            for (i, wasDeleted) in deleted.enumerated() {
+                
+                if wasDeleted { matched.append(args[i]) }
+                else {          unmatched.append(args[i]) }
+                
+            }
+            
+            if matched.count > 0 {
+                
+                output += "\nDeleted Word(s): \(matched.asCommaSeperatedString(conjunction: "&"))"
+                
+            }
+            
+            if unmatched.count > 0 {
+                output += "\n[ERROR] Word(s) not found: \(unmatched.asCommaSeperatedString(conjunction: "&"))"
             }
             
         }
