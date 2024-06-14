@@ -1090,3 +1090,7 @@ melon;1084;june 07, 2024
 hence;1085;june 08, 2024
 crowd;1086;june 09, 2024
 manga;1087;june 10, 2024
+swung;1088;june 11, 2024
+deter;1089;june 12, 2024
+angst;1090;june 13, 2024
+vault;1091;june 14, 2024
