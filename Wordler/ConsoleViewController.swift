@@ -360,5 +360,4 @@ extension ConsoleViewController: APNConsoleViewDelegate {
         
     }
     
-    
 }

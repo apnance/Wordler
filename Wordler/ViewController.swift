@@ -253,6 +253,8 @@ class ViewController: UIViewController {
      
      */
     
+    
+    /// Syncs the text in the always present/up-to-date textView and the textSummaryView hidden in the 
     private func syncTextSummary() {
         
         let lineFeed = textSummaryView.text.isEmpty ? "" : "\n\n"
