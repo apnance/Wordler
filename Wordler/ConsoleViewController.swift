@@ -19,27 +19,132 @@ class ConsoleViewController: UIViewController {
         
 //         HERE...
 //        fatalError("Working on expectedCommand callback mechanism in APNConsoleView, get that working first....")
-        // TODO: Clean Up - finalize UI for summoning/managing the console view.
-//               fatalError("BUG: unable to delete words, REPRO: in cosole type 'del MANGA' type 'last 4' observe that MANGA has not been deleted.")
+//        // TODO: Clean Up - finalize UI for summoning/managing the console view.
         
-        // Init Console
-        consoleView.set(delegate: self)
+        uiInitConsole()
+        
+    }
+    
+    
+    func uiInitConsole() {
+        
         consoleView.layer.borderColor = Configs.UI.Color.wordleGrayDark?.cgColor
         consoleView.layer.borderWidth = Configs.UI.standardBorderWidth
+        
+        WordlerCommandConfigurator(consoleView: consoleView,
+                                   solver: solver)
         
     }
     
 }
 
-// - MARK: Commands
-extension ConsoleViewController {
+struct WordlerCommandConfigurator: ConsoleConfigurator {
+    
+    @discardableResult init(consoleView: APNConsoleView, solver: Solver) {
+        
+        self.consoleView = consoleView
+        self.solver = solver
+        
+        load()
+        
+    }
+    
+    var consoleView: APNConsoleView
+    var solver: Solver
+    
+    var commandGroups: [CommandGroup] {
+        
+        [WordlerCommandGroup(consoleView: consoleView,
+                             solver: solver)]
+        
+    }
+    
+    var configs: ConsoleViewConfigs {
+        
+        var configs = ConsoleViewConfigs()
+        configs.shouldMakeCommandFirstResponder = true
+        
+        configs.fgColorPrompt       = .red
+        configs.fgColorCommandLine  = .red
+        configs.fgColorScreenInput  = .yellow
+        configs.fgColorScreenOutput = .orange
+        
+        configs.fontName            = "Menlo"
+        configs.fontSize            = 9
+        
+        configs.aboutScreen = """
+                                    #     # ####### ######  ######  #       ####### ######
+                                    #  #  # #     # #     # #     # #       #       #     #
+                                    #  #  # #     # #     # #     # #       #       #     #
+                                    #  #  # #     # ######  #     # #       #####   ######
+                                    #  #  # #     # #   #   #     # #       #       #   #
+                                    #  #  # #     # #    #  #     # #       #       #    #
+                                     ## ##  ####### #     # ######  ####### ####### #     #
+                                                                            version \(Bundle.appVersion)
+                                 """
+        
+        return configs
+        
+    }
+    
+    
+}
+
+struct WordlerCommandGroup: CommandGroup {
+    
+    init(consoleView: APNConsoleView, solver: Solver) {
+        
+        self.consoleView    = consoleView
+        self.solver         = solver
+        
+    }
+    
+    private var solver: Solver
+    private var consoleView: APNConsoleView
+    
+    var commands: [Command] {
+        [
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.add,
+                    process: comRememberedAdd,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.add),
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.last,
+                    process: comLast,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.last),
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.rem,
+                    process: comRemembered,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.rem),
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.csv,
+                    process: comRememberedCSV,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.csv),
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.del,
+                    process: comRememberedDel,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.del),
+            
+            Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
+                    process: comRememberedNuke,
+                    category: Configs.Settings.Console.Commands.category,
+                    helpText:  Configs.Settings.Console.Commands.HelpText.nuke)
+            
+        ]
+    }
+    
     
     func comLast(_ args:[String]?) -> CommandOutput {
         
         var output = AttributedString("")
         
         var k = 1
-        if let args = args, 
+        if let args = args,
             args.count > 0 {
             
             let arg1 = args.first!
@@ -66,7 +171,9 @@ extension ConsoleViewController {
         
         for (i, remembered) in lastK.enumerated() {
             
-            let rowColor = (i % 2 == 0) ? configs!.fgColorScreenOutput.halfAlpha : configs!.fgColorScreenOutput.pointEightAlpha
+            let rowColor =  (i % 2 == 0)
+                            ? consoleView.configs.fgColorScreenOutput.halfAlpha
+                            : consoleView.configs.fgColorScreenOutput.pointEightAlpha
             
             let word = consoleView.formatCommandOutput("""
                                                         
@@ -97,7 +204,7 @@ extension ConsoleViewController {
     func comRemembered(args :[String]?) -> CommandOutput {
         
         if let args = args,
-           args.count > 0 { 
+           args.count > 0 {
             
             let arg1 = args.first!.lowercased()
             
@@ -293,71 +400,3 @@ extension ConsoleViewController {
     
 }
 
-extension ConsoleViewController: APNConsoleViewDelegate {
-    
-    var commands: [Command] {
-        [
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.add,
-                    process: comRememberedAdd,
-                    category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.add),
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.last,
-                    process: comLast,
-                    category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.last),
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.rem,
-                    process: comRemembered,
-                     category: Configs.Settings.Console.Commands.category,
-                     helpText:  Configs.Settings.Console.Commands.HelpText.rem),
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.csv,
-                    process: comRememberedCSV,
-                    category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.csv),
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.del,
-                    process: comRememberedDel,
-                    category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.del),
-            
-            Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
-                    process: comRememberedNuke,
-                    category: Configs.Settings.Console.Commands.category,
-                    helpText:  Configs.Settings.Console.Commands.HelpText.nuke)
-            
-        ]
-    }
-    
-    var configs: APNConsoleViewConfigs? {
-        
-        var configs = APNConsoleViewConfigs()
-        configs.shouldMakeCommandFirstResponder = true
-        
-        configs.fgColorPrompt       = .red
-        configs.fgColorCommandLine  = .red
-        configs.fgColorScreenInput  = .yellow
-        configs.fgColorScreenOutput = .orange
-        
-        
-        configs.fontName            = "Menlo"
-        configs.fontSize            = 9
-        
-        configs.aboutScreen = """
-                                #     # ####### ######  ######  #       ####### ######
-                                #  #  # #     # #     # #     # #       #       #     #
-                                #  #  # #     # #     # #     # #       #       #     #
-                                #  #  # #     # ######  #     # #       #####   ######
-                                #  #  # #     # #   #   #     # #       #       #   #
-                                #  #  # #     # #    #  #     # #       #       #    #
-                                 ## ##  ####### #     # ######  ####### ####### #     #
-                                                                        version \(Bundle.appVersion)
-                             """
-        
-        return configs
-        
-    }
-    
-}
