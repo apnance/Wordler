@@ -16,8 +16,6 @@ typealias Count = Int
 class Solver {
     
     // MARK: - Properties
-    
-    
     /// Manages archival of `rememberedAnswers`.
     var archivedAnswers: ManagedCollection<Answer> = ManagedCollection.load(file: Configs.Settings.File.archivedAnswers.name,
                                                                             inSubDir: Configs.Settings.File.archivedAnswers.subDir)
