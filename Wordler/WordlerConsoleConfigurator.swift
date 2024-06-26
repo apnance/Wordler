@@ -54,6 +54,9 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                                                                             version \(Bundle.appVersion)
                                  """
         
+        // Disable tap-to-hide
+        configs.shouldHideOnScreenTap = false
+        
         return configs
         
     }
