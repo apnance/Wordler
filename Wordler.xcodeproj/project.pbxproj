@@ -27,6 +27,7 @@
 		93DF7636278FDABD001234EC /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7635278FDABD001234EC /* Configs.swift */; };
 		93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF76392790A9C8001234EC /* WordleButton.swift */; };
 		93DF765B27974732001234EC /* WordlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF764C27973B90001234EC /* WordlerTests.swift */; };
+		93E0D8EA2C2A5D3D005EAA7D /* WordlerConsoleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E0D8E92C2A5D3D005EAA7D /* WordlerConsoleConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		93DF76392790A9C8001234EC /* WordleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleButton.swift; sourceTree = "<group>"; };
 		93DF764A27973B90001234EC /* WordlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93DF764C27973B90001234EC /* WordlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerTests.swift; sourceTree = "<group>"; };
+		93E0D8E92C2A5D3D005EAA7D /* WordlerConsoleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerConsoleConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				93CB48042799FF1B00A5CD8F /* iOS */,
+				936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */,
 				930C2C12278E28DE009B111C /* Solver.swift */,
+				93E0D8E92C2A5D3D005EAA7D /* WordlerConsoleConfigurator.swift */,
 			);
 			name = C;
 			sourceTree = "<group>";
@@ -190,7 +194,6 @@
 				930C2BFE278E27E7009B111C /* AppDelegate.swift */,
 				930C2C00278E27E7009B111C /* SceneDelegate.swift */,
 				930C2C02278E27E7009B111C /* ViewController.swift */,
-				936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
 				9376B9C62BF5225200695BF7 /* Answer.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
+				93E0D8EA2C2A5D3D005EAA7D /* WordlerConsoleConfigurator.swift in Sources */,
 				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
 				930B96B129B10779000546DD /* ReadMe.txt in Sources */,
 				930C2C13278E28DE009B111C /* Solver.swift in Sources */,
