@@ -22,10 +22,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var thumbnailGameSummaryTextView: UITextView!
     @IBOutlet var rows: [UIStackView]!
     @IBOutlet weak var popScreenView: UIView!
-    @IBOutlet weak var textSummaryView: UITextView!
+    @IBOutlet weak var gameSummaryTextView: UITextView!
     @IBOutlet weak var progressIndicatorContainerView: UIView!
     
     @IBOutlet weak var versionLabel: UILabel!
@@ -76,14 +76,15 @@ class ViewController: UIViewController {
         uiInit()
         resetBoard()
         
+        uiSetSplash()
+        
     }
     
     
     // MARK: - Custom Methods
-    
     private func uiInit() {
         
-        let toStyle: [UIView] = [goButton, clearButton, textView, textField, textSummaryView]
+        let toStyle: [UIView] = [goButton, clearButton, thumbnailGameSummaryTextView, textField, gameSummaryTextView]
         
         for view in toStyle {
             
@@ -102,7 +103,7 @@ class ViewController: UIViewController {
         
         view.addGestureRecognizer(tap)
         
-        textView.addGestureRecognizer(UITapGestureRecognizer(target: self,
+        thumbnailGameSummaryTextView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                              action: #selector(showHidePopUp)))
         popScreenView.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                   action: #selector(showHidePopUp)))
@@ -131,6 +132,18 @@ class ViewController: UIViewController {
                                                    totalWordCount: solver.allWords.count)
         
         uiSetVersion()
+        
+    }
+    
+    private func uiSetSplash() {
+        
+        thumbnailGameSummaryTextView.text =    """
+                                    Welcome
+                                    to
+                                    Wordler \("v\(Bundle.appVersion)")
+                                    """.fontify(.mini)
+        
+        gameSummaryTextView.text = thumbnailGameSummaryTextView.text
         
     }
     
@@ -164,8 +177,8 @@ class ViewController: UIViewController {
         
         let starterWord         = solver.getStarterWord()
         textField.text          = starterWord
-        textView.text           = ""
-        textSummaryView.text    = ""
+        thumbnailGameSummaryTextView.text           = ""
+        gameSummaryTextView.text    = ""
         
         progressIndicator?.update(word: starterWord,
                                   remaining: solver.allWords.count)
@@ -257,8 +270,8 @@ class ViewController: UIViewController {
     /// Syncs the text in the always present/up-to-date textView and the textSummaryView hidden in the 
     private func syncTextSummary() {
         
-        let lineFeed = textSummaryView.text.isEmpty ? "" : "\n\n"
-        textSummaryView.text += "\(lineFeed)\(textView.text ?? "")"
+        let lineFeed = gameSummaryTextView.text.isEmpty ? "" : "\n\n"
+        gameSummaryTextView.text += "\(lineFeed)\(thumbnailGameSummaryTextView.text ?? "")"
         
     }
     
@@ -269,12 +282,12 @@ class ViewController: UIViewController {
             // victory check
             if self.victoryCheck() { return /*EXIT*/ }
             
-            self.textView.text = ""
+            self.thumbnailGameSummaryTextView.text = ""
             
             let validationMessage = self.solver.validate(input: self.textField.text)
             if validationMessage != Configs.successMessage {
                 
-                self.textView.text = validationMessage
+                self.thumbnailGameSummaryTextView.text = validationMessage
                 self.syncTextSummary()
                 
                 return /*EXIT*/
@@ -340,7 +353,7 @@ class ViewController: UIViewController {
             
             if suggested == "" {
                 
-                self.textView.text = "Entry Error: \"\(self.textField.text ?? "-?-")\" - Please Check Your Button States"
+                self.thumbnailGameSummaryTextView.text = "Entry Error: \"\(self.textField.text ?? "-?-")\" - Please Check Your Button States"
                 self.syncTextSummary()
                 
                 return /*EXIT*/
@@ -366,7 +379,7 @@ class ViewController: UIViewController {
                 .map{ "\($0.key.uppercased()):\($0.value) "}
                 .forEach{ possibles += $0 }
             
-            self.textView.text = """
+            self.thumbnailGameSummaryTextView.text = """
                         --------------------#\(self.currentRow)--------------------
                           EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
                           INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
@@ -401,7 +414,7 @@ class ViewController: UIViewController {
             
         }
         
-        textView.text = "V-I-C-T-O-R-Y"
+        thumbnailGameSummaryTextView.text = "V-I-C-T-O-R-Y"
         syncTextSummary()
         
         // Set Buttons Green

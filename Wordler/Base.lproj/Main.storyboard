@@ -644,12 +644,12 @@
                     </view>
                     <connections>
                         <outlet property="clearButton" destination="gPL-Cd-urh" id="OQa-OE-X1t"/>
+                        <outlet property="gameSummaryTextView" destination="JvV-GI-iyP" id="3Km-DR-mmu"/>
                         <outlet property="goButton" destination="ETF-Sl-PZq" id="fki-g9-Sxh"/>
                         <outlet property="popScreenView" destination="ZQp-gO-k92" id="QZa-GL-Ner"/>
                         <outlet property="progressIndicatorContainerView" destination="wKt-CX-kVb" id="K98-a0-gcC"/>
                         <outlet property="textField" destination="YGo-IR-vKp" id="Sup-73-rm8"/>
-                        <outlet property="textSummaryView" destination="JvV-GI-iyP" id="3Km-DR-mmu"/>
-                        <outlet property="textView" destination="WRk-bn-yg4" id="j4A-CQ-mZL"/>
+                        <outlet property="thumbnailGameSummaryTextView" destination="WRk-bn-yg4" id="j4A-CQ-mZL"/>
                         <outlet property="versionLabel" destination="A8A-w8-45s" id="qzK-Yd-AKK"/>
                         <outletCollection property="rows" destination="Unb-Bm-9gI" collectionClass="NSMutableArray" id="gxN-cj-5HB"/>
                         <outletCollection property="rows" destination="tjV-Pr-RDy" collectionClass="NSMutableArray" id="JCT-A8-lHV"/>
@@ -708,7 +708,7 @@
             <color red="0.32549019607843138" green="0.55294117647058827" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
