@@ -18,7 +18,6 @@ class ConsoleViewController: UIViewController {
         super.viewDidLoad()
         
 //         HERE...
-//        fatalError("Working on expectedCommand callback mechanism in APNConsoleView, get that working first....")
 //        // TODO: Clean Up - finalize UI for summoning/managing the console view.
         
         uiInitConsole()
