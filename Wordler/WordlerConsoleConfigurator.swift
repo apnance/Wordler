@@ -148,7 +148,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                 
                 let word = consoleView.formatCommandOutput("""
                                                         
-                                                       \t   #: \(remembered.answerNum ?? -1279)
+                                                       \t   #: \(remembered.answerNumDescription)
                                                        \tWord: \(remembered.word.uppercased())
                                                        \tDate: \(remembered.date?.simple ?? "?")
                                                        """,
@@ -177,7 +177,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             if let args = args,
                args.count > 0 {
                 
-                let arg1 = args.first!.lowercased()
+                let arg1 = args.first!.uppercased()
                 
                 if arg1 == "count" {
                     

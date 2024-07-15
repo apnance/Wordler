@@ -433,7 +433,7 @@ class ViewController: UIViewController {
     
     private func archiveAnswer() {
         
-        if let  word = self.textField.text?.lowercased(),
+        if let  word = self.textField.text?.uppercased(),
                 solver.allWords.contains(word) {
             
             solver.archive(word)

@@ -11,7 +11,24 @@ import XCTest
 class WordlerTests: XCTestCase {
     
     func testLetterFrequency() { letterFrequency() }
-
+    
+    func testAnswerNum() {
+        
+        let sorted = Solver.shared.archivedAnswers.values.sorted{ $0.date! < $1.date! }
+        
+        for answer in sorted {
+            
+            let computed    = answer.computedAnswerNum
+            let saved       = answer.answerNum!
+            
+             print("\(answer.word) :: Saved#> \(answer.answerNum ?? -666) <=> \(answer.computedAnswerNum) <Computed#")
+            
+            XCTAssert(saved == computed, "\(answer.word) :: Answer Nums: Saved: \(saved) - Computed: \(computed)")
+            
+        }
+        
+    }
+    
 }
 
 extension WordlerTests {

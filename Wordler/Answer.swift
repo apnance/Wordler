@@ -8,7 +8,9 @@
 import Foundation
 import APNUtil
 
-struct Answer: Managable, CustomStringConvertible {
+/// Data structure for describing the answer to a specific Wordle puzzle on a specific date.
+/// - important: two `Answer`s are considered equal if they have the same word value
+struct Answer: Manageable {
     
     var managedID: ManagedID?
     var word: Word
@@ -17,8 +19,37 @@ struct Answer: Managable, CustomStringConvertible {
     
     var description: String {
         
-        "\(answerNum?.description ?? "nil") \(word.uppercased()) on \(date!.simple)"
+        "#\(answerNumDescription) \(word.uppercased()) on \(date!.simple)"
+        
+        
+    }
+}
+
+extension Answer: CustomStringConvertible {
+    
+    var answerNumDescription: String {
+        
+        let footnote = answerNum.isNil ? "*" : ""
+        
+        return "\(answerNum?.description ?? computedAnswerNum.description)\(footnote)"
         
     }
     
+    var computedAnswerNum: Int {
+        
+        let date = date!.simple.simpleDate // Get around locale issues.
+        
+        return date.daysFrom(earlierDate: Configs.Settings.Puzzle.historicalFirstDate)
+        
+    }
+    
+}
+
+extension Answer: Equatable {
+    
+    static func ==(lhs: Answer, rhs: Answer) -> Bool {
+        
+        lhs.word == rhs.word
+        
+    }
 }

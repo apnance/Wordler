@@ -16,7 +16,8 @@ struct Configs {
         struct Puzzle {
             
             /// The answer to the very first Wordle puzzle.
-            static let historicalFirstWord = "cigar"
+            static let historicalFirstWord = "CIGAR"
+            static var historicalFirstDate: Date = "06/19/21".simpleDate
             
         }
         

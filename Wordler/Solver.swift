@@ -99,11 +99,11 @@ class Solver {
     /// - Returns: success flag, `true` if word was deleted, `false` otherwise.
     func delRememberedByWord(_ withWord: Word) -> Bool {
         
-        let word = withWord.lowercased()
+        let word = withWord.uppercased()
         
         for answer in rememberedAnswers {
             
-            if answer.word.lowercased() == word {
+            if answer.word.uppercased() == word {
                 
                 if archivedAnswers.delete(answer) {
                     
@@ -224,17 +224,16 @@ class Solver {
                     let answerNum   = Int(data[1])
                     let answerDate  = String(data[2]).simpleDate
                     
-                    
-                    var answer = Answer(managedID: nil,
-                                        word: word.uppercased(),
+                    var answer = Answer(word: word.uppercased(),
                                         answerNum: answerNum,
                                         date: answerDate)
                     
-                    answer.managedID =  archivedAnswers.add(answer,
-                                                            allowDuplicates: false,
-                                                            shouldArchive: false )
+                    archivedAnswers.addEntry(&answer,
+                                        allowDuplicates: false,
+                                        shouldArchive: false )
                     
-                    _rememberedAnswers.insert(answer)
+                    // Update - ensuring _rememberedAnswers gets a managed version.
+                    _rememberedAnswers.update(with: answer)
                     
                 }
                 
@@ -255,7 +254,7 @@ class Solver {
         
         if input!.count != 5 { return "Input must be 5 letters not \(input!.count)." }
         
-        if !allWords.contains(input!.lowercased()) { return "\(input!) is not contained in Worlde answer list.  Try another 5 letter word." /*EXIT*/ }
+        if !allWords.contains(input!.uppercased()) { return "\(input!) is not contained in Worlde answer list.  Try another 5 letter word." /*EXIT*/ }
         
         return Configs.successMessage
         
@@ -273,9 +272,9 @@ class Solver {
         
         if wordHopper.count == 0 { resetMatches() }
         
-        let exclusions  = exclusions.map{ $0.lowercased() }
-        let inclusions  = inclusions.map{ $0.lowercased() }
-        let exacts      = exacts.map{ $0.lowercased() }
+        let exclusions  = exclusions.map{ $0.uppercased() }
+        let inclusions  = inclusions.map{ $0.uppercased() }
+        let exacts      = exacts.map{ $0.uppercased() }
         
         // Exacts - Right Letter, Right Spot
         /// exclude words that don't have letters at expected postions
@@ -478,64 +477,95 @@ class Solver {
     /// - Parameter word: winning answer `Word` to archive.
     func archive(_ word: Word, confirmAdd: Bool = true) {
         
-        let text: AlertText = (title: "Remember '\(word.uppercased())' As a Previous Winning Answer?",
-                               message: """
-                                            Click yes to add '\(word)' to the list \
-                                            of remembered answers.  This will result \
-                                            in '\(word)' being considered last for \
-                                            suggestions in future cheat attempts.
-                                            """)
+        let word = word.uppercased()
         
-        let answer = Answer(managedID: nil,
-                            word: word.uppercased(),
+        var answer = Answer(managedID: nil,
+                            word: word,
                             answerNum: nil,
                             date: Date().simple.simpleDate)
         
-        var alreadyArchived = false
-        for remembered in rememberedAnswers {
+        let yesNoText = (title: "Remember '\(word.uppercased())' As a Previous Winning Answer?",
+                         message:   """
+                                    Click yes to add '\(word)' to the list \
+                                    of remembered answers.  This will result \
+                                    in '\(word)' being considered last for \
+                                    suggestions in future cheat attempts.
+                                    """)
+        
+        // Check if already remembered and if so it managed?
+        if rememberedAnswers.contains(answer) {
             
-            if answer.word == remembered.word {
+            for remembered in rememberedAnswers {
                 
-                alreadyArchived = true
-                break /*BREAK*/
+                assert(remembered.word == remembered.word.uppercased())
+                
+                if remembered.word == answer.word {
+                    
+                    if !remembered.isManaged {  // Needs to be Mananged
+                        
+                        answer = remembered     // Use remembered value
+                        
+                        break /*BREAK*/
+                        
+                    } else {
+                        
+                        return /*EXIT: Already Managed*/
+                        
+                    }
+                    
+                }
                 
             }
             
         }
         
-        if !alreadyArchived {
+        if !confirmAdd {    // No-Confirmation
             
-            if !confirmAdd { 
+            assert(!answer.isManaged)
+            
+            archivedAnswers.addEntry(&answer,
+                                     allowDuplicates: false,
+                                     shouldArchive: true)
+            
+            // Sanity Check
+            assert(answer.isManaged)
+            assert(archivedAnswers.entryFor(answer.managedID!).isNotNil)
+            assert(archivedAnswers.entryFor(answer.managedID!) == answer)
+            
+            // Overwite existing potentially unmaged Answer in _rememberedAnswers
+            self._rememberedAnswers.update(with: answer)
+            
+            
+        } else {            // Confirm
+            
+            Alert.yesno(yesNoText,
+                        yesHandler: {
+                (UIAlertAction)->()
                 
-                let id = self.archivedAnswers.add(answer,
-                                                  allowDuplicates: false,
-                                                  shouldArchive: true)
+                in
                 
-                self._rememberedAnswers.insert(self.archivedAnswers.entryFor(id)!)
+                assert(!answer.isManaged)
                 
-            } else {
-                Alert.yesno(text,
-                            yesHandler: {
+                self.archivedAnswers.addEntry(&answer,
+                                              allowDuplicates: false,
+                                              shouldArchive: true)
+                
+                // Sanity Check
+                assert(answer.isManaged)
+                assert(self.archivedAnswers.entryFor(answer.managedID!).isNotNil)
+                assert(self.archivedAnswers.entryFor(answer.managedID!) == answer)
+                
+                self._rememberedAnswers.update(with: answer) },
+                                               
+                                               noHandler: {
+                    
                     (UIAlertAction)->()
                     
                     in
                     
-                    let id = self.archivedAnswers.add(answer,
-                                                      allowDuplicates: false,
-                                                      shouldArchive: true)
-                    
-                    self._rememberedAnswers.insert(self.archivedAnswers.entryFor(id)!) },
-                            
-                            noHandler: {
-                    
-                    (UIAlertAction)->()
-                    
-                    in
-                    
-                    self._rememberedAnswers.insert(answer)
-                })
+                self._rememberedAnswers.update(with: answer)
                 
-            }
+            })
             
         }
         
