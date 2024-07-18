@@ -112,13 +112,13 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         func comLast(_ args:[String]?) -> CommandOutput {
             
-            var output = AttributedString("")
+            var output  = AttributedString("")
             
-            var k = 1
-            if let args = args,
-               args.count > 0 {
-                
-                let arg1 = args.first!
+            var k       = 1
+            
+            let arg1    = args.elementNum(0)
+            
+            if arg1 != "" {
                 
                 guard let lastCount = Int(arg1)
                 else {
@@ -174,19 +174,13 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         func comRemembered(args :[String]?) -> CommandOutput {
             
-            if let args = args,
-               args.count > 0 {
+            let arg1 = args.elementNum(0).lowercased()
+            
+            if arg1 == "count" {
                 
-                let arg1 = args.first!.uppercased()
-                
-                if arg1 == "count" {
-                    
-                    return consoleView.formatCommandOutput("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
-                    
-                }
+                return consoleView.formatCommandOutput("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
                 
             }
-            
             
             var remembered = Array(solver.rememberedAnswers)
                 .sorted{ $0.date! < $1.date! }
@@ -225,40 +219,36 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         func comRememberedNuke(_ args:[String]?) -> CommandOutput {
             
-            var commandOutput = ""
-            let expectedResponses = ["Y","N"]
+            var commandOutput       = ""
+            let expectedResponses   = ["Y","N"]
+            let response            = args.elementNum(0)
             
-            if let arg1 = args?.first {
-                
-                
-                switch arg1 {
+            switch response {
+                    
                     case "Y":
-                        
+                    
                         let startCount  = solver.archivedAnswers.count
                         solver.setRememberedAnswers(revertToFile: true)
                         let deleteCount = startCount - solver.archivedAnswers.count
                         
                         commandOutput = "Nuke successful: \(deleteCount) user saved answers deleted."
                         
+                    case "N":
+                        
+                        commandOutput   = "Nuke operation aborted."
+                    
                     default:
+                    
+                        consoleView.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
+                                                    expectingResponse: expectedResponses)
                         
-                        commandOutput = "Nuke operation aborted."
-                        
+                        commandOutput = """
+                                    [Warning] Nuking cannot be undone and will *DELETE ALL* user-saved answers.
+                                    
+                                    'N' to abort - 'Y' to proceed.
+                                    """
                         
                 }
-                
-            } else {
-                
-                consoleView.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
-                                            expectingResponse: expectedResponses)
-                
-                commandOutput = """
-                            [Warning] Nuking cannot be undone and will *DELETE ALL* user-saved answers.
-                            
-                            'N' to abort - 'Y' to proceed.
-                            """
-                
-            }
             
             return consoleView.formatCommandOutput(commandOutput)
             
