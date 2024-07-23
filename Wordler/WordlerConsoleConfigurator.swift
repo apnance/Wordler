@@ -108,6 +108,11 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.del),
                 
+                Command(token: Configs.Settings.Console.Commands.Tokens.gaps,
+                        process: comGaps,
+                        category: Configs.Settings.Console.Commands.category,
+                        helpText:  Configs.Settings.Console.Commands.HelpText.gaps),
+                
                 Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
                         process: comRememberedNuke,
                         category: Configs.Settings.Console.Commands.category,
@@ -207,11 +212,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
             var remembered = Array(solver.rememberedAnswers)
                 .sorted{ $0.date! < $1.date! }
-                .reduce(""){ "\($0)\n\($1.description)"}
-            
-            // Format .CSV
-            remembered              = remembered.replacingOccurrences(of: "on ", with: "")
-            remembered              = remembered.replacingOccurrences(of: " ", with: "\t")
+                .reduce(""){ "\($0)\n\($1.descriptionCSV)"}
             
             printToClipboard(remembered)
             
@@ -366,6 +367,22 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
+        /// Echoes an ASCII representation of all of missing `ArchivedPuzzle` data.
+        /// - Parameter _: does not require or process arguments.
+        func comGaps(_:[String]?) -> CommandOutput {
+            
+            let answerNums  = solver.archivedAnswers.values.sorted{
+                ($0.answerNum ?? $0.computedAnswerNum ) < ($1.answerNum ?? $1.computedAnswerNum)
+            }.map{ $0.answerNum ?? $0.computedAnswerNum }
+            
+            let searchRange = 1...Answer.todaysAnswerNum
+            
+            let output      = GapFinder.describeGaps(in: answerNums,
+                                                     usingRange: searchRange)
+            
+            return consoleView.formatCommandOutput(output)
+            
+        }
         
         func comRecap(_ args: [String]?) -> CommandOutput {
             

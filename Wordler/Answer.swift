@@ -23,6 +23,14 @@ struct Answer: Manageable {
         
         
     }
+    
+    /// Colon delimmited string value  fit for use in a .csv file.
+    var descriptionCSV: String {
+        
+        "\(word.uppercased());\(answerNumDescription);\(date!.simple)"
+        
+    }
+    
 }
 
 extension Answer: CustomStringConvertible {
@@ -38,6 +46,15 @@ extension Answer: CustomStringConvertible {
     var computedAnswerNum: Int {
         
         let date = date!.simple.simpleDate // Get around locale issues.
+        
+        return date.daysFrom(earlierDate: Configs.Settings.Puzzle.historicalFirstDate)
+        
+    }
+    
+    /// The computed number for today's game's answer.
+    static var todaysAnswerNum: Int {
+        
+        let date = Date().simple.simpleDate // Get around locale issues.
         
         return date.daysFrom(earlierDate: Configs.Settings.Puzzle.historicalFirstDate)
         

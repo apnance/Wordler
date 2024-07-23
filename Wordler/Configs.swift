@@ -35,6 +35,7 @@ struct Configs {
                     static var rem      = "rem"
                     static var csv      = "csv"
                     static var del      = "del"
+                    static var gaps     = "gaps"
                     static var nuke     = "nuke"
                     
                 }
@@ -76,6 +77,8 @@ struct Configs {
                                         \t  TRIPS and ZONKS from remembered words.
                                         \t* 'del 05-23-12' attempts to delete all words added on 05-23-12
                                         """
+                    
+                    static var gaps = "Echoes a list of all missing archived puzzles."
                     
                     static var nuke =   "**CAUTION** this command *deletes all* user saved answers."
                     
