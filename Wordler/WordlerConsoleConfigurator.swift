@@ -33,29 +33,31 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
     var configs: ConsoleViewConfigs {
         
         var configs = ConsoleViewConfigs()
-        configs.shouldMakeCommandFirstResponder = true
         
-        configs.fgColorPrompt       = .red
-        configs.fgColorCommandLine  = .red
-        configs.fgColorScreenInput  = .yellow
-        configs.fgColorScreenOutput = .orange
+        configs.fgColorPrompt       = Configs.UI.Color.wordleYellow!
+        configs.fgColorCommandLine  = Configs.UI.Color.wordleYellow!
+        configs.fgColorScreenInput  = Configs.UI.Color.wordleGreen!
+        configs.fgColorScreenOutput = Configs.UI.Color.wordleGrayLight!
+        
+        configs.borderWidth         = Configs.UI.standardBorderWidth
+        configs.borderColor         = Configs.UI.Color.wordleGrayDark!.cgColor
+        
+        configs.bgColor             = Configs.UI.Color.wordleBackgroundGray
         
         configs.fontName            = "Menlo"
         configs.fontSize            = 9
         
-        configs.aboutScreen = """
-                                    #     # ####### ######  ######  #       ####### ######
-                                    #  #  # #     # #     # #     # #       #       #     #
-                                    #  #  # #     # #     # #     # #       #       #     #
-                                    #  #  # #     # ######  #     # #       #####   ######
-                                    #  #  # #     # #   #   #     # #       #       #   #
-                                    #  #  # #     # #    #  #     # #       #       #    #
-                                     ## ##  ####### #     # ######  ####### ####### #     #
-                                                                            version \(Bundle.appVersion)
-                                 """
+        configs.aboutScreen         =     """
+                                            Welcome
+                                            to
+                                            Wordler \("v\(Bundle.appVersion)")
+                                            """.fontify(.mini)
         
-        // Disable tap-to-hide
-        configs.shouldHideOnScreenTap = false
+        // tap-to-hide
+        configs.shouldHideOnScreenTap = true
+        
+        // Set shouldMakeCommandFirstResponder = false if you intend to hide console at launch.
+        configs.shouldMakeCommandFirstResponder = false
         
         return configs
         
@@ -75,6 +77,11 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         var commands: [Command] {
             [
+                
+                Command(token: Configs.Settings.Console.Commands.Tokens.recap,
+                        process: comRecap,
+                        category: Configs.Settings.Console.Commands.category,
+                        helpText:  Configs.Settings.Console.Commands.HelpText.recap),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.add,
                         process: comRememberedAdd,
@@ -356,6 +363,32 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             }
             
             return consoleView.formatCommandOutput(output)
+            
+        }
+        
+        
+        func comRecap(_ args: [String]?) -> CommandOutput {
+            
+            if let recapText = (consoleView.viewController as? ViewController)?.gameSummaryText {
+                
+                if recapText.isEmpty {
+                    
+                    consoleView.format("[Warning] : Nothing to recap yet.", 
+                                       target: .outputWarning)
+                    
+                } else {
+                    
+                    consoleView.formatCommandOutput(recapText, 
+                                                    overrideColor: Configs.UI.Color.wordleYellow)
+                    
+                }
+                
+            } else {
+                
+                consoleView.format("[Error] : Unable to access recap summary.", 
+                                   target: .outputWarning)
+                
+            }
             
         }
         

@@ -29,16 +29,21 @@ struct Configs {
                 
                 struct Tokens {
                     
-                    static var add  = "add"
-                    static var last = "last"
-                    static var rem  = "rem"
-                    static var csv  = "csv"
-                    static var del  = "del"
-                    static var nuke = "nuke"
+                    static var recap    = "recap"
+                    static var add      = "add"
+                    static var last     = "last"
+                    static var rem      = "rem"
+                    static var csv      = "csv"
+                    static var del      = "del"
+                    static var nuke     = "nuke"
                     
                 }
                 
                 struct HelpText {
+                    
+                    static var recap  = """
+                                        Echoes a running solution summary for the current puzzle solving session.
+                                        """
                     
                     static var add  = """
                                         Attemps to add the specified word(s) to remembered words list.

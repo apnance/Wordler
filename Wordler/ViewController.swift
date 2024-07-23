@@ -7,6 +7,7 @@
 
 import UIKit
 import APNUtil
+import APNConsoleView
 
 typealias Row = Int
 class ViewController: UIViewController {
@@ -15,6 +16,7 @@ class ViewController: UIViewController {
     private let solver = Solver.shared
     private var currentRow = 0
     private var rowToButton = [Row : [WordleButton]]()
+    public private(set) var gameSummaryText = ""
     
     private weak var progressIndicator: ProgressIndicator?
         
@@ -22,13 +24,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var thumbnailGameSummaryTextView: UITextView!
+    @IBOutlet weak var thumbnailGameSummary: UITextView!
     @IBOutlet var rows: [UIStackView]!
-    @IBOutlet weak var popScreenView: UIView!
-    @IBOutlet weak var gameSummaryTextView: UITextView!
     @IBOutlet weak var progressIndicatorContainerView: UIView!
     
-    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var consoleView: APNConsoleView!
     
     // MARK: - Actions
     @IBAction func tapButton(_ sender: WordleButton) {
@@ -78,13 +78,15 @@ class ViewController: UIViewController {
         
         uiSetSplash()
         
+        uiInitConsole()
+        
     }
     
     
     // MARK: - Custom Methods
     private func uiInit() {
         
-        let toStyle: [UIView] = [goButton, clearButton, thumbnailGameSummaryTextView, textField, gameSummaryTextView]
+        let toStyle: [UIView] = [goButton, clearButton, thumbnailGameSummary, textField]
         
         for view in toStyle {
             
@@ -103,10 +105,8 @@ class ViewController: UIViewController {
         
         view.addGestureRecognizer(tap)
         
-        thumbnailGameSummaryTextView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                             action: #selector(showHidePopUp)))
-        popScreenView.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                                  action: #selector(showHidePopUp)))
+        thumbnailGameSummary.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                             action: #selector(uiShowConsole)))
         
         // Build rowToButton
         for (rowNum, row) in rows.enumerated() {
@@ -131,80 +131,48 @@ class ViewController: UIViewController {
         progressIndicator = ProgressIndicator.make(targetView: progressIndicatorContainerView,
                                                    totalWordCount: solver.allWords.count)
         
-        uiSetVersion()
-        
     }
     
     private func uiSetSplash() {
         
-        thumbnailGameSummaryTextView.text =    """
-                                    Welcome
-                                    to
-                                    Wordler \("v\(Bundle.appVersion)")
-                                    """.fontify(.mini)
-        
-        gameSummaryTextView.text = thumbnailGameSummaryTextView.text
+        uiSetSummaryText(   """
+                            Welcome
+                            to
+                            Wordler \("v\(Bundle.appVersion)")
+                            """.fontify(.mini),
+                            shouldAppendToGameSummaryText: false,
+                            shouldSyncConsole: true)
         
     }
     
-    private func uiSetVersion() {
+    func uiInitConsole() {
         
-        var formatted = AttributedString("")
+        WordlerCommandConfigurator(consoleView: consoleView,
+                                   solver: solver)
         
-        let version = "v\(Bundle.appVersion)"
+    }
+  
+    /// Sets text in thumnaileGameSummary and syncs this would consoleView if `shouldSyncConsole` is `true`
+    private func uiSetSummaryText(_ text: String,
+                                  shouldAppendToGameSummaryText: Bool = true,
+                                  shouldSyncConsole: Bool) {
         
-        for (i, char) in version.enumerated() {
+        thumbnailGameSummary.text = text
+        
+        if shouldAppendToGameSummaryText {
             
-            var att = AttributedString(String(char))
-            att.foregroundColor = i % 2 == 0 ? Configs.UI.Color.wordleGray : Configs.UI.Color.wordleGrayLight
-            
-            formatted.append(att)
+            gameSummaryText += gameSummaryText.isEmpty ? text : "\n\(text)"
             
         }
         
-        versionLabel.attributedText = NSAttributedString(formatted)
-        
-    }
-    
-    @objc private func dismissKeyboard() { textField.resignFirstResponder() }
-    
-    private func resetBoard() {
-        
-        currentRow = 0
-        
-        solver.resetMatches()
-        progressIndicator?.reset()
-        
-        let starterWord         = solver.getStarterWord()
-        textField.text          = starterWord
-        thumbnailGameSummaryTextView.text           = ""
-        gameSummaryTextView.text    = ""
-        
-        progressIndicator?.update(word: starterWord,
-                                  remaining: solver.allWords.count)
-        
-        for rowNum in 0...5 {
+        if shouldSyncConsole {
             
-            let toggleState: ToggleState = rowNum == 0 ? .exclude : .blank
+            let lineFeed = consoleView.getScreenText().isEmpty ? "" : "\n"
             
-            let row = rowToButton[rowNum]!
-            for button in row {
-                
-                button.resetTo(toggleState)
-                
-            }
+            consoleView.set(screenText: "\(lineFeed)\(thumbnailGameSummary.text ?? "")",
+                            shouldAppend: true)
             
         }
-        
-        uiSyncButtonAndTextField()
-        
-    }
-    
-    @objc private func showHidePopUp() { popScreenView.toggleHidden() }
-    
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        
-        uiSyncButtonAndTextField()
         
     }
     
@@ -238,6 +206,57 @@ class ViewController: UIViewController {
         
     }
     
+    @objc private func uiShowConsole() {
+    
+        let showHide: ShowHide = consoleView.isHidden ? .show : .hide
+        
+        consoleView.showHide(showHide)
+        
+    }
+    
+    @objc private func dismissKeyboard() { textField.resignFirstResponder() }
+    
+    private func resetBoard() {
+        
+        currentRow = 0
+        
+        solver.resetMatches()
+        progressIndicator?.reset()
+        
+        let starterWord = solver.getStarterWord()
+        textField.text  = starterWord
+        
+        uiSetSummaryText("", 
+                         shouldSyncConsole: false)
+        
+        gameSummaryText = ""
+        
+        progressIndicator?.update(word: starterWord,
+                                  remaining: solver.allWords.count)
+        
+        for rowNum in 0...5 {
+            
+            let toggleState: ToggleState = rowNum == 0 ? .exclude : .blank
+            
+            let row = rowToButton[rowNum]!
+            for button in row {
+                
+                button.resetTo(toggleState)
+                
+            }
+            
+        }
+        
+        uiSyncButtonAndTextField()
+        
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        
+        uiSyncButtonAndTextField()
+        
+    }
+    
     
     /*
      I. Step through row by row:
@@ -266,15 +285,6 @@ class ViewController: UIViewController {
      
      */
     
-    
-    /// Syncs the text in the always present/up-to-date textView and the textSummaryView hidden in the 
-    private func syncTextSummary() {
-        
-        let lineFeed = gameSummaryTextView.text.isEmpty ? "" : "\n\n"
-        gameSummaryTextView.text += "\(lineFeed)\(thumbnailGameSummaryTextView.text ?? "")"
-        
-    }
-    
     private func check() {
         
         DispatchQueue.main.async {
@@ -282,13 +292,14 @@ class ViewController: UIViewController {
             // victory check
             if self.victoryCheck() { return /*EXIT*/ }
             
-            self.thumbnailGameSummaryTextView.text = ""
+            self.uiSetSummaryText("",
+                                  shouldSyncConsole: false)
             
             let validationMessage = self.solver.validate(input: self.textField.text)
             if validationMessage != Configs.successMessage {
                 
-                self.thumbnailGameSummaryTextView.text = validationMessage
-                self.syncTextSummary()
+                self.uiSetSummaryText(validationMessage,
+                                      shouldSyncConsole: true)
                 
                 return /*EXIT*/
                 
@@ -353,8 +364,8 @@ class ViewController: UIViewController {
             
             if suggested == "" {
                 
-                self.thumbnailGameSummaryTextView.text = "Entry Error: \"\(self.textField.text ?? "-?-")\" - Please Check Your Button States"
-                self.syncTextSummary()
+                self.uiSetSummaryText("Entry Error: \"\(self.textField.text ?? "-?-")\" - Please Check Your Button States",
+                                      shouldSyncConsole: true)
                 
                 return /*EXIT*/
                 
@@ -379,22 +390,21 @@ class ViewController: UIViewController {
                 .map{ "\($0.key.uppercased()):\($0.value) "}
                 .forEach{ possibles += $0 }
             
-            self.thumbnailGameSummaryTextView.text = """
-                        --------------------#\(self.currentRow)--------------------
-                          EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
-                          INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
-                          EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
-                         - - - - - - - - - -
-                          SUGGESTION: \(suggested) \(footnoteMarker)
-                         - - - - - - - - - -
-                          CANDIDATES REMAINING(\(remaining.count)):
-                         - - - - -
-                        \(possibles)\
-                        \(footNote)
-                        ------------------------------------------
-                        """
-            
-            self.syncTextSummary()
+            self.uiSetSummaryText("""
+                                --------------------#\(self.currentRow)--------------------
+                                  EXACT:\t[ \(exacts.joined(separator: " ][ ")) ]
+                                  INEXACT:\t[ \(inclusions.joined(separator: " ][ ")) ]
+                                  EXCLUDE:\t[ \(exclusions.joined(separator: " ][ ")) ]
+                                 - - - - - - - - - -
+                                  SUGGESTION: \(suggested) \(footnoteMarker)
+                                 - - - - - - - - - -
+                                  CANDIDATES REMAINING(\(remaining.count)):
+                                 - - - - -
+                                \(possibles)\
+                                \(footNote)
+                                ------------------------------------------
+                                """,
+                                  shouldSyncConsole: true)
             
             if remaining.count == 1 { self.victoryCheck(force: true) }
             
@@ -414,8 +424,8 @@ class ViewController: UIViewController {
             
         }
         
-        thumbnailGameSummaryTextView.text = "V-I-C-T-O-R-Y"
-        syncTextSummary()
+        uiSetSummaryText("VICTORY".fontify(.mini),
+                         shouldSyncConsole: true)
         
         // Set Buttons Green
         let buttons = rowToButton[currentRow]!
@@ -423,9 +433,6 @@ class ViewController: UIViewController {
         
         // Archive
         archiveAnswer()
-        
-        // Signature
-        copySignatureToPasteboard(textField.text!)
         
         return true /*EXIT*/
         
@@ -439,21 +446,6 @@ class ViewController: UIViewController {
             solver.archive(word)
             
         }
-        
-    }
-    
-    /// Copies a signature to the pasteboard for pasting into summary text
-    /// generated by Wordle upon completion of game.
-    /// - Parameter word: Winning word.
-    private func copySignatureToPasteboard(_ word: Word) {
-        
-        printToClipboard("""
-                                   __       __
-                                     \\\\  /\\\\  /
-                                      \\\\/  \\\\/
-                                   
-                                   \(Date().simple)
-                                   """)
         
     }
     

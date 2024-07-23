@@ -17,19 +17,7 @@ class ConsoleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//         HERE...
-//        // TODO: Clean Up - finalize UI for summoning/managing the console view.
-        
-        uiInitConsole()
-        
-    }
-    
-    
-    func uiInitConsole() {
-        
-        consoleView.layer.borderColor = Configs.UI.Color.wordleGrayDark?.cgColor
-        consoleView.layer.borderWidth = Configs.UI.standardBorderWidth
-        
+        // Start Console Configuration
         WordlerCommandConfigurator(consoleView: consoleView,
                                    solver: solver)
         
