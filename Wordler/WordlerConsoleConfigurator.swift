@@ -210,13 +210,18 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         func comRememberedCSV(_:[String]?) -> CommandOutput {
             
-            var csv = Array(solver.rememberedAnswers)
+            let csv = Array(solver.rememberedAnswers)
                 .sorted{ $0.date! < $1.date! }
                 .reduce(""){ "\($0)\n\($1.descriptionCSV)"}
             
             printToClipboard(csv)
             
-            var atts                = consoleView.formatCommandOutput("\(csv)\n\n**output copied to pasteboard**\n")
+            var atts = consoleView.formatCommandOutput("""
+                        \(csv)
+                        
+                        [Note: above output copied to pasteboard]
+                        """)
+            
             atts.foregroundColor    = UIColor.lightGray
             
             return atts
