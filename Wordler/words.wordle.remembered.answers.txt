@@ -1,7 +1,4 @@
-Source: https://wordfinder.yourdictionary.com/wordle/answers/
 
-Word ; Answer# ; Date
-----------------------
 CIGAR;0;06-19-21
 REBUT;1;06-20-21
 SISSY;2;06-21-21
@@ -1132,3 +1129,5 @@ REFER;1126;07-19-24
 SHAFT;1127;07-20-24
 SPECK;1128;07-21-24
 CADET;1129;07-22-24
+PRONG;1130*;07-23-24
+FORTE;1131*;07-24-24
