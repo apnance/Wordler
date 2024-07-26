@@ -7,11 +7,12 @@
 
 import UIKit
 import APNUtil
-import APNConsoleView
+import ConsoleView
 
 struct WordlerCommandConfigurator: ConsoleConfigurator {
     
-    @discardableResult init(consoleView: APNConsoleView, solver: Solver) {
+    @discardableResult init(consoleView: ConsoleView, 
+                            solver: Solver) {
         
         self.consoleView = consoleView
         self.solver = solver
@@ -20,7 +21,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
     }
     
-    var consoleView: APNConsoleView
+    var consoleView: ConsoleView
     var solver: Solver
     
     var commandGroups: [CommandGroup] {
@@ -53,6 +54,11 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                                             Wordler \("v\(Bundle.appVersion)")
                                             """.fontify(.mini)
         
+        configs.fgColorHistoryBarCommand            = Configs.UI.Color.wordleGreen!
+        configs.fgColorHistoryBarCommandArgument    = Configs.UI.Color.wordleYellow!.pointSevenAlpha
+        configs.bgColorHistoryBarMain               = Configs.UI.Color.wordleGrayDark!.pointSevenAlpha
+        configs.bgColorHistoryBarButtons            = Configs.UI.Color.wordleGrayDark!.pointEightAlpha
+        
         // tap-to-hide
         configs.shouldHideOnScreenTap = true
         
@@ -65,7 +71,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
     
     struct WordlerCommandGroup: CommandGroup {
         
-        init(consoleView: APNConsoleView, solver: Solver) {
+        init(consoleView: ConsoleView, solver: Solver) {
             
             self.consoleView    = consoleView
             self.solver         = solver
@@ -73,7 +79,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         }
         
         private var solver: Solver
-        private var consoleView: APNConsoleView
+        private var consoleView: ConsoleView
         
         var commands: [Command] {
             [
@@ -236,30 +242,30 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
             switch response {
                     
-                    case "Y":
+                case "Y":
                     
-                        let startCount  = solver.archivedAnswers.count
-                        solver.setRememberedAnswers(revertToFile: true)
-                        let deleteCount = startCount - solver.archivedAnswers.count
-                        
-                        commandOutput = "Nuke successful: \(deleteCount) user saved answers deleted."
-                        
-                    case "N":
-                        
-                        commandOutput   = "Nuke operation aborted."
+                    let startCount  = solver.archivedAnswers.count
+                    solver.setRememberedAnswers(revertToFile: true)
+                    let deleteCount = startCount - solver.archivedAnswers.count
                     
-                    default:
+                    commandOutput = "Nuke successful: \(deleteCount) user saved answers deleted."
                     
-                        consoleView.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
-                                                    expectingResponse: expectedResponses)
-                        
-                        commandOutput = """
+                case "N":
+                    
+                    commandOutput   = "Nuke operation aborted."
+                    
+                default:
+                    
+                    consoleView.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
+                                                expectingResponse: expectedResponses)
+                    
+                    commandOutput = """
                                     [Warning] Nuking cannot be undone and will *DELETE ALL* user-saved answers.
                                     
                                     'N' to abort - 'Y' to proceed.
                                     """
-                        
-                }
+                    
+            }
             
             return consoleView.formatCommandOutput(commandOutput)
             

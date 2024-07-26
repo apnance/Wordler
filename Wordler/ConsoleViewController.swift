@@ -7,11 +7,11 @@
 
 import UIKit
 import APNUtil
-import APNConsoleView
+import ConsoleView
 
 class ConsoleViewController: UIViewController {
     
-    @IBOutlet weak var consoleView: APNConsoleView!
+    @IBOutlet weak var consoleView: ConsoleView!
     private let solver = Solver.shared
     
     override func viewDidLoad() {

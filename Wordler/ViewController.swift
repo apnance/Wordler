@@ -7,7 +7,7 @@
 
 import UIKit
 import APNUtil
-import APNConsoleView
+import ConsoleView
 
 typealias Row = Int
 class ViewController: UIViewController {
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet var rows: [UIStackView]!
     @IBOutlet weak var progressIndicatorContainerView: UIView!
     
-    @IBOutlet weak var consoleView: APNConsoleView!
+    @IBOutlet weak var consoleView: ConsoleView!
     
     // MARK: - Actions
     @IBAction func tapButton(_ sender: WordleButton) {

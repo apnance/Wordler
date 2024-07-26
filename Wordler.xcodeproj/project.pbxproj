@@ -20,10 +20,10 @@
 		9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */; };
 		936DDABA2BFD5A7B00B68205 /* ConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */; };
 		9376B9C62BF5225200695BF7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376B9C52BF5225200695BF7 /* Answer.swift */; };
-		9376B9C92BF573F100695BF7 /* APNConsoleView in Frameworks */ = {isa = PBXBuildFile; productRef = 9376B9C82BF573F100695BF7 /* APNConsoleView */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 93CEF95D28E83F6E009C1A07 /* APNUtil */; };
 		93D882992BF033400087C924 /* words.wordle.remembered.answers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */; };
+		93DEECFB2C5343AB00473587 /* ConsoleView in Frameworks */ = {isa = PBXBuildFile; productRef = 93DEECFA2C5343AB00473587 /* ConsoleView */; };
 		93DF7636278FDABD001234EC /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF7635278FDABD001234EC /* Configs.swift */; };
 		93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF76392790A9C8001234EC /* WordleButton.swift */; };
 		93DF765B27974732001234EC /* WordlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DF764C27973B90001234EC /* WordlerTests.swift */; };
@@ -85,7 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */,
-				9376B9C92BF573F100695BF7 /* APNConsoleView in Frameworks */,
+				93DEECFB2C5343AB00473587 /* ConsoleView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +251,7 @@
 			name = Wordler;
 			packageProductDependencies = (
 				93CEF95D28E83F6E009C1A07 /* APNUtil */,
-				9376B9C82BF573F100695BF7 /* APNConsoleView */,
+				93DEECFA2C5343AB00473587 /* ConsoleView */,
 			);
 			productName = WordleCracker;
 			productReference = 930C2BFB278E27E7009B111C /* Wordler.app */;
@@ -304,7 +304,7 @@
 			);
 			mainGroup = 930C2BF2278E27E7009B111C;
 			packageReferences = (
-				9376B9C72BF573F100695BF7 /* XCRemoteSwiftPackageReference "APNConsoleView" */,
+				93DEECF92C5343AB00473587 /* XCRemoteSwiftPackageReference "ConsoleView" */,
 			);
 			productRefGroup = 930C2BFC278E27E7009B111C /* Products */;
 			projectDirPath = "";
@@ -652,9 +652,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9376B9C72BF573F100695BF7 /* XCRemoteSwiftPackageReference "APNConsoleView" */ = {
+		93DEECF92C5343AB00473587 /* XCRemoteSwiftPackageReference "ConsoleView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apnance/APNConsoleView";
+			repositoryURL = "https://github.com/apnance/ConsoleView";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -663,14 +663,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9376B9C82BF573F100695BF7 /* APNConsoleView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9376B9C72BF573F100695BF7 /* XCRemoteSwiftPackageReference "APNConsoleView" */;
-			productName = APNConsoleView;
-		};
 		93CEF95D28E83F6E009C1A07 /* APNUtil */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = APNUtil;
+		};
+		93DEECFA2C5343AB00473587 /* ConsoleView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93DEECF92C5343AB00473587 /* XCRemoteSwiftPackageReference "ConsoleView" */;
+			productName = ConsoleView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

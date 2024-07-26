@@ -577,7 +577,7 @@
                                     <constraint firstItem="WRk-bn-yg4" firstAttribute="top" secondItem="eDx-gY-HJU" secondAttribute="top" id="bNG-AU-Gfu"/>
                                 </constraints>
                             </stackView>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-a3-Cqo" userLabel="Console View" customClass="APNConsoleView" customModule="APNConsoleView">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-a3-Cqo" userLabel="Console View" customClass="ConsoleView" customModule="ConsoleView">
                                 <rect key="frame" x="10" y="55" width="394" height="474"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
