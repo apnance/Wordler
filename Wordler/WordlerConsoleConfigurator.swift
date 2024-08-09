@@ -21,17 +21,12 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
     }
     
-    var consoleView: ConsoleView
     var solver: Solver
+    var consoleView: ConsoleView
     
-    var commandGroups: [CommandGroup] {
-        
-        [WordlerCommandGroup(consoleView: consoleView,
-                             solver: solver)]
-        
-    }
+    var commandGroups: [CommandGroup]? { [wordlerCommandGroup] }
     
-    var configs: ConsoleViewConfigs {
+    var configs: ConsoleViewConfigs? {
         
         var configs = ConsoleViewConfigs()
         
@@ -69,66 +64,53 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
     }
     
-    struct WordlerCommandGroup: CommandGroup {
+    var wordlerCommandGroup: CommandGroup {
         
-        init(consoleView: ConsoleView, solver: Solver) {
-            
-            self.consoleView    = consoleView
-            self.solver         = solver
-            
-        }
-        
-        private var solver: Solver
-        private var consoleView: ConsoleView
-        
-        var commands: [Command] {
-            [
+        return [
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.recap,
-                        process: comRecap,
+                        processor: comRecap,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.recap),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.add,
-                        process: comRememberedAdd,
+                        processor: comRememberedAdd,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.add),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.last,
-                        process: comLast,
+                        processor: comLast,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.last),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.rem,
-                        process: comRemembered,
+                        processor: comRemembered,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.rem),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.csv,
-                        process: comRememberedCSV,
+                        processor: comRememberedCSV,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.csv),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.del,
-                        process: comRememberedDel,
+                        processor: comRememberedDel,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.del),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.gaps,
-                        process: comGaps,
+                        processor: comGaps,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.gaps),
                 
                 Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
-                        process: comRememberedNuke,
+                        processor: comRememberedNuke,
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.nuke)
                 
             ]
-        }
         
-        
-        func comLast(_ args:[String]?) -> CommandOutput {
+        func comLast(_ args:[String]?, console: ConsoleView) -> CommandOutput {
             
             var output  = AttributedString("")
             
@@ -190,7 +172,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRemembered(args :[String]?) -> CommandOutput {
+        func comRemembered(args :[String]?, console: ConsoleView) -> CommandOutput {
             
             let arg1 = args.elementNum(0).lowercased()
             
@@ -214,7 +196,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRememberedCSV(_:[String]?) -> CommandOutput {
+        func comRememberedCSV(_:[String]?, console: ConsoleView) -> CommandOutput {
             
             let csv = Array(solver.rememberedAnswers)
                 .sorted{ $0.date! < $1.date! }
@@ -234,7 +216,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRememberedNuke(_ args:[String]?) -> CommandOutput {
+        func comRememberedNuke(_ args:[String]?, console: ConsoleView) -> CommandOutput {
             
             var commandOutput       = ""
             let expectedResponses   = ["Y","N"]
@@ -271,7 +253,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRememberedDel(_ args:[String]?) -> CommandOutput {
+        func comRememberedDel(_ args:[String]?, console: ConsoleView) -> CommandOutput {
             
             guard let args = args,
                   args.count > 0
@@ -337,7 +319,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRememberedAdd(_ args:[String]?) -> CommandOutput {
+        func comRememberedAdd(_ args:[String]?, console: ConsoleView) -> CommandOutput {
             
             guard let args = args,
                   args.count > 0
@@ -378,7 +360,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         
         /// Echoes an ASCII representation of all of missing `ArchivedPuzzle` data.
         /// - Parameter _: does not require or process arguments.
-        func comGaps(_:[String]?) -> CommandOutput {
+        func comGaps(_:[String]?, console: ConsoleView) -> CommandOutput {
             
             let answerNums  = solver.archivedAnswers.values.sorted{
                 ($0.answerNum ?? $0.computedAnswerNum ) < ($1.answerNum ?? $1.computedAnswerNum)
@@ -393,7 +375,7 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             
         }
         
-        func comRecap(_ args: [String]?) -> CommandOutput {
+        func comRecap(_ args: [String]?, console: ConsoleView) -> CommandOutput {
             
             if let recapText = (consoleView.viewController as? ViewController)?.gameSummaryText {
                 
