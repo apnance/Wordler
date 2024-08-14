@@ -98,11 +98,6 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                         category: Configs.Settings.Console.Commands.category,
                         helpText:  Configs.Settings.Console.Commands.HelpText.del),
                 
-                Command(token: Configs.Settings.Console.Commands.Tokens.gaps,
-                        processor: comGaps,
-                        category: Configs.Settings.Console.Commands.category,
-                        helpText:  Configs.Settings.Console.Commands.HelpText.gaps),
-                
                 Command(token: Configs.Settings.Console.Commands.Tokens.nuke,
                         processor: comRememberedNuke,
                         category: Configs.Settings.Console.Commands.category,
@@ -353,23 +348,6 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
                 output += "\nAdded Word: \(word)"
                 
             }
-            
-            return consoleView.formatCommandOutput(output)
-            
-        }
-        
-        /// Echoes an ASCII representation of all of missing `ArchivedPuzzle` data.
-        /// - Parameter _: does not require or process arguments.
-        func comGaps(_:[String]?, console: ConsoleView) -> CommandOutput {
-            
-            let answerNums  = solver.archivedAnswers.values.sorted{
-                ($0.answerNum ?? $0.computedAnswerNum ) < ($1.answerNum ?? $1.computedAnswerNum)
-            }.map{ $0.answerNum ?? $0.computedAnswerNum }
-            
-            let searchRange = 1...Answer.todaysAnswerNum
-            
-            let output      = GapFinder.describeGaps(in: answerNums,
-                                                     usingRange: searchRange)
             
             return consoleView.formatCommandOutput(output)
             

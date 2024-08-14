@@ -150,6 +150,9 @@ class ViewController: UIViewController {
         WordlerCommandConfigurator(consoleView: consoleView,
                                    solver: solver)
         
+        DataManagerConfigurator(consoleView: consoleView,
+                                data: solver)
+        
     }
   
     /// Sets text in thumnaileGameSummary and syncs this would consoleView if `shouldSyncConsole` is `true`

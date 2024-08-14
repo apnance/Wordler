@@ -7,6 +7,7 @@
 
 import Foundation
 import APNUtil
+import ConsoleView
 
 typealias Score = Int
 typealias Word = String
@@ -570,5 +571,18 @@ class Solver {
         }
         
     }
+    
+}
+
+extension Solver: DataManagerConfiguratorDataSource {
+    
+    var gapFindableData: [GapFindable]? {
+        
+        archivedAnswers.values.map{ $0.answerNum ?? $0.computedAnswerNum }
+        
+    }
+    
+    var gapFindableRange: ClosedRange<Int>? { 1...Answer.todaysAnswerNum }
+    var gapFindableStride: Int? { 1 }
     
 }
