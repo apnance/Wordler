@@ -63,8 +63,8 @@ struct Configs {
                     static var rem  = """
                                         Echoes remembered answers.
                                         \t Usage:
-                                        \t* 'rem' echoes all "remembered" answers to past Wordle puzzles.
-                                        \t  answers to screen.
+                                        \t* 'rem' echoes all "remembered" answers to past Wordle
+                                        \t  puzzles to screen.
                                         \t* 'rem count' echoes count of all "remembered".
                                         """
                     
