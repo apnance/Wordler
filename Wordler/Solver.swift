@@ -255,7 +255,7 @@ class Solver {
         
         if input!.count != 5 { return "Input must be 5 letters not \(input!.count)." }
         
-        if !allWords.contains(input!.uppercased()) { return "\(input!) is not contained in Worlde answer list.  Try another 5 letter word." /*EXIT*/ }
+        if !allWords.contains(input!.uppercased()) { return "\(input!) is not contained in Wordle answer list.  Try another 5 letter word." /*EXIT*/ }
         
         return Configs.successMessage
         
