@@ -567,7 +567,7 @@
 				DEVELOPMENT_TEAM = 56S32J5CWV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wordler/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Wordler v1.8.4";
+				INFOPLIST_KEY_CFBundleDisplayName = "Wordler v1.8.5";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -578,7 +578,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.4;
+				MARKETING_VERSION = 1.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaron.nance.Wordler1.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -597,7 +597,7 @@
 				DEVELOPMENT_TEAM = 56S32J5CWV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wordler/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Wordler v1.8.4";
+				INFOPLIST_KEY_CFBundleDisplayName = "Wordler v1.8.5";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -608,7 +608,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.8.4;
+				MARKETING_VERSION = 1.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.aaron.nance.Wordler1.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

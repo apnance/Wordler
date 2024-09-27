@@ -11,7 +11,7 @@ import ConsoleView
 
 struct WordlerCommandConfigurator: ConsoleConfigurator {
     
-    @discardableResult init(consoleView: ConsoleView, 
+    @discardableResult init(consoleView: ConsoleView,
                             solver: Solver) {
         
         self.consoleView = consoleView
