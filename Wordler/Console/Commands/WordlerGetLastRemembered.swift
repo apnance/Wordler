@@ -1,5 +1,5 @@
 //
-//  WorlderLast.swift
+//  WordlerGetLastRemembered.swift
 //  Wordler
 //
 //  Created by Aaron Nance on 9/26/24.
@@ -10,7 +10,7 @@ import ConsoleView
 
 /// Returns a list of last `n` words added to remembered word list.
 @available(iOS 15, *)
-struct WordlerLast: Command {
+struct WordlerGetLastRemembered: Command {
     
     var solver: Solver
     
@@ -29,7 +29,7 @@ struct WordlerLast: Command {
         
         let consoleView = console.screen!
         
-        var output: CommandProcessorOutput = ("", AttributedString(""))
+        var output = CommandOutput("", AttributedString(""))
         var k           = 1
         let arg1        = args.elementNum(0)
         
@@ -86,5 +86,6 @@ struct WordlerLast: Command {
         return output
         
     }
+    
 }
 

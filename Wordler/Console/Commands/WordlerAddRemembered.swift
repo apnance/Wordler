@@ -1,5 +1,5 @@
 //
-//  WordlerAdd.swift
+//  WordlerAddRemembered.swift
 //  Wordler
 //
 //  Created by Aaron Nance on 9/26/24.
@@ -9,7 +9,7 @@ import ConsoleView
 
 /// Adds a word to Wordler's remembered word list.
 @available(iOS 15, *)
-struct WordlerAdd: Command {
+struct WordlerAddRemembered: Command {
     
     var solver: Solver
     
@@ -25,7 +25,7 @@ struct WordlerAdd: Command {
     var helpText        = Configs.Settings.Console.Commands.HelpText.add
     
     func process(_ args: [String]?) -> CommandOutput {
-                
+        
         let consoleView = console.screen!
         
         guard let args = args,
