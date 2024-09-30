@@ -23,8 +23,23 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
     
     var solver: Solver
     var consoleView: ConsoleView
+    var console: Console { consoleView.console }
     
-    var commands: [Command]? { wordlerCommandGroup }
+    var commands: [Command]? {
+    
+        [
+            
+            WordlerRecap(console: console),
+            WordlerAddRemembered(solver: solver, console: console),
+            WordlerGetLastRemembered(solver: solver, console: console),
+            WordlerRemembered(solver: solver, console: console),
+            WordlerOutputCSV(solver: solver, console: console),
+            WordlerDelRemembered(solver: solver, console: console),
+            WordlerNukeRemembered(solver: solver, console: console)
+            
+        ]
+        
+    }
     
     var configs: ConsoleViewConfigs? {
         
@@ -61,24 +76,6 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         configs.shouldMakeCommandFirstResponder = false
         
         return configs
-        
-    }
-    
-    var wordlerCommandGroup: [Command] {
-        
-        let console = consoleView.console!
-        
-        return [
-            
-            WordlerRecap(console: console),
-            WordlerAddRemembered(solver: solver, console: console),
-            WordlerGetLastRemembered(solver: solver, console: console),
-            WordlerRemembered(solver: solver, console: console),
-            WordlerOutputCSV(solver: solver, console: console),
-            WordlerDelRemembered(solver: solver, console: console),
-            WordlerNukeRemembered(solver: solver, console: console)
-            
-        ]
         
     }
     
