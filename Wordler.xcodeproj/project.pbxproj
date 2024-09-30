@@ -147,8 +147,8 @@
 		930C2C14278E28E5009B111C /* C */ = {
 			isa = PBXGroup;
 			children = (
-				93DDF2022CA5E4C8005D3C3C /* Console */,
 				93CB48042799FF1B00A5CD8F /* iOS */,
+				93DDF2022CA5E4C8005D3C3C /* Console */,
 				936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */,
 				930C2C12278E28DE009B111C /* Solver.swift */,
 			);
