@@ -88,8 +88,6 @@ class Solver {
     
     func getLast(_ rememberedCount: Int) -> [Answer] {
         
-        var last = [Answer]()
-        
         let remembered = Array(_rememberedAnswers).sorted(by: { $0.date! < $1.date! })
         
         return remembered.last(rememberedCount)
