@@ -77,8 +77,8 @@ class Solver {
         // Validate
         for word in _allWords {
             
-            assert(word.count == 5, 
-                   "Word \(word) has invalid length of \(word.count)")
+            assert(Solver.validate(word),
+                   "Word \(word) is not a valid 5-letter word.")
             
         }
         
@@ -565,6 +565,29 @@ class Solver {
                 self._rememberedAnswers.update(with: answer)
                 
             })
+            
+        }
+        
+    }
+    
+    
+    /// Determines if the specified string is a valid 5-letter word candidate.
+    /// - Parameter word: `String` value to appraise as possible 5-letter word.
+    /// - Returns: success flag, true if `word` is a valid 5-letter word candidate.
+    /// - note: Does not verify that the `String` is an actual English word.
+    static func validate(_ word: String) -> Bool {
+        
+        let pattern = "^[a-zA-Z]{5}$"
+        let regex = try! NSRegularExpression(pattern: pattern)
+        
+        let range = NSRange(location: 0, length: word.utf16.count)
+        if regex.firstMatch(in: word, options: [], range: range).isNotNil {
+            
+            return true
+            
+        } else {
+            
+            return false
             
         }
         
