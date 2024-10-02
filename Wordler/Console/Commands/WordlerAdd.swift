@@ -5,6 +5,7 @@
 //  Created by Aaron Nance on 9/26/24.
 //
 
+import Foundation
 import ConsoleView
 
 /// Adds a word to Wordler's remembered word list.
@@ -26,43 +27,113 @@ struct WordlerAdd: Command {
     
     func process(_ args: [String]?) -> CommandOutput {
         
-        let consoleView = console.screen!
+        var i = 0
+        var output = CommandOutput()
+        var screen = console.screen!
         
-        guard let args = args,
-              args.count > 0
-        else {
+        repeat {
             
-            return consoleView.formatCommandOutput("\n[ERROR] Please specify valid 5 letter word(s) to add.") /*EXIT*/
+            let word = args.elementNum(i).uppercased()
+            let date = args.elementNum(i + 1).simpleDateMaybe
             
-        }
-        
-        var output  = ""
-        var words = [Word]()
-        
-        for arg in args {
+            i += date.isNotNil ? 2 : 1
             
-            if arg.count == 5 {
+            if Solver.validate(word) {
                 
-                words.append(arg)
+                solver.archive(word, date: date, confirmAdd: false)
+                output += screen.format("\nWord Remembered: \(word) \(date?.simple ?? "")",
+                                        target: .output)
                 
             } else {
                 
-                output += "\n[ERROR] \(arg) is not a valid 5 letter word."
+                output += screen.format("\n[ERROR] '\(word)' is not a valid 5 letter word.",
+                                        target: .outputWarning)
                 
             }
             
-        }
+        } while args.elementNum(i).isNotEmpty
         
-        for word in words {
-            
-            let word = word.uppercased()
-            solver.archive(word, confirmAdd: false)
-            output += "\nAdded Word: \(word)"
-            
-        }
-        
-        return consoleView.formatCommandOutput(output)
+        return output
         
     }
+    
+    
+//    func process(_ args: [String]?) -> CommandOutput {
+//        
+//        /// Archives buffered `word` if present then resets buffer additionally
+//        /// outputs result of processing to `output`.
+//        /// - Parameter date: optional date under whicht to archive `word`
+//        func processBuffer(date: Date? = nil) {
+//            
+//            if word.isEmpty {
+//            
+//                output += "\nNothing left to archive..."
+//                
+//                return /*EXIT: Nothing to archive*/
+//                
+//            }
+//            
+//            // Archive
+//            solver.archive(word.uppercased(),
+//                           date: date,
+//                           confirmAdd: false)
+//            
+//            // Update Output
+//            output += "\nAdded Word: \(word) \(date?.simple ?? "")"
+//            
+//            // Reset Buffer
+//            word = ""
+//            
+//        }
+//        
+//        var i = 0
+//        var output  = ""
+//        var word    = ""
+//        
+//        while args.elementNum(i).isNotEmpty {
+//            
+//            let arg = args.elementNum(i)
+//            
+//            // Date?
+//            if let dateArg = arg.simpleDateMaybe {
+//                
+//                if word.isNotEmpty {
+//                    
+//                    processBuffer(date: dateArg)
+//                    
+//                } else {
+//                    
+//                    output += "\n[ERROR] No word is specified for give date \(arg)"
+//                    
+//                }
+//                
+//            // Word?
+//            } else {
+//                
+//                if word.isNotEmpty { processBuffer() }
+//                
+//                if Solver.validate(arg) {
+//                    
+//                    word = arg.uppercased()
+//                    
+//                } else {
+//                    
+//                    output += "\n[ERROR] \(arg) is not a valid 5 letter word."
+//                    
+//                }
+//                
+//            }
+//            
+//            i += 1 // Next
+//            
+//        }
+//        
+//        processBuffer()
+//        
+//        return console.screen!.formatCommandOutput(output)
+//        
+//    }
+    
+    
 }
 
