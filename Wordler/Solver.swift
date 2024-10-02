@@ -474,14 +474,19 @@ class Solver {
     /// Confirms the user wants to archive the specified `Word` and  if
     /// confirmed archives it.
     /// - Parameter word: winning answer `Word` to archive.
-    func archive(_ word: Word, confirmAdd: Bool = true) {
+    /// - Parameter date: optional date to use for archival, defaults to today's date if omitted.
+    /// - Parameter confirmAdd: flag indicating if user should be forced to
+    /// confirm addition of word to archive, default is true.
+    func archive(_ word: Word, date: Date? = nil, confirmAdd: Bool = true) {
+        
+        let date = date ?? Date()
         
         let word = word.uppercased()
         
         var answer = Answer(managedID: nil,
                             word: word,
                             answerNum: nil,
-                            date: Date().simple.simpleDate)
+                            date: date.simple.simpleDate)
         
         let yesNoText = (title: "Remember '\(word.uppercased())' As a Previous Winning Answer?",
                          message:   """
