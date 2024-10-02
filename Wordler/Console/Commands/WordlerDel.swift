@@ -1,5 +1,5 @@
 //
-//  WordlerDelRemembered.swift
+//  WordlerDel.swift
 //  Wordler
 //
 //  Created by Aaron Nance on 9/26/24.
@@ -7,7 +7,7 @@
 
 import ConsoleView
 
-// TODO: Clean Up - add comment
+/// Deletes specified word(s) from remembered word list.
 @available(iOS 15, *)
 struct WordlerDel: Command {
     

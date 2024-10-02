@@ -1,5 +1,5 @@
 //
-//  WordlerRemembered.swift
+//  WordlerRem.swift
 //  Wordler
 //
 //  Created by Aaron Nance on 9/26/24.
@@ -8,7 +8,7 @@
 import UIKit
 import ConsoleView
 
-// Returns a list of all remembered answers.
+/// Returns a list of all remembered answers.
 @available(iOS 15, *)
 struct WordlerRem: Command {
     

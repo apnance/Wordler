@@ -1,5 +1,5 @@
 //
-//  WordlerNukeRemembered.swift
+//  WordlerNuke.swift
 //  Wordler
 //
 //  Created by Aaron Nance on 9/26/24.
@@ -7,7 +7,7 @@
 
 import ConsoleView
 
-// TODO: Clean Up - add comment
+/// Reverts remembered word list to hard coded list of words from words.wordle.remembered.answers.txt.
 @available(iOS 15, *)
 struct WordlerNuke: Command {
     

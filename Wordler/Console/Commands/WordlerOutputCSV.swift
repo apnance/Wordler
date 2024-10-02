@@ -9,7 +9,7 @@ import UIKit
 import APNUtil
 import ConsoleView
 
-// TODO: Clean Up - add Struct comment
+/// Outputs a comma separated file of all remembered data to console and pasteboard.
 @available(iOS 15, *)
 struct WordlerOutputCSV: Command {
     
