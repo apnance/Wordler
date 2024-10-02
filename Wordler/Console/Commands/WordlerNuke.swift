@@ -9,7 +9,7 @@ import ConsoleView
 
 // TODO: Clean Up - add comment
 @available(iOS 15, *)
-struct WordlerNukeRemembered: Command {
+struct WordlerNuke: Command {
     
     var solver: Solver
     

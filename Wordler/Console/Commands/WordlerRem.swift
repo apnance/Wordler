@@ -10,7 +10,7 @@ import ConsoleView
 
 // Returns a list of all remembered answers.
 @available(iOS 15, *)
-struct WordlerRemembered: Command {
+struct WordlerRem: Command {
     
     var solver: Solver
     

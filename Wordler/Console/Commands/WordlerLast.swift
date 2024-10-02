@@ -10,7 +10,7 @@ import ConsoleView
 
 /// Returns a list of last `n` words added to remembered word list.
 @available(iOS 15, *)
-struct WordlerGetLastRemembered: Command {
+struct WordlerLast: Command {
     
     var solver: Solver
     

@@ -30,12 +30,12 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
         [
             
             WordlerRecap(console: console),
-            WordlerAddRemembered(solver: solver, console: console),
-            WordlerGetLastRemembered(solver: solver, console: console),
-            WordlerRemembered(solver: solver, console: console),
+            WordlerAdd(solver: solver, console: console),
+            WordlerLast(solver: solver, console: console),
+            WordlerRem(solver: solver, console: console),
             WordlerOutputCSV(solver: solver, console: console),
-            WordlerDelRemembered(solver: solver, console: console),
-            WordlerNukeRemembered(solver: solver, console: console)
+            WordlerDel(solver: solver, console: console),
+            WordlerNuke(solver: solver, console: console)
             
         ]
         
