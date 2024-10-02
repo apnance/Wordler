@@ -51,6 +51,8 @@ struct Configs {
                                         \tUsage:
                                         \t* 'add BLANK GONGS TITAN' adds words BLANK, GONGS, and TITAN
                                         \t  to rememered words list.
+                                        \t* 'add BLANK 09-24-24' adds words BLANK to remembered word
+                                        \t  list with date of September 24, 2024.
                                         """
                     
                     static var last = """
