@@ -27,44 +27,73 @@ struct WordlerGet: Command {
     
     func process(_ args: [String]?) -> CommandOutput {
         
-        var arg1    = args.elementNum(0)
-        var arg2    = args.elementNum(1)
-        
-        // Is first arg an option? - Swap if so.
-        if arg1.type == .option { (arg1, arg2) = (arg2, arg1) }
-        
-        let answers     = solver.getFor(arg1)
+        var i           = 0
+        var arg         = args.elementNum(i)
+        var option      = ""
         var content     = ""
         
-        switch arg2 {
-                
-            case "w":
-                
-                content = answers.reduce("") { $0 + " " + $1.word }
-                
-            case "d":
-                
-                content = answers.reduce("") { $0 + " " + ($1.date?.simple ?? "")}
-                
-            case "n":
-                
-                content = answers.reduce("") { $0 + " " + $1.computedPuzzleNum.description }
-                
-            default:
-                
-                content = answers.description
-                
+        func next() -> Bool {
+            
+            i += 1
+            arg = args.elementNum(i)
+            
+            return arg.isNotEmpty
+            
         }
-                
         
-        return console.screen.format(content,
-                                     target: .output,
-                                     overrideFGColor: UIColor.systemBlue)
+        func output() -> CommandOutput {
+            
+            content = content.trim()
+            content = content.isNotEmpty ? content : "Nothing to get."
+            
+            return console.screen.format(content,
+                                         target: .output)
+            
+        }
+        
+        if arg.type == .option {
+            
+            option = arg
+            
+            if !next() {
+                
+                return output() /*EXIT: Nothing to Do*/
+                
+            }
+            
+        }
+        
+        repeat {
+            
+            let answers     = solver.getFor(arg)
+            
+            switch option {
+                    
+                case "w":
+                    
+                    content += answers.reduce("") { $0 + " " + $1.word }
+                    
+                case "d":
+                    
+                    content += answers.reduce("") { $0 + " " + ($1.date?.simple ?? "")}
+                    
+                case "n":
+                    
+                    content += answers.reduce("") { $0 + " " + $1.computedPuzzleNum.description }
+                    
+                default:
+                    
+                    content += answers.reduce("") { $0 + $1.description + "\n"}
+                    
+            }
+            
+        } while next()
+        
+        return output()
         
     }
     
 }
-
 
 typealias Argument = String
 
@@ -73,15 +102,11 @@ extension Argument {
     
     var type: ArgType {
         
-        if Int(self).isNotNil { return .puzzlenum /*EXIT*/ }
-        else if Argument.isWord(self, ofLen: 1) {
-            return .option /*EXIT*/
-        }
-        else if Argument.isWord(self, ofLen: 5) {
-            return .word /*EXIT*/
-        }
-        else if self.simpleDateMaybe.isNotNil { return .date /*EXIT*/ }
-        else { return .unknown /*EXIT*/ }
+        if Int(self).isNotNil { return .puzzlenum                   /*EXIT*/ }
+        else if Argument.isWord(self, ofLen: 1) { return .option    /*EXIT*/ }
+        else if Argument.isWord(self, ofLen: 5) { return .word      /*EXIT*/ }
+        else if self.simpleDateMaybe.isNotNil { return .date        /*EXIT*/ }
+        else { return .unknown                                      /*EXIT*/ }
         
     }
     
