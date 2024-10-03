@@ -604,11 +604,11 @@ extension Solver: DataManagerConfiguratorDataSource {
     
     var gapFindableData: [GapFindable]? {
         
-        archivedAnswers.values.map{ $0.answerNum ?? $0.computedAnswerNum }
+        archivedAnswers.values.map{ $0.answerNum ?? $0.computedPuzzleNum }
         
     }
     
-    var gapFindableRange: ClosedRange<Int>? { 1...Answer.todaysAnswerNum }
+    var gapFindableRange: ClosedRange<Int>? { 1...Date.todaysPuzzleNum }
     var gapFindableStride: Int? { 1 }
     
 }

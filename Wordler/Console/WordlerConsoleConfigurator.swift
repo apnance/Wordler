@@ -9,7 +9,7 @@ import UIKit
 import APNUtil
 import ConsoleView
 
-struct WordlerCommandConfigurator: ConsoleConfigurator {
+struct WordlerConsoleConfigurator: ConsoleConfigurator {
     
     @discardableResult init(consoleView: ConsoleView,
                             solver: Solver) {
@@ -35,7 +35,8 @@ struct WordlerCommandConfigurator: ConsoleConfigurator {
             WordlerRem(solver: solver, console: console),
             WordlerOutputCSV(solver: solver, console: console),
             WordlerDel(solver: solver, console: console),
-            WordlerNuke(solver: solver, console: console)
+            WordlerNuke(solver: solver, console: console),
+            WordlerPuzzleDate(console: console)
             
         ]
         

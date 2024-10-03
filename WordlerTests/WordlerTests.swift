@@ -18,15 +18,52 @@ class WordlerTests: XCTestCase {
         
         for answer in sorted {
             
-            let computed    = answer.computedAnswerNum
-            let saved       = answer.answerNum!
+            let computed    = answer.computedPuzzleNum
             
-             print("\(answer.word) :: Saved#> \(answer.answerNum ?? -666) <=> \(answer.computedAnswerNum) <Computed#")
-            
-            XCTAssert(saved == computed, "\(answer.word) :: Answer Nums: Saved: \(saved) - Computed: \(computed)")
+            if let saved    = answer.answerNum {
+                
+                print("\(answer.word) :: Saved#> \(answer.answerNum ?? -666) <=> \(answer.computedPuzzleNum) <Computed#")
+                
+                XCTAssert(saved == computed, "\(answer.word) :: Answer Nums: Saved: \(saved) - Computed: \(computed)")
+                
+            }
             
         }
         
+    }
+    
+    func testDateToAnswerNum() {
+        
+        func test(_ puzzleNum: Int, _ expectedDate: String) {
+            
+            let expected = expectedDate.simpleDate
+            let actual      = Wordler.Configs.Settings.Puzzle.historicalFirstDate.shiftedBy(puzzleNum)
+            
+            XCTAssert(expected == actual,
+                      "Expected: \(expected.simple) - Actual: \(actual.simple)")
+            
+        }
+        
+        // Negative Puzzle Nums
+        test(-5,    "06/14/21")
+        
+        // 0
+        test(0,     "06/19/21")
+        
+        // Positive Puzzle Nums
+        test(1,     "06/20/21")
+        test(1178,  "09-09-24")
+        
+    }
+    
+    func testDateToPuzzleNumberToDate() {
+        
+        let expected    = Date().simple.simpleDate
+        let puzzleNum   = expected.computedPuzzleNum
+        let actual      = Date.fromPuzzleNum(puzzleNum)!
+        
+        XCTAssert(expected == actual,
+                  "Expected: \(expected.simple) - Actual: \(actual.simple)")
     }
     
 }

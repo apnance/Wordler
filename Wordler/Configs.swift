@@ -37,6 +37,7 @@ struct Configs {
                     static var del      = "delrem"
                     static var gaps     = "gaps"
                     static var nuke     = "nuke"
+                    static var pdate    = "pdate"
                     
                 }
                 
@@ -82,7 +83,13 @@ struct Configs {
                     
                     static var gaps = "Echoes a list of all missing archived puzzles."
                     
-                    static var nuke =   "**CAUTION** this command *deletes all* user saved answers."
+                    static var nuke = "**CAUTION** this command *deletes all* user saved answers."
+                    
+                    static var pdate = """
+                                        Outputs the Wordle date for a given puzzle number."
+                                        \tUsage:
+                                        \t* 'pdate 1234' outputs the date on which puzzle #1234 ran on Wordle.
+                                        """
                     
                 }
                 

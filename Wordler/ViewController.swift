@@ -147,7 +147,7 @@ class ViewController: UIViewController {
     
     func uiInitConsole() {
         
-        WordlerCommandConfigurator(consoleView: consoleView,
+        WordlerConsoleConfigurator(consoleView: consoleView,
                                    solver: solver)
         
         DataManagerConfigurator(consoleView: consoleView,

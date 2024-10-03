@@ -9,6 +9,7 @@ import UIKit
 import APNUtil
 import ConsoleView
 
+// TODO: Clean Up - delete THIS FILE - OBSOLETE...
 class ConsoleViewController: UIViewController {
     
     @IBOutlet weak var consoleView: ConsoleView!
@@ -18,7 +19,7 @@ class ConsoleViewController: UIViewController {
         super.viewDidLoad()
         
         // Start Console Configuration
-        WordlerCommandConfigurator(consoleView: consoleView,
+        WordlerConsoleConfigurator(consoleView: consoleView,
                                    solver: solver)
         
     }

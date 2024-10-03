@@ -17,6 +17,18 @@ struct Answer: Manageable {
     var answerNum: Int?
     var date: Date?
     
+    
+    /// `self`'s computed puzzle number.
+    var computedPuzzleNum: Int {
+        
+        date!.computedPuzzleNum
+        
+    }
+    
+}
+
+extension Answer: CustomStringConvertible {
+    
     var description: String {
         
         "#\(answerNumDescription) \(word.uppercased()) on \(date!.simple)"
@@ -31,32 +43,37 @@ struct Answer: Manageable {
         
     }
     
-}
-
-extension Answer: CustomStringConvertible {
-    
     var answerNumDescription: String {
         
         let footnote = answerNum.isNil ? "*" : ""
         
-        return "\(answerNum?.description ?? computedAnswerNum.description)\(footnote)"
+        return "\(answerNum?.description ?? computedPuzzleNum.description)\(footnote)"
         
     }
     
-    var computedAnswerNum: Int {
+}
+
+extension Date {
+    
+    /// `self`'s computed puzzle number.
+    var computedPuzzleNum: Int {
         
-        let date = date!.simple.simpleDate // Get around locale issues.
-        
+        let date = simple.simpleDate  // Get around locale issues.
         return date.daysFrom(earlierDate: Configs.Settings.Puzzle.historicalFirstDate)
         
     }
     
     /// The computed number for today's game's answer.
-    static var todaysAnswerNum: Int {
+    static var todaysPuzzleNum: Int { Date().computedPuzzleNum }
+    
+    /// Converts a puzzle number into a `Date` formatted as a "MM/dd/yy".
+    /// - Parameter puzzleNum: the number of a specified puzzle.  Can also be
+    /// viewed as the number of days since the original game of Wordle was first played.
+    /// - Returns: optional date specifying on what day the puzzle numbered
+    /// `puzzleNum` ran on Wordle.
+    static func fromPuzzleNum(_ num: Int) -> Date? {
         
-        let date = Date().simple.simpleDate // Get around locale issues.
-        
-        return date.daysFrom(earlierDate: Configs.Settings.Puzzle.historicalFirstDate)
+        Configs.Settings.Puzzle.historicalFirstDate.shiftedBy(num)
         
     }
     
