@@ -8,7 +8,7 @@
 import Foundation
 import ConsoleView
 
-/// Outputs the date for a given puzzle number.  Output can be piped to another command.
+/// Outputs the date for a given puzzle number.  Output can be redirected to another command.
 @available(iOS 15, *)
 struct WordlerPuzzleDate: Command {
     
@@ -37,12 +37,12 @@ struct WordlerPuzzleDate: Command {
         
         let pdate   = Date.fromPuzzleNum(puzzleNum)!.simple
         var output  = console.screen!.format("Puzzle #\(puzzleNum) ran on \(pdate)",
-                                            target: .output)
+                                             target: .output)
         output.raw  = pdate
         
         return output
         
-        
     }
+    
 }
 
