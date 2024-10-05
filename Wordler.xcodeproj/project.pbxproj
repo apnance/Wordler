@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		930B96B129B10779000546DD /* ReadMe.txt in Sources */ = {isa = PBXBuildFile; fileRef = 930B96B029B10779000546DD /* ReadMe.txt */; };
 		930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2BFE278E27E7009B111C /* AppDelegate.swift */; };
 		930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2C00278E27E7009B111C /* SceneDelegate.swift */; };
 		930C2C03278E27E7009B111C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930C2C02278E27E7009B111C /* ViewController.swift */; };
@@ -323,7 +322,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					930C2BFA278E27E7009B111C = {
 						CreatedOnToolsVersion = 13.0;
@@ -392,7 +391,6 @@
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
 				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
 				93A1B92B2CB10556007472B1 /* Argument.swift in Sources */,
-				930B96B129B10779000546DD /* ReadMe.txt in Sources */,
 				93DDF2072CA5EA7A005D3C3C /* WordlerAdd.swift in Sources */,
 				930C2C13278E28DE009B111C /* Solver.swift in Sources */,
 				93DDF2092CA5EB7B005D3C3C /* WordlerLast.swift in Sources */,
@@ -482,6 +480,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -543,6 +542,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
