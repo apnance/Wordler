@@ -75,10 +75,9 @@ class ViewController: UIViewController {
         
         uiInit()
         resetBoard()
-        
+        uiInitConsole()
         uiSetSplash()
         
-        uiInitConsole()
         
     }
     
@@ -173,7 +172,8 @@ class ViewController: UIViewController {
             let lineFeed = consoleView.getScreenText().isEmpty ? "" : "\n"
             
             consoleView.set(screenText: "\(lineFeed)\(thumbnailGameSummary.text ?? "")",
-                            shouldAppend: true)
+                            shouldAppend: true,
+                            overrideFGColor: Configs.UI.Color.wordleYellow!)
             
         }
         
