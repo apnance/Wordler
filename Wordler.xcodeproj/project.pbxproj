@@ -20,7 +20,6 @@
 		930F91762CAF1B9B003D3C9A /* WordlerGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930F91752CAF1B9B003D3C9A /* WordlerGet.swift */; };
 		9344DE332A7C2D1700E4D8CE /* ProgressIndicator.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */; };
 		9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */; };
-		936DDABA2BFD5A7B00B68205 /* ConsoleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */; };
 		9376B9C62BF5225200695BF7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376B9C52BF5225200695BF7 /* Answer.swift */; };
 		93A1B92B2CB10556007472B1 /* Argument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B92A2CB10553007472B1 /* Argument.swift */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
@@ -79,7 +78,6 @@
 		930F91752CAF1B9B003D3C9A /* WordlerGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerGet.swift; sourceTree = "<group>"; };
 		9344DE322A7C2D1600E4D8CE /* ProgressIndicator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressIndicator.xib; sourceTree = "<group>"; };
 		9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
-		936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleViewController.swift; sourceTree = "<group>"; };
 		9376B9C52BF5225200695BF7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		93A1B92A2CB10553007472B1 /* Argument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Argument.swift; sourceTree = "<group>"; };
 		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 			children = (
 				93CB48042799FF1B00A5CD8F /* iOS */,
 				93DDF2022CA5E4C8005D3C3C /* Console */,
-				936DDAB92BFD5A7B00B68205 /* ConsoleViewController.swift */,
 				930C2C12278E28DE009B111C /* Solver.swift */,
 			);
 			name = C;
@@ -390,7 +387,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				936DDABA2BFD5A7B00B68205 /* ConsoleViewController.swift in Sources */,
 				93DF763A2790A9C8001234EC /* WordleButton.swift in Sources */,
 				930F91762CAF1B9B003D3C9A /* WordlerGet.swift in Sources */,
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
