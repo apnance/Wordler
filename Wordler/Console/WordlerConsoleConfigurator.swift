@@ -51,6 +51,7 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
         configs.fgColorCommandLine  = Configs.UI.Color.wordleYellow!
         configs.fgColorScreenInput  = Configs.UI.Color.wordleGreen!
         configs.fgColorScreenOutput = Configs.UI.Color.wordleGrayLight!
+        configs.fgColorScreenOutputWarning = Configs.UI.Color.wordleYellow!
         
         configs.borderWidth         = Configs.UI.standardBorderWidth
         configs.borderColor         = Configs.UI.Color.wordleGrayDark!.cgColor
