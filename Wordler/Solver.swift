@@ -94,6 +94,60 @@ class Solver {
         
     }
     
+    /// Attempts to retrieve answer(s) for specified argument(date, puzzle#, or word)
+    func getFor(_ arg: Argument) -> [Answer] {
+        
+        var matches = [Answer]()
+        
+        switch arg.type {
+                
+            case .date:
+                
+                let simpleDate = arg.simpleDate.simple
+                for answer in rememberedAnswers {
+                    
+                    if answer.date?.simple == simpleDate {
+                        
+                        matches.append(answer)
+                        
+                    }
+                    
+                }
+                
+            case .puzzlenum:
+                
+                let puzzleNum = Int(arg)
+                for answer in rememberedAnswers {
+                    
+                    if answer.computedPuzzleNum == puzzleNum {
+                        
+                        matches.append(answer)
+                        
+                    }
+                    
+                }
+                
+            case .word:
+                
+                let word = arg.uppercased()
+                for answer in rememberedAnswers {
+                    
+                    if answer.word.uppercased() == word {
+                        
+                        matches.append(answer)
+                        
+                    }
+                    
+                }
+                
+            case .option, .unknown: break /*Do Nothing*/
+                
+        }
+        
+        return matches
+        
+    }
+    
     /// Attempts to delete the remembered `Answer` with matching `Word`
     /// - Returns: success flag, `true` if word was deleted, `false` otherwise.
     func delRememberedByWord(_ withWord: Word) -> Bool {
