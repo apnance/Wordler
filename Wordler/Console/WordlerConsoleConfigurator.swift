@@ -36,7 +36,6 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
             WordlerOutputCSV(solver: solver, console: console),
             WordlerDel(solver: solver, console: console),
             WordlerNuke(solver: solver, console: console),
-            WordlerPuzzleDate(console: console),
             WordlerGet(solver: solver, console: console)
             
         ]

@@ -37,7 +37,6 @@ struct Configs {
                     static var del      = "delrem"
                     static var gaps     = "gaps"
                     static var nuke     = "nuke"
-                    static var pdate    = "pdate"
                     static var get      = "get"
                     
                 }
@@ -79,23 +78,17 @@ struct Configs {
                                         \tUsage:
                                         \t* 'del TRUCK TRIPS ZONKS' attempts to delete words TRUCK
                                         \t  TRIPS and ZONKS from remembered words.
-                                        \t* 'del 05-23-12' attempts to delete all words added on 05-23-12
+                                        \t* 'del 05-23-12' attempts to delete all words added on 05-23-12.
                                         """
                     
                     static var gaps = "Echoes a list of all missing archived puzzles."
                     
                     static var nuke = "**CAUTION** this command *deletes all* user saved answers."
                     
-                    static var pdate = """
-                                        Outputs the Wordle date for a given puzzle number."
-                                        \tUsage:
-                                        \t* 'pdate 1234' outputs the date on which puzzle #1234 ran on Wordle.
-                                        """
-                    
                     static var get  = """
                                         Attempts to retrieve data about answers/puzzles.
                                         \tUsage:
-                                        \t* 'get <word|date|puzzle#>' retrieves the associated answer
+                                        \t* 'get <word|date|puzzle#>' retrieves the associated answer.
                                         \t* 'get w <puzzle#|date>' retrieves the word associated with the
                                         \t  specified puzzle number or date.
                                         \t* 'get d <puzzle#|word>' retrieves date associated with the
