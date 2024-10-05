@@ -24,7 +24,7 @@ struct WordlerNuke: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.nuke
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         var commandOutput       = ""
         let expectedResponses   = ["Y","N"]

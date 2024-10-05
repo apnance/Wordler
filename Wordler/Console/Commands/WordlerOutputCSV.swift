@@ -26,7 +26,7 @@ struct WordlerOutputCSV: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.csv
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         let csv = Array(solver.rememberedAnswers)
             .sorted{ $0.date! < $1.date! }

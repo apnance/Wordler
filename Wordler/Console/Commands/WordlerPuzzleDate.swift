@@ -23,7 +23,7 @@ struct WordlerPuzzleDate: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.pdate
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         var arg1 = args.elementNum(0)
         

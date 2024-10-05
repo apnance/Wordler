@@ -25,7 +25,7 @@ struct WordlerLast: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.last
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         let consoleView = console.screen!
         

@@ -22,7 +22,7 @@ struct WordlerRecap: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.recap
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         let vc          = (console.screen! as! ConsoleView)
         

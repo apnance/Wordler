@@ -25,7 +25,7 @@ struct WordlerGet: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.get
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         var i           = 0
         var arg         = args.elementNum(i)
@@ -41,6 +41,9 @@ struct WordlerGet: Command {
             return arg.isNotEmpty
             
         }
+        
+        
+#warning("Add ability specify range of answers to retrieve")
         
         func output() -> CommandOutput {
             
@@ -110,41 +113,6 @@ struct WordlerGet: Command {
         } while next()
         
         return output()
-        
-    }
-    
-}
-
-typealias Argument = String
-enum ArgType { case date, puzzlenum, word, option, unknown }
-extension Argument {
-    
-    var type: ArgType {
-        
-        if Int(self).isNotNil { return .puzzlenum                   /*EXIT*/ }
-        else if Argument.isWord(self, ofLen: 1) { return .option    /*EXIT*/ }
-        else if Argument.isWord(self, ofLen: 5) { return .word      /*EXIT*/ }
-        else if self.simpleDateMaybe.isNotNil { return .date        /*EXIT*/ }
-        else { return .unknown                                      /*EXIT*/ }
-        
-    }
-    
-    
-    static func isWord(_ word: String, ofLen chars: Int) -> Bool {
-        
-        let pattern = "^[a-zA-Z]{\(chars)}$"
-        let regex = try! NSRegularExpression(pattern: pattern)
-        
-        let range = NSRange(location: 0, length: word.utf16.count)
-        if regex.firstMatch(in: word, options: [], range: range).isNotNil {
-            
-            return true
-            
-        } else {
-            
-            return false
-            
-        }
         
     }
     

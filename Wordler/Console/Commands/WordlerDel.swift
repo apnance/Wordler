@@ -24,7 +24,7 @@ struct WordlerDel: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.del
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         guard let args = args,
               args.count > 0

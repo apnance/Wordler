@@ -25,7 +25,7 @@ struct WordlerAdd: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.add
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         var i = 0
         var output = CommandOutput()

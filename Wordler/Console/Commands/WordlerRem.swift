@@ -25,7 +25,7 @@ struct WordlerRem: Command {
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.rem
     
-    func process(_ args: [String]?) -> CommandOutput {
+    func process(_ args: [Argument]?) -> CommandOutput {
         
         let arg1 = args.elementNum(0).lowercased()
         
