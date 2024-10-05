@@ -29,7 +29,7 @@ struct WordlerAdd: Command {
         
         var i = 0
         var output = CommandOutput()
-        var screen = console.screen!
+        let screen = console.screen!
         
         repeat {
             
