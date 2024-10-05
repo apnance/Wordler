@@ -38,6 +38,7 @@ struct Configs {
                     static var gaps     = "gaps"
                     static var nuke     = "nuke"
                     static var pdate    = "pdate"
+                    static var get      = "get"
                     
                 }
                 
@@ -89,6 +90,18 @@ struct Configs {
                                         Outputs the Wordle date for a given puzzle number."
                                         \tUsage:
                                         \t* 'pdate 1234' outputs the date on which puzzle #1234 ran on Wordle.
+                                        """
+                    
+                    static var get  = """
+                                        Attempts to retrieve data about answers/puzzles.
+                                        \tUsage:
+                                        \t* 'get <word|date|puzzle#>' retrieves the associated answer
+                                        \t* 'get w <puzzle#|date>' retrieves the word associated with the
+                                        \t  specified puzzle number or date.
+                                        \t* 'get d <puzzle#|word>' retrieves date associated with the
+                                        \t  specified puzzle number or word.
+                                        \t* 'get n <date|word>' retrieves puzzle number associated with the
+                                        \t  specified date or word.
                                         """
                     
                 }

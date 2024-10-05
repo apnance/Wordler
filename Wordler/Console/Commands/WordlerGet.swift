@@ -30,8 +30,9 @@ struct WordlerGet: Command {
         var i           = 0
         var arg         = args.elementNum(i)
         var option      = ""
-        var content     = ""
+        var contents    = [String]()
         
+        /// Advances to next argument returning true unless none found then it returns false.
         func next() -> Bool {
             
             i += 1
@@ -43,11 +44,24 @@ struct WordlerGet: Command {
         
         func output() -> CommandOutput {
             
-            content = content.trim()
-            content = content.isNotEmpty ? content : "Nothing to get."
+            var output  = CommandOutput()
+            var row     = 0
             
-            return console.screen.format(content,
-                                         target: .output)
+            for content in contents {
+                
+                let content = content.tidy()
+                
+                let target = (row % 2 == 0) ? FormatTarget.output : .outputDeemphasized
+                
+                output += console.screen.format(content + "\n",
+                                                target: target,
+                                                overrideFGColor: nil)
+                // Next
+                row += 1
+                
+            }
+            
+            return output
             
         }
         
@@ -65,25 +79,31 @@ struct WordlerGet: Command {
         
         repeat {
             
-            let answers     = solver.getFor(arg)
+            let answers = solver.getFor(arg)
+            if answers.count == 0 {
+                
+                contents.append("\(arg): nothing to get.");
+                continue /*CONTINUE*/
+                
+            }
             
             switch option {
                     
                 case "w":
                     
-                    content += answers.reduce("") { $0 + " " + $1.word }
+                    contents.append(answers.reduce("\(arg): ") { $0 + " " + $1.word })
                     
                 case "d":
                     
-                    content += answers.reduce("") { $0 + " " + ($1.date?.simple ?? "")}
+                    contents.append(answers.reduce("\(arg): ") { $0 + " " + ($1.date?.simple ?? "")})
                     
                 case "n":
                     
-                    content += answers.reduce("") { $0 + " " + $1.computedPuzzleNum.description }
+                    contents.append(answers.reduce("\(arg): ") { $0 + " " + $1.computedPuzzleNum.description })
                     
                 default:
                     
-                    content += answers.reduce("") { $0 + $1.description + "\n"}
+                    contents.append(answers.reduce("\(arg):") { $0 + " " + $1.description + "\n"})
                     
             }
             
@@ -96,7 +116,6 @@ struct WordlerGet: Command {
 }
 
 typealias Argument = String
-
 enum ArgType { case date, puzzlenum, word, option, unknown }
 extension Argument {
     
