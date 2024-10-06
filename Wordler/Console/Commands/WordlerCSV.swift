@@ -11,7 +11,7 @@ import ConsoleView
 
 /// Outputs a comma separated file of all remembered data to console and pasteboard.
 @available(iOS 15, *)
-struct WordlerOutputCSV: Command {
+struct WordlerCSV: Command {
     
     var solver: Solver
     

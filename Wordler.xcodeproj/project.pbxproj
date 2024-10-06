@@ -27,7 +27,7 @@
 		93DDF2072CA5EA7A005D3C3C /* WordlerAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF2062CA5EA7A005D3C3C /* WordlerAdd.swift */; };
 		93DDF2092CA5EB7B005D3C3C /* WordlerLast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF2082CA5EB7B005D3C3C /* WordlerLast.swift */; };
 		93DDF20B2CA636B1005D3C3C /* WordlerRem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF20A2CA636B1005D3C3C /* WordlerRem.swift */; };
-		93DDF20D2CA6388A005D3C3C /* WordlerOutputCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF20C2CA6388A005D3C3C /* WordlerOutputCSV.swift */; };
+		93DDF20D2CA6388A005D3C3C /* WordlerCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF20C2CA6388A005D3C3C /* WordlerCSV.swift */; };
 		93DDF20F2CA6393E005D3C3C /* WordlerDel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF20E2CA6393E005D3C3C /* WordlerDel.swift */; };
 		93DDF2112CA639E6005D3C3C /* WordlerNuke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF2102CA639E6005D3C3C /* WordlerNuke.swift */; };
 		93DDF2132CA63E8C005D3C3C /* WordlerConsoleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DDF2122CA63E8C005D3C3C /* WordlerConsoleConfigurator.swift */; };
@@ -84,7 +84,7 @@
 		93DDF2062CA5EA7A005D3C3C /* WordlerAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerAdd.swift; sourceTree = "<group>"; };
 		93DDF2082CA5EB7B005D3C3C /* WordlerLast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerLast.swift; sourceTree = "<group>"; };
 		93DDF20A2CA636B1005D3C3C /* WordlerRem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerRem.swift; sourceTree = "<group>"; };
-		93DDF20C2CA6388A005D3C3C /* WordlerOutputCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerOutputCSV.swift; sourceTree = "<group>"; };
+		93DDF20C2CA6388A005D3C3C /* WordlerCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerCSV.swift; sourceTree = "<group>"; };
 		93DDF20E2CA6393E005D3C3C /* WordlerDel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerDel.swift; sourceTree = "<group>"; };
 		93DDF2102CA639E6005D3C3C /* WordlerNuke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerNuke.swift; sourceTree = "<group>"; };
 		93DDF2122CA63E8C005D3C3C /* WordlerConsoleConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordlerConsoleConfigurator.swift; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 				93DDF2042CA5E5FD005D3C3C /* WordlerRecap.swift */,
 				93DDF2082CA5EB7B005D3C3C /* WordlerLast.swift */,
 				93DDF20A2CA636B1005D3C3C /* WordlerRem.swift */,
-				93DDF20C2CA6388A005D3C3C /* WordlerOutputCSV.swift */,
+				93DDF20C2CA6388A005D3C3C /* WordlerCSV.swift */,
 				93DDF20E2CA6393E005D3C3C /* WordlerDel.swift */,
 				93DDF2102CA639E6005D3C3C /* WordlerNuke.swift */,
 				930F91752CAF1B9B003D3C9A /* WordlerGet.swift */,
@@ -396,7 +396,7 @@
 				93DDF2092CA5EB7B005D3C3C /* WordlerLast.swift in Sources */,
 				93DDF2112CA639E6005D3C3C /* WordlerNuke.swift in Sources */,
 				93DDF20B2CA636B1005D3C3C /* WordlerRem.swift in Sources */,
-				93DDF20D2CA6388A005D3C3C /* WordlerOutputCSV.swift in Sources */,
+				93DDF20D2CA6388A005D3C3C /* WordlerCSV.swift in Sources */,
 				93DDF2132CA63E8C005D3C3C /* WordlerConsoleConfigurator.swift in Sources */,
 				93DDF20F2CA6393E005D3C3C /* WordlerDel.swift in Sources */,
 				930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */,
