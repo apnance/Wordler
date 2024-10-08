@@ -89,15 +89,17 @@ struct Configs {
                                         Attempts to retrieve data about answers/puzzles.
                                         \tUsage:
                                         \t* 'get <word|date|puzzle#>' retrieves the associated answer.
-                                        \t* 'get <puzzle#low>-<puzzle#hi>' retrieves the range of answers 
-                                        \t  associated with puzzles #s from low to high 
+                                        \t* 'get <low-hi>' retrieves the range of answers 
+                                        \t   associated with puzzle #s from low to high. 
                                         \t  (e.g. 'get 1-5' retrieves puzzles 1-5).
-                                        \t* 'get w <puzzle#|date>' retrieves the word associated with the
-                                        \t  specified puzzle number or date.
-                                        \t* 'get d <puzzle#|word>' retrieves date associated with the
-                                        \t  specified puzzle number or word.
-                                        \t* 'get n <date|word>' retrieves puzzle number associated with the
-                                        \t  specified date or word.
+                                        \t* 'get w <puzzle#|date|low-hi>' retrieves only the word associated with 
+                                        \t   the specified puzzle number, date or range.
+                                        \t* 'get d <puzzle#|word|low-hi>' retrieves only the date associated with 
+                                        \t   the specified puzzle number, word or range
+                                        \t* 'get n <date|word|low-hi>' retrieves only the puzzle number associated 
+                                        \t   with the specified date, word or range.
+                                        \t* 'get c <puzzle#|date|word|low-hi>' retrieves only the count of puzzles 
+                                        \t   associated with the specified puzzle number, date, word or range.
                                         """
                     
                 }

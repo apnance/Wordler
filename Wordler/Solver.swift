@@ -94,7 +94,7 @@ class Solver {
         
     }
     
-    /// Attempts to retrieve answer(s) for specified argument(date, puzzle#, or word)
+    /// Attempts to retrieve answer(s) for specified argument(date, puzzle#, word, or range of puzzle#s)
     func getFor(_ arg: Argument) -> [Answer] {
         
         var matches = [Answer]()
