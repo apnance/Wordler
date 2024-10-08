@@ -104,6 +104,10 @@ struct WordlerGet: Command {
                     
                     contents.append(answers.reduce("\(arg): ") { $0 + " " + $1.computedPuzzleNum.description })
                     
+                case "c":
+                    
+                    contents.append("\(arg): \(answers.count) puzzle(s)")
+                    
                 default:
                     
                     contents.append(answers.reduce("\(arg):") { $0 + " " + $1.description + "\n"})
