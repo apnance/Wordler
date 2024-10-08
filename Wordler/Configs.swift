@@ -89,6 +89,9 @@ struct Configs {
                                         Attempts to retrieve data about answers/puzzles.
                                         \tUsage:
                                         \t* 'get <word|date|puzzle#>' retrieves the associated answer.
+                                        \t* 'get <puzzle#low>-<puzzle#hi>' retrieves the range of answers 
+                                        \t  associated with puzzles #s from low to high 
+                                        \t  (e.g. 'get 1-5' retrieves puzzles 1-5).
                                         \t* 'get w <puzzle#|date>' retrieves the word associated with the
                                         \t  specified puzzle number or date.
                                         \t* 'get d <puzzle#|word>' retrieves date associated with the

@@ -42,9 +42,6 @@ struct WordlerGet: Command {
             
         }
         
-        
-#warning("Add ability specify range of answers to retrieve")
-        
         func output() -> CommandOutput {
             
             var output  = CommandOutput()

@@ -114,12 +114,29 @@ class Solver {
                     
                 }
                 
-            case .puzzlenum:
+            case .puzzleNum:
                 
                 let puzzleNum = Int(arg)
                 for answer in rememberedAnswers {
                     
                     if answer.computedPuzzleNum == puzzleNum {
+                        
+                        matches.append(answer)
+                        
+                    }
+                    
+                }
+                
+            case .puzzlenNumRange:
+                
+                let bounds = arg.split(separator: "-").map{ Int($0) ?? -1 }
+                let (low,hi) = (bounds.first!, bounds.last!)
+                
+                let range = min(low, hi)...max(low, hi)
+                
+                for answer in rememberedAnswers {
+                    
+                    if range.contains(answer.computedPuzzleNum) {
                         
                         matches.append(answer)
                         
@@ -143,6 +160,8 @@ class Solver {
             case .option, .unknown: break /*Do Nothing*/
                 
         }
+        
+        matches.sort{ $0.computedPuzzleNum < $1.computedPuzzleNum }
         
         return matches
         
