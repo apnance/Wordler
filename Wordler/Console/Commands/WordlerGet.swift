@@ -8,7 +8,9 @@
 import UIKit
 import ConsoleView
 
-/// Outputs the date for a given puzzle number.  Output can be redirected to another command.
+/// Outputs the puzzle data for a given puzzle number, date, or word.  Output can be redirected to another command.
+///
+/// - note: AltonGet.swift is a mirror of this functionality.  Any changes to this file might benefit that one as well.
 @available(iOS 15, *)
 struct WordlerGet: Command {
     
