@@ -127,7 +127,7 @@ class Solver {
                     
                 }
                 
-            case .puzzlenNumRange:
+            case .puzzleNumRange:
                 
                 let bounds = arg.split(separator: "-").map{ Int($0) ?? -1 }
                 let (low,hi) = (bounds.first!, bounds.last!)

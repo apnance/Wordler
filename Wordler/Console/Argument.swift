@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ArgType { case date, puzzleNum, puzzlenNumRange, word, option, unknown }
+enum ArgType { case date, puzzleNum, puzzleNumRange, word, option, unknown }
 
 /// Custom treatment of String for when they are used as arguments to `Command`s
 typealias Argument  = String
@@ -18,7 +18,7 @@ extension Argument {
         if isNumeric() { return .puzzleNum              /*EXIT*/ }
         else if isWord(ofLen: 1) { return .option       /*EXIT*/ }
         else if isWord(ofLen: 5) { return .word         /*EXIT*/ }
-        else if isRange() { return .puzzlenNumRange     /*EXIT*/ }
+        else if isRange() { return .puzzleNumRange     /*EXIT*/ }
         else if simpleDateMaybe.isNotNil { return .date /*EXIT*/ }
         else { return .unknown                          /*EXIT*/ }
         

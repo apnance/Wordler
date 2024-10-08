@@ -44,6 +44,7 @@ struct WordlerGet: Command {
             
         }
         
+        /// Formats content as `CommandOutput`
         func output() -> CommandOutput {
             
             var output  = CommandOutput()
