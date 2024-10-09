@@ -20,6 +20,7 @@
 		9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */; };
 		9376B9C62BF5225200695BF7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376B9C52BF5225200695BF7 /* Answer.swift */; };
 		93A1B92B2CB10556007472B1 /* Argument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B92A2CB10553007472B1 /* Argument.swift */; };
+		93A1B9312CB73C9C007472B1 /* WordlerDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B9302CB73C98007472B1 /* WordlerDict.swift */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 93CEF95D28E83F6E009C1A07 /* APNUtil */; };
 		93D882992BF033400087C924 /* words.wordle.remembered.answers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */; };
@@ -77,6 +78,7 @@
 		9344DE342A7C2DE100E4D8CE /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		9376B9C52BF5225200695BF7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		93A1B92A2CB10553007472B1 /* Argument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Argument.swift; sourceTree = "<group>"; };
+		93A1B9302CB73C98007472B1 /* WordlerDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerDict.swift; sourceTree = "<group>"; };
 		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93CEF95C28E83F57009C1A07 /* APNUtil */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APNUtil; path = ../Frameworks/APNUtil; sourceTree = "<group>"; };
 		93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.wordle.remembered.answers.txt; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		93DDF2032CA5E5C0005D3C3C /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				93A1B9302CB73C98007472B1 /* WordlerDict.swift */,
 				93DDF2062CA5EA7A005D3C3C /* WordlerAdd.swift */,
 				93DDF2042CA5E5FD005D3C3C /* WordlerRecap.swift */,
 				93DDF2082CA5EB7B005D3C3C /* WordlerLast.swift */,
@@ -388,6 +391,7 @@
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
 				9376B9C62BF5225200695BF7 /* Answer.swift in Sources */,
+				93A1B9312CB73C9C007472B1 /* WordlerDict.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
 				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
 				93A1B92B2CB10556007472B1 /* Argument.swift in Sources */,

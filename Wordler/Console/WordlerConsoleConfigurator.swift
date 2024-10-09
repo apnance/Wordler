@@ -30,13 +30,14 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
         [
             
             WordlerRecap(console: console),
+            WordlerDict(solver: solver, console: console),
+            WordlerGet(solver: solver, console: console),
             WordlerAdd(solver: solver, console: console),
+            WordlerDel(solver: solver, console: console),
             WordlerLast(solver: solver, console: console),
             WordlerRem(solver: solver, console: console),
             WordlerCSV(solver: solver, console: console),
-            WordlerDel(solver: solver, console: console),
-            WordlerNuke(solver: solver, console: console),
-            WordlerGet(solver: solver, console: console)
+            WordlerNuke(solver: solver, console: console)
             
         ]
         

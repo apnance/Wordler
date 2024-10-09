@@ -30,14 +30,15 @@ struct Configs {
                 struct Tokens {
                     
                     static var recap    = "recap"
+                    static var dict     = "dict"
+                    static var get      = "get"
                     static var add      = "add"
+                    static var del      = "del"
                     static var last     = "last"
                     static var rem      = "rem"
                     static var csv      = "csv"
-                    static var del      = "del"
                     static var gaps     = "gaps"
                     static var nuke     = "nuke"
-                    static var get      = "get"
                     
                 }
                 
@@ -47,6 +48,31 @@ struct Configs {
                                         Echoes a running solution summary for the current puzzle solving session.
                                         """
                     
+                    static var dict  = """
+                                        Echoes a message indicating if Wordler contains the specified word 
+                                        in its list of possible answers. 
+                                        \tUsage:
+                                        \t* 'dict MOMMY' indicates that the word is a posslbe answer.
+                                        \t* 'dict ZAXON' indicates that the word is *not* a posslbe answer.
+                                        """
+                    
+                    static var get  = """
+                                        Attempts to retrieve data about answers/puzzles.
+                                        \tUsage:
+                                        \t* 'get <word|date|puzzle#>' retrieves the associated answer.
+                                        \t* 'get <low-hi>' retrieves the range of answers 
+                                        \t   associated with puzzle #s from low to high. 
+                                        \t  (e.g. 'get 1-5' retrieves puzzles 1-5).
+                                        \t* 'get w <puzzle#|date|low-hi>' retrieves only the word associated with 
+                                        \t   the specified puzzle number, date or range.
+                                        \t* 'get d <puzzle#|word|low-hi>' retrieves only the date associated with 
+                                        \t   the specified puzzle number, word or range
+                                        \t* 'get n <date|word|low-hi>' retrieves only the puzzle number associated 
+                                        \t   with the specified date, word or range.
+                                        \t* 'get c <puzzle#|date|word|low-hi>' retrieves only the count of puzzles 
+                                        \t   associated with the specified puzzle number, date, word or range.
+                                        """
+                    
                     static var add  = """
                                         Attemps to add the specified word(s) to remembered words list.
                                         \tUsage:
@@ -54,6 +80,14 @@ struct Configs {
                                         \t  to rememered words list.
                                         \t* 'add BLANK 09-24-24' adds words BLANK to remembered word
                                         \t  list with date of September 24, 2024.
+                                        """
+                    
+                    static var del  = """
+                                        Attemps to delete the specified word from remembered words list.
+                                        \tUsage:
+                                        \t* 'del TRUCK TRIPS ZONKS' attempts to delete words TRUCK
+                                        \t  TRIPS and ZONKS from remembered words.
+                                        \t* 'del 05-23-12' attempts to delete all words added on 05-23-12.
                                         """
                     
                     static var last = """
@@ -73,34 +107,9 @@ struct Configs {
                     
                     static var csv  = "Formats remembered answer as CSV and copies to pasteboard."
                     
-                    static var del  = """
-                                        Attemps to delete the specified word from remembered words list.
-                                        \tUsage:
-                                        \t* 'del TRUCK TRIPS ZONKS' attempts to delete words TRUCK
-                                        \t  TRIPS and ZONKS from remembered words.
-                                        \t* 'del 05-23-12' attempts to delete all words added on 05-23-12.
-                                        """
-                    
                     static var gaps = "Echoes a list of all missing archived puzzles."
                     
                     static var nuke = "**CAUTION** this command *deletes all* user saved answers."
-                    
-                    static var get  = """
-                                        Attempts to retrieve data about answers/puzzles.
-                                        \tUsage:
-                                        \t* 'get <word|date|puzzle#>' retrieves the associated answer.
-                                        \t* 'get <low-hi>' retrieves the range of answers 
-                                        \t   associated with puzzle #s from low to high. 
-                                        \t  (e.g. 'get 1-5' retrieves puzzles 1-5).
-                                        \t* 'get w <puzzle#|date|low-hi>' retrieves only the word associated with 
-                                        \t   the specified puzzle number, date or range.
-                                        \t* 'get d <puzzle#|word|low-hi>' retrieves only the date associated with 
-                                        \t   the specified puzzle number, word or range
-                                        \t* 'get n <date|word|low-hi>' retrieves only the puzzle number associated 
-                                        \t   with the specified date, word or range.
-                                        \t* 'get c <puzzle#|date|word|low-hi>' retrieves only the count of puzzles 
-                                        \t   associated with the specified puzzle number, date, word or range.
-                                        """
                     
                 }
                 
