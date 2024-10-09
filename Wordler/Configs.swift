@@ -30,11 +30,11 @@ struct Configs {
                 struct Tokens {
                     
                     static var recap    = "recap"
-                    static var add      = "addrem"
+                    static var add      = "add"
                     static var last     = "last"
                     static var rem      = "rem"
                     static var csv      = "csv"
-                    static var del      = "delrem"
+                    static var del      = "del"
                     static var gaps     = "gaps"
                     static var nuke     = "nuke"
                     static var get      = "get"
