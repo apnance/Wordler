@@ -9,7 +9,7 @@ import Foundation
 
 enum ArgType { case date, puzzleNum, puzzleNumRange, word, option, unknown }
 
-/// Custom treatment of String for when they are used as arguments to `Command`s
+/// Custom treatment of `String`s for when they are used as arguments to `Command`s
 typealias Argument  = String
 extension Argument {
     
