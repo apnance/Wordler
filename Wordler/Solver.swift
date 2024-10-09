@@ -544,6 +544,12 @@ class Solver {
         
     }
     
+    
+    /// Returns a `Bool` indicating if the provided word is in Wordler's list of possible answers.
+    /// - Parameter word: five letter word to search Wordler's possible answers for.
+    /// - Returns:  `Bool` indicating if the provided word is a possible answer.
+    func hasWord(_ word: String) -> Bool { allWords.contains(word.uppercased()) }
+    
     /// Confirms the user wants to archive the specified `Word` and  if
     /// confirmed archives it.
     /// - Parameter word: winning answer `Word` to archive.
