@@ -43,6 +43,10 @@ struct WordlerDict: Command {
                     
                     output += "\nIt was used in Puzzle #\(previousAnswer.computedPuzzleNum) on \(date)."
                     
+                } else {
+                    
+                    output += "\nIt has not yet been used in a Wordle puzzle."
+                    
                 }
                 
             } else {
