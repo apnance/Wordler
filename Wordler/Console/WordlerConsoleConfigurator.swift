@@ -14,8 +14,8 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
     @discardableResult init(consoleView: ConsoleView,
                             solver: Solver) {
         
-        self.consoleView = consoleView
-        self.solver = solver
+        self.consoleView    = consoleView
+        self.solver         = solver
         
         load()
         
