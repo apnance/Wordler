@@ -9,13 +9,5 @@
 import UIKit
 
 extension UIColor {
-    
-    // TODO: Clean Up - move to APNUtil
-    /// Creates alternating shades of the `self` for use in coloring consecutive rows of text.
-    func altRow(_ n: Int, _ otherColor: UIColor? = nil) -> UIColor {
-        
-        (n % 2 == 0) ? self : (otherColor ?? self.halfAlpha)
-        
-    }
-    
+    /*Temporary UIColor functionality that should be migrated to APNUtil*/
 }
