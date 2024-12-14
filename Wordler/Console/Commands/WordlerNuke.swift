@@ -14,8 +14,6 @@ struct WordlerNuke: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.nuke
     
     var isGreedy        = false
@@ -46,7 +44,7 @@ struct WordlerNuke: Command {
                 
             default:
                 
-                console.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
+                Console.shared.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
                                         expectingResponse: expectedResponses)
                 
                 commandOutput = """
@@ -57,7 +55,7 @@ struct WordlerNuke: Command {
                 
         }
         
-        return console.screen.formatCommandOutput(commandOutput)
+        return CommandOutput.output(commandOutput)
         
     }
     

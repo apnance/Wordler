@@ -17,8 +17,6 @@ struct WordlerGet: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.get
     
     var isGreedy        = false
@@ -48,23 +46,17 @@ struct WordlerGet: Command {
         func output() -> CommandOutput {
             
             var output  = CommandOutput()
-            var row     = 0
             
-            for content in contents {
+            for (i, content) in contents.enumerated() {
                 
-                let content = content.tidy()
+                let content = content.tidy() + "\n"
                 
-                let target = (row % 2 == 0) ? FormatTarget.output : .outputDeemphasized
-                
-                output += console.screen.format(content + "\n",
-                                                target: target,
-                                                overrideFGColor: nil)
-                // Next
-                row += 1
+                output += CommandOutput.output(content,
+                                               overrideFGColor: Configs.UI.Color.row(i))
                 
             }
             
-            return output
+            return output // EXIT
             
         }
         

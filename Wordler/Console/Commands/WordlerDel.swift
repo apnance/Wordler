@@ -14,8 +14,6 @@ struct WordlerDel: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.del
     
     var isGreedy        = false
@@ -30,11 +28,11 @@ struct WordlerDel: Command {
               args.count > 0
         else {
             
-            return console.screen.formatCommandOutput("Please specify word(s) to delete.") /*EXIT*/
+            return CommandOutput.error(msg: "please specify word(s) to delete.") // EXIT
             
         }
         
-        var output = ""
+        var output = CommandOutput()
         
         if let date = args[0].simpleDateMaybe {
             
@@ -42,11 +40,11 @@ struct WordlerDel: Command {
             
             if deleted.count > 0 {
                 
-                output += "\nDeleted Words From: \(date.simple)\(deleted.reduce(""){ $0 + "\n\t*" + $1.uppercased()})"
+                output += CommandOutput.warning("deleted words from: \(date.simple)\(deleted.reduce(""){ $0 + "\n*" + $1.uppercased()})")
                 
             } else {
                 
-                output += "\n[ERROR] No words found for date \(date.simple)"
+                output += CommandOutput.error(msg: "no words found for date \(date.simple)")
                 
             }
             
@@ -76,17 +74,17 @@ struct WordlerDel: Command {
             
             if matched.count > 0 {
                 
-                output += "\nDeleted Word(s): \(matched.asCommaSeperatedString(conjunction: "&"))"
+                output += CommandOutput.warning("deleted word(s): \(matched.asCommaSeperatedString(conjunction: "&"))")
                 
             }
             
             if unmatched.count > 0 {
-                output += "\n[ERROR] Word(s) not found: \(unmatched.asCommaSeperatedString(conjunction: "&"))"
+                output += CommandOutput.error(msg: "word(s) not found: \(unmatched.asCommaSeperatedString(conjunction: "&"))")
             }
             
         }
         
-        return console.screen.formatCommandOutput(output)
+        return output
         
     }
     

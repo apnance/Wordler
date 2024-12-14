@@ -11,10 +11,8 @@ import ConsoleView
 
 struct WordlerConsoleConfigurator: ConsoleConfigurator {
     
-    @discardableResult init(consoleView: ConsoleView,
-                            solver: Solver) {
+    @discardableResult init(solver: Solver) {
         
-        self.consoleView    = consoleView
         self.solver         = solver
         
         load()
@@ -22,22 +20,22 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
     }
     
     var solver: Solver
-    var consoleView: ConsoleView
-    var console: Console { consoleView.console }
+    
+    var consoleView: ConsoleView { Console.shared.screen }
     
     var commands: [Command]? {
     
         [
             
-            WordlerRecap(console: console),
-            WordlerDict(solver: solver, console: console),
-            WordlerGet(solver: solver, console: console),
-            WordlerAdd(solver: solver, console: console),
-            WordlerDel(solver: solver, console: console),
-            WordlerLast(solver: solver, console: console),
-            WordlerRem(solver: solver, console: console),
-            WordlerCSV(solver: solver, console: console),
-            WordlerNuke(solver: solver, console: console)
+            WordlerRecap(),
+            WordlerDict(solver: solver),
+            WordlerGet(solver: solver),
+            WordlerAdd(solver: solver),
+            WordlerDel(solver: solver),
+            WordlerLast(solver: solver),
+            WordlerRem(solver: solver),
+            WordlerCSV(solver: solver),
+            WordlerNuke(solver: solver)
             
         ]
         

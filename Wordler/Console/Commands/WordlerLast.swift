@@ -15,8 +15,6 @@ struct WordlerLast: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.last
     
     var isGreedy        = false
@@ -27,9 +25,7 @@ struct WordlerLast: Command {
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
-        let consoleView = console.screen!
-        
-        var output = CommandOutput("", AttributedString(""))
+        var output      = CommandOutput()
         var k           = 1
         let arg1        = args.elementNum(0)
         
@@ -38,13 +34,14 @@ struct WordlerLast: Command {
             guard let lastCount = Int(arg1)
             else {
                 
-                return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. Specify Integer count value.") // EXIT
+                return CommandOutput.error(msg: "invalid argument '\(arg1)'. Specify an integer count value.") // EXIT
                 
             }
             
             if lastCount < 1 {
                 
-                return consoleView.formatCommandOutput("[Error] Invalid argument: '\(arg1)'. [Error] specify count argument > 0") // EXIT
+                return CommandOutput.error(msg: "specify count > 0.") // EXIT
+                
             }
             
             k = lastCount
@@ -53,33 +50,28 @@ struct WordlerLast: Command {
         
         let lastK = Array(solver.rememberedAnswers).sorted(by: { $0.date! < $1.date! }).last(k)
         
-        output += consoleView.formatCommandOutput("\nLast \(lastK.count) Remembered Word(s)")
+        let header = lastK.count > 1 
+                    ? "Last \(lastK.count) remembered words:"
+                    : "Last remembered word:"
+        
+        output += CommandOutput.output(header)
         
         for (i, remembered) in lastK.enumerated() {
             
-            let rowColor =  (i % 2 == 0)
-            ? consoleView.configs.fgColorScreenOutput.halfAlpha
-            : consoleView.configs.fgColorScreenOutput.pointEightAlpha
-            
-            let word = consoleView.formatCommandOutput("""
+            output += CommandOutput.output("""
                                                     
-                                                   \t   #: \(remembered.answerNumDescription)
-                                                   \tWord: \(remembered.word.uppercased())
-                                                   \tDate: \(remembered.date?.simple ?? "?")
-                                                   """,
-                                                       overrideColor: rowColor)
-            
-            output += word
+                                              #: \(remembered.answerNumDescription)
+                                           Word: \(remembered.word.uppercased())
+                                           Date: \(remembered.date?.simple ?? "?")
+                                           """,
+                                           overrideFGColor: Configs.UI.Color.row(i))
             
         }
         
         if lastK.count != k {
             
-            output += consoleView.formatCommandOutput("""
-                    
-                    
-                    Note: Requested(\(k)) > Total(\(lastK.count))
-                    """)
+            output += CommandOutput.note("requested(\(k)) > total(\(lastK.count))",
+                                         newLines: 2)
             
         }
         

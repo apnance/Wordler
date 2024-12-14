@@ -146,14 +146,13 @@ class ViewController: UIViewController {
     
     func uiInitConsole() {
         
-        WordlerConsoleConfigurator(consoleView: consoleView,
-                                   solver: solver)
+        WordlerConsoleConfigurator(solver: solver)
         
         DataManagerConfigurator(consoleView: consoleView,
                                 data: solver)
         
     }
-  
+    
     /// Sets text in thumnaileGameSummary and syncs this would consoleView if `shouldSyncConsole` is `true`
     private func uiSetSummaryText(_ text: String,
                                   shouldAppendToGameSummaryText: Bool = true,

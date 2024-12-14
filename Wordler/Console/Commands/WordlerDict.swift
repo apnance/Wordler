@@ -14,8 +14,6 @@ struct WordlerDict: Command {
     var solver: Solver!
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.dict
     
     var isGreedy        = false
@@ -28,38 +26,34 @@ struct WordlerDict: Command {
         
         let word   = args.elementNum(0).uppercased()
         
-        var output = "'\(word)' is not a valid 5-letter answer candidate."
-        var target = FormatTarget.outputWarning
+        var output = CommandOutput.warning("'\(word)' is not a valid 5-letter answer candidate.")
         
         if word.type == .word {
             
             if solver.hasWord(word) {
                 
-                target  = .output
-                output  = "'\(word)' is a possible answer."
+                output  = CommandOutput.note("'\(word)' is a possible answer.\n")
                 
                 if let previousAnswer = solver.getFor(word).first,
                    let date = previousAnswer.date?.simple {
                     
-                    output += "\nIt was used in Puzzle #\(previousAnswer.computedPuzzleNum) on \(date)."
+                    output += CommandOutput.warning("it was used in Puzzle #\(previousAnswer.computedPuzzleNum) on \(date).")
                     
                 } else {
                     
-                    output += "\nIt has not yet been used in a Wordle puzzle."
+                    output += CommandOutput.note("it has not yet been used in a Wordle puzzle.")
                     
                 }
                 
             } else {
                 
-                target  = .outputWarning
-                output  = "'\(word)' is not a possible answer."
+                output = CommandOutput.warning("'\(word)' is not a possible answer.")
                 
             }
             
         }
         
-        return console.screen.format(output,
-                                     target: target)
+        return output
         
     }
 }

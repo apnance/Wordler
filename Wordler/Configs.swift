@@ -83,7 +83,7 @@ struct Configs {
                                         """
                     
                     static var del  = """
-                                        Attemps to delete the specified word from remembered words list.
+                                        Attempts to delete the specified word from remembered words list.
                                         \tUsage:
                                         \t* 'del TRUCK TRIPS ZONKS' attempts to delete words TRUCK
                                         \t  TRIPS and ZONKS from remembered words.
@@ -134,12 +134,19 @@ struct Configs {
         
         struct Color {
             
+            
+            /// Creates alternating shades of gray, perfect for use shading altnerating rows of text.
+            static func row(_ n: Int) -> UIColor { wordleGrayLight!.altRow(n, wordleGrayLight!.halfAlpha) }
+            
             static let wordleGray           = UIColor(named: "WordleGray")
             static let wordleGrayLight      = UIColor(named: "WordleGrayLight")
             static let wordleGrayDark       = UIColor(named: "WordleGrayDark")
             static let wordleGreen          = UIColor(named: "WordleGreen")
             static let wordleYellow         = UIColor(named: "WordleYellow")
             static let wordleBackgroundGray = UIColor(named: "WordleBackgroundGray")
+            
+            // The Fictional Color All Wordle-heads Are Clamoring For!
+            static let wordleBlue           = UIColor(named: "WordleBlue")
             
         }
         

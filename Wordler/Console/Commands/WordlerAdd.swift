@@ -15,8 +15,6 @@ struct WordlerAdd: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.add
     
     var isGreedy        = false
@@ -29,7 +27,6 @@ struct WordlerAdd: Command {
         
         var i = 0
         var output = CommandOutput()
-        let screen = console.screen!
         
         repeat {
             
@@ -41,13 +38,11 @@ struct WordlerAdd: Command {
             if Solver.validate(word) {
                 
                 solver.archive(word, date: date, confirmAdd: false)
-                output += screen.format("\nWord Remembered: \(word) \(date?.simple ?? "")",
-                                        target: .output)
+                output += CommandOutput.note("Wordler remembered -> '\(word)' \(date?.simple ?? "")\n")
                 
             } else {
                 
-                output += screen.format("\n[ERROR] '\(word)' is not a valid 5 letter word.",
-                                        target: .outputWarning)
+                output += CommandOutput.error(msg: "'\(word)' is not a valid 5 letter word.")
                 
             }
             

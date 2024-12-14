@@ -21,6 +21,8 @@
 		9376B9C62BF5225200695BF7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9376B9C52BF5225200695BF7 /* Answer.swift */; };
 		93A1B92B2CB10556007472B1 /* Argument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B92A2CB10553007472B1 /* Argument.swift */; };
 		93A1B9312CB73C9C007472B1 /* WordlerDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A1B9302CB73C98007472B1 /* WordlerDict.swift */; };
+		93AF8B812D0CE4DC007BF3BD /* CommandOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF8B802D0CE4DC007BF3BD /* CommandOutput.swift */; };
+		93AF8B832D0D81A1007BF3BD /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AF8B822D0D81A1007BF3BD /* UIColor.swift */; };
 		93CB48032799FD0700A5CD8F /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB47FF2799FD0400A5CD8F /* Configs.swift */; };
 		93CEF95E28E83F6E009C1A07 /* APNUtil in Frameworks */ = {isa = PBXBuildFile; productRef = 93CEF95D28E83F6E009C1A07 /* APNUtil */; };
 		93D882992BF033400087C924 /* words.wordle.remembered.answers.txt in Resources */ = {isa = PBXBuildFile; fileRef = 93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */; };
@@ -79,6 +81,8 @@
 		9376B9C52BF5225200695BF7 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		93A1B92A2CB10553007472B1 /* Argument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Argument.swift; sourceTree = "<group>"; };
 		93A1B9302CB73C98007472B1 /* WordlerDict.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordlerDict.swift; sourceTree = "<group>"; };
+		93AF8B802D0CE4DC007BF3BD /* CommandOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandOutput.swift; sourceTree = "<group>"; };
+		93AF8B822D0D81A1007BF3BD /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		93CB47FF2799FD0400A5CD8F /* Configs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		93CEF95C28E83F57009C1A07 /* APNUtil */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = APNUtil; path = ../Frameworks/APNUtil; sourceTree = "<group>"; };
 		93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.wordle.remembered.answers.txt; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				930C2C15278E28EB009B111C /* V */,
 				930C2C14278E28E5009B111C /* C */,
 				930C2C17278E2906009B111C /* Resources */,
+				93AF8B7E2D0CE4B0007BF3BD /* Supporting Files */,
 			);
 			path = Wordler;
 			sourceTree = "<group>";
@@ -202,6 +207,23 @@
 				93D882982BF033400087C924 /* words.wordle.remembered.answers.txt */,
 			);
 			name = Words;
+			sourceTree = "<group>";
+		};
+		93AF8B7E2D0CE4B0007BF3BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93AF8B7F2D0CE4C7007BF3BD /* Extensions */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93AF8B7F2D0CE4C7007BF3BD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				93AF8B822D0D81A1007BF3BD /* UIColor.swift */,
+				93AF8B802D0CE4DC007BF3BD /* CommandOutput.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		93CB48042799FF1B00A5CD8F /* iOS */ = {
@@ -391,6 +413,7 @@
 				93DF7636278FDABD001234EC /* Configs.swift in Sources */,
 				930C2C03278E27E7009B111C /* ViewController.swift in Sources */,
 				9376B9C62BF5225200695BF7 /* Answer.swift in Sources */,
+				93AF8B812D0CE4DC007BF3BD /* CommandOutput.swift in Sources */,
 				93A1B9312CB73C9C007472B1 /* WordlerDict.swift in Sources */,
 				930C2BFF278E27E7009B111C /* AppDelegate.swift in Sources */,
 				9344DE352A7C2DE100E4D8CE /* ProgressIndicator.swift in Sources */,
@@ -401,6 +424,7 @@
 				93DDF2112CA639E6005D3C3C /* WordlerNuke.swift in Sources */,
 				93DDF20B2CA636B1005D3C3C /* WordlerRem.swift in Sources */,
 				93DDF20D2CA6388A005D3C3C /* WordlerCSV.swift in Sources */,
+				93AF8B832D0D81A1007BF3BD /* UIColor.swift in Sources */,
 				93DDF2132CA63E8C005D3C3C /* WordlerConsoleConfigurator.swift in Sources */,
 				93DDF20F2CA6393E005D3C3C /* WordlerDel.swift in Sources */,
 				930C2C01278E27E7009B111C /* SceneDelegate.swift in Sources */,

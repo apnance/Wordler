@@ -12,8 +12,6 @@ import ConsoleView
 struct WordlerRecap: Command {
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.recap
     
     var isGreedy        = false
@@ -24,26 +22,23 @@ struct WordlerRecap: Command {
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
-        let vc          = (console.screen! as! ConsoleView)
+        let vc          = Console.screen.viewController as? ViewController
         
-        if let recapText = (vc.viewController as? ViewController)?.gameSummaryText {
+        if let recapText = vc?.gameSummaryText {
             
             if recapText.isEmpty {
                 
-                return console.screen.format("[Warning] : Nothing to recap yet.",
-                                             target: .outputWarning)
+                return CommandOutput.warning("nothing to recap yet.")
                 
             } else {
                 
-                return console.screen.formatCommandOutput(recapText,
-                                                          overrideColor: Configs.UI.Color.wordleYellow)
+                return CommandOutput.output(recapText, overrideFGColor: Configs.UI.Color.wordleYellow)
                 
             }
             
         } else {
             
-            return console.screen.format("[Error] : Unable to access recap summary.",
-                                         target: .outputWarning)
+            return CommandOutput.error(msg: "unable to access recap summary.")
             
         }
         

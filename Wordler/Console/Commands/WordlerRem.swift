@@ -15,8 +15,6 @@ struct WordlerRem: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.rem
     
     var isGreedy        = false
@@ -31,7 +29,7 @@ struct WordlerRem: Command {
         
         if arg1 == "count" {
             
-            return console.screen.formatCommandOutput("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
+            return CommandOutput.output("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
             
         }
         
@@ -39,13 +37,12 @@ struct WordlerRem: Command {
             .sorted{ $0.date! < $1.date! }
             .reduce(""){ "\($0)\n\($1.description)"}
         
-        remembered = remembered.replacingOccurrences(of: "on ", with: "")
-        remembered = remembered.replacingOccurrences(of: " ", with: "\t")
+        remembered = remembered.replacingOccurrences(of: "on ", with: " ")
+        remembered = remembered.replacingOccurrences(of: " +", with: "  ", options: [.regularExpression])
+        remembered = remembered.replacingOccurrences(of: "*  ", with: "* ")
         
-        var atts                        = console.screen.formatCommandOutput(remembered)
-        atts.formatted.foregroundColor  = UIColor.lightGray
-        
-        return atts
+        return CommandOutput.output(remembered,
+                                    overrideFGColor: Configs.UI.Color.wordleGrayLight)
         
     }
 }

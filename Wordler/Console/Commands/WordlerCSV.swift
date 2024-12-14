@@ -16,8 +16,6 @@ struct WordlerCSV: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var console: Console
-    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.csv
     
     var isGreedy        = false
@@ -34,15 +32,12 @@ struct WordlerCSV: Command {
         
         printToClipboard(csv)
         
-        var atts = console.screen.formatCommandOutput("""
-            \(csv)
-            
-            [Note: above output copied to pasteboard]
-            """)
+        var output  = CommandOutput.output(csv, overrideFGColor: Configs.UI.Color.wordleGrayLight)
         
-        atts.formatted.foregroundColor    = UIColor.lightGray
+        output      += CommandOutput.note("copied to pasteboard.",
+                                          newLines: 2)
         
-        return atts
+        return output
         
     }
 }
