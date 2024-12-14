@@ -45,11 +45,12 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
         
         var configs = ConsoleViewConfigs()
         
-        configs.fgColorPrompt       = Configs.UI.Color.wordleYellow!
-        configs.fgColorCommandLine  = Configs.UI.Color.wordleYellow!
-        configs.fgColorScreenInput  = Configs.UI.Color.wordleGreen!
-        configs.fgColorScreenOutput = Configs.UI.Color.wordleGrayLight!
-        configs.fgColorScreenOutputWarning = Configs.UI.Color.wordleYellow!
+        configs.fgColorPrompt               = Configs.UI.Color.wordleYellow!
+        configs.fgColorCommandLine          = Configs.UI.Color.wordleYellow!
+        configs.fgColorScreenInput          = Configs.UI.Color.wordleGreen!
+        configs.fgColorScreenOutput         = Configs.UI.Color.wordleGrayLight!
+        configs.fgColorScreenOutputNote     = Configs.UI.Color.wordleBlue!
+        configs.fgColorScreenOutputWarning  = Configs.UI.Color.wordleYellow!
         
         configs.borderWidth         = Configs.UI.standardBorderWidth
         configs.borderColor         = Configs.UI.Color.wordleGrayDark!.cgColor
