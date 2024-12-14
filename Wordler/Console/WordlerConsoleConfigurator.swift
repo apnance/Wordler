@@ -21,8 +21,6 @@ struct WordlerConsoleConfigurator: ConsoleConfigurator {
     
     var solver: Solver
     
-    var consoleView: ConsoleView { Console.shared.screen }
-    
     var commands: [Command]? {
     
         [

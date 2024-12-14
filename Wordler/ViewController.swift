@@ -148,8 +148,7 @@ class ViewController: UIViewController {
         
         WordlerConsoleConfigurator(solver: solver)
         
-        DataManagerConfigurator(consoleView: consoleView,
-                                data: solver)
+        DataManagerConfigurator(data: solver)
         
     }
     
