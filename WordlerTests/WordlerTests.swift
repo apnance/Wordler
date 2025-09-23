@@ -8,7 +8,8 @@
 import XCTest
 @testable import Wordler
 
-class WordlerTests: XCTestCase {
+@available(iOS 16, *)
+class WordlerTests: ConsoleViewTestCase {
     
     func testLetterFrequency() { letterFrequency() }
     

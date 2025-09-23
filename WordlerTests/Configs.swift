@@ -10,6 +10,7 @@ import Foundation
 
 struct Configs {
     
+    static let shouldShuntTestPrintMessages = true
     static var echoTestMessages = false
     static let runs             = 100
     static let sampleSize: Int  = runs / 10
