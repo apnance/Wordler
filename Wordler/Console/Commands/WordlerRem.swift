@@ -15,21 +15,23 @@ struct WordlerRem: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.rem
+    static var flags: [Token] = ["c"]
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.rem
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.rem
     
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.rem
+    
     func process(_ args: [Argument]?) -> CommandOutput {
         
         let arg1 = args.elementNum(0).lowercased()
         
-        if arg1 == "count" {
+        if arg1 == Self.flags[0] {
             
-            return CommandOutput.output("\(solver.rememberedAnswers.count) answers remembered.") /*EXIT*/
+            return CommandOutput.output("\(solver.rememberedAnswers.count) total answers remembered.") /*EXIT*/
             
         }
         
@@ -45,4 +47,5 @@ struct WordlerRem: Command {
                                     overrideFGColor: Configs.UI.Color.wordleGrayLight)
         
     }
+    
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -580,6 +580,9 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9A-a3-Cqo" userLabel="Console View" customClass="ConsoleView" customModule="ConsoleView">
                                 <rect key="frame" x="10" y="55" width="394" height="474"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="474" identifier="consoleViewHeight" id="lUe-A4-prq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jW2-La-TwM"/>
@@ -591,7 +594,6 @@
                             <constraint firstAttribute="trailing" secondItem="GJF-rb-zyE" secondAttribute="trailing" constant="10" id="Dpd-1b-wYD"/>
                             <constraint firstItem="eDx-gY-HJU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="X1W-zy-eEM"/>
                             <constraint firstAttribute="trailing" secondItem="eDx-gY-HJU" secondAttribute="trailing" constant="10" id="Xum-Nu-Vhp"/>
-                            <constraint firstItem="g9A-a3-Cqo" firstAttribute="bottom" secondItem="ZoX-yr-BbH" secondAttribute="top" constant="-6" id="Zby-Nr-btm"/>
                             <constraint firstItem="g9A-a3-Cqo" firstAttribute="top" secondItem="GJF-rb-zyE" secondAttribute="top" id="qIb-6c-MkZ"/>
                             <constraint firstItem="g9A-a3-Cqo" firstAttribute="leading" secondItem="jW2-La-TwM" secondAttribute="leading" constant="10" id="uty-52-egd"/>
                             <constraint firstItem="GJF-rb-zyE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="xfO-Wh-Jsz"/>

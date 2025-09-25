@@ -14,13 +14,15 @@ struct WordlerDict: Command {
     var solver: Solver!
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.dict
+    static var flags: [Token] = []
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.dict
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.dict
+    
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.dict
     
     func process(_ args: [String]?) -> CommandOutput {
         
@@ -56,5 +58,6 @@ struct WordlerDict: Command {
         return output
         
     }
+    
 }
 

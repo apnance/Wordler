@@ -12,13 +12,15 @@ import ConsoleView
 struct WordlerRecap: Command {
     
     // - MARK: Command Requirements
+    static var flags: [Token] = []
+    
     var commandToken    = Configs.Settings.Console.Commands.Tokens.recap
-    
-    var isGreedy        = false
-    
+        
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.recap
+    
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.recap
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
@@ -43,5 +45,6 @@ struct WordlerRecap: Command {
         }
         
     }
+    
 }
 

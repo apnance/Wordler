@@ -14,13 +14,15 @@ struct WordlerDel: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.del
+    static var flags: [Token] = []
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.del
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.del
+    
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.del
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
@@ -32,7 +34,7 @@ struct WordlerDel: Command {
             
         }
         
-        var output = CommandOutput()
+        var output = CommandOutput.empty
         
         if let date = args[0].simpleDateMaybe {
             

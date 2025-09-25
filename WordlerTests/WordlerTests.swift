@@ -69,6 +69,7 @@ class WordlerTests: ConsoleViewTestCase {
     
 }
 
+@available(iOS 16, *)
 extension WordlerTests {
     
     private func outcomes(with initialGuesses: [Word], title: String = "Results") -> String {

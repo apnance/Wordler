@@ -16,13 +16,15 @@ struct WordlerCSV: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.csv
+    static var flags: [Token] = []
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.csv
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.csv
+    
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.csv
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
@@ -40,4 +42,5 @@ struct WordlerCSV: Command {
         return output
         
     }
+    
 }

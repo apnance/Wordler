@@ -14,48 +14,27 @@ struct WordlerNuke: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.nuke
+    static var flags: [Token] = ["Y","N"]
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.nuke
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.nuke
     
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.nuke
+    
     func process(_ args: [Argument]?) -> CommandOutput {
         
-        var commandOutput       = ""
-        let expectedResponses   = ["Y","N"]
-        let response            = args.elementNum(0)
-        
-        switch response {
-                
-            case "Y":
-                
-                let startCount  = solver.archivedAnswers.count
-                solver.setRememberedAnswers(revertToFile: true)
-                let deleteCount = startCount - solver.archivedAnswers.count
-                
-                commandOutput = "Nuke successful: \(deleteCount) user saved answers deleted."
-                
-            case "N":
-                
-                commandOutput   = "Nuke operation aborted."
-                
-            default:
-                
-                Console.shared.registerCommand(Configs.Settings.Console.Commands.Tokens.nuke,
-                                        expectingResponse: expectedResponses)
-                
-                commandOutput = """
-                                [Warning] Nuking cannot be undone and will *DELETE ALL* user-saved answers.
-                                
-                                'N' to abort - 'Y' to proceed.
-                                """
-                
-        }
-        
-        return CommandOutput.output(commandOutput)
+        return yesNo(prompt: """
+                                    Nuking cannot be undone and will *DELETE ALL* user-saved puzzles.
+                                    
+                                    'N' to abort - 'Y' to proceed.
+                                    """,
+                     yesMsg: CommandOutput.warning("Nuke successful: user saved puzzle(s) deleted."),
+                     noMsg: CommandOutput.emphasized("Nuke operation aborted."),
+                     args: args,
+                     yesCallback: { solver.setRememberedAnswers(revertToFile: true) })
         
     }
     

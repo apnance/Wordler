@@ -15,17 +15,19 @@ struct WordlerLast: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.last
+    static var flags: [Token] = []
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.last
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.last
     
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.last
+    
     func process(_ args: [Argument]?) -> CommandOutput {
         
-        var output      = CommandOutput()
+        var output      = CommandOutput.empty
         var k           = 1
         let arg1        = args.elementNum(0)
         
@@ -50,9 +52,9 @@ struct WordlerLast: Command {
         
         let lastK = Array(solver.rememberedAnswers).sorted(by: { $0.date! < $1.date! }).last(k)
         
-        let header = lastK.count > 1 
-                    ? "Last \(lastK.count) remembered words:"
-                    : "Last remembered word:"
+        let header =    lastK.count > 1
+                        ? "Last \(lastK.count) remembered words:"
+                        : "Last remembered word:"
         
         output += CommandOutput.output(header)
         

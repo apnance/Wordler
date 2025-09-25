@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ConsoleView
 
 struct Configs {
     
@@ -113,6 +114,22 @@ struct Configs {
                     
                 }
                 
+                struct Validation {
+                    
+                    static var recap    = CommandArgPattern(.empty)
+                    static var dict     = CommandArgPattern(.alphaSingle).labeled("5 letter word")
+                    static var get      = CommandArgPattern(.flagSingleOptional,
+                                                            .anyNonFlagMultiOptional).labeled(WordlerGet.flagSyntax, "date|puzzle#|-digits")
+                    
+                    static var add      = CommandArgPattern(.alphaMulti).labeled("5 letter word(s)")
+                    static var del      = CommandArgPattern(.alphaMulti).labeled("5 letter word(s)")
+                    static var last     = CommandArgPattern(.numSingleOptional).labeled("# of puzzles")
+                    static var rem      = CommandArgPattern(.alphaSingleOptional).labeled("\(WordlerRem.flagSyntax)")
+                    static var csv      = CommandArgPattern(.empty)
+                    static var gaps     = CommandArgPattern(.empty)
+                    static var nuke     = CommandArgPattern(.alphaSingleOptional).labeled("\(WordlerNuke.flagSyntax)")
+                    
+                }
             }
             
         }
@@ -140,13 +157,16 @@ struct Configs {
             
             static let wordleGray           = UIColor(named: "WordleGray")
             static let wordleGrayLight      = UIColor(named: "WordleGrayLight")
-            static let wordleGrayDark       = UIColor(named: "WordleGrayDark")
+            static let wordleGrayDark       = UIColor(named: "WordleGrayDark")  // Outline Color of Wordle Letter-Tile-Buttons
             static let wordleGreen          = UIColor(named: "WordleGreen")
             static let wordleYellow         = UIColor(named: "WordleYellow")
             static let wordleBackgroundGray = UIColor(named: "WordleBackgroundGray")
             
             // The Fictional Color All Wordle-heads Are Clamoring For!
             static let wordleBlue           = UIColor(named: "WordleBlue")
+            
+            // Yet Another Man-Made, Artificial Wordle Color
+            static let wordleRed           = UIColor.systemRed
             
         }
         

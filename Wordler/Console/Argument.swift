@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum ArgType { case date, puzzleNum, puzzleNumRange, word, option, unknown }
+enum WordlerArgType { case date, puzzleNum, puzzleNumRange, word, option, unknown }
 
 /// Custom treatment of `String`s for when they are used as arguments to `Command`s
 typealias Argument  = String
 extension Argument {
     
-    var type: ArgType {
+    var type: WordlerArgType {
         
         if isNumeric() { return .puzzleNum              /*EXIT*/ }
         else if isWord(ofLen: 1) { return .option       /*EXIT*/ }

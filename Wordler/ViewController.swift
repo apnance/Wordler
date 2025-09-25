@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     public private(set) var gameSummaryText = ""
     
     private weak var progressIndicator: ProgressIndicator?
-        
+    
     // MARK: - Outlets
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var clearButton: UIButton!
@@ -105,7 +105,7 @@ class ViewController: UIViewController {
         view.addGestureRecognizer(tap)
         
         thumbnailGameSummary.addGestureRecognizer(UITapGestureRecognizer(target: self,
-                                                             action: #selector(uiShowConsole)))
+                                                                         action: #selector(uiShowConsole)))
         
         // Build rowToButton
         for (rowNum, row) in rows.enumerated() {
@@ -150,6 +150,8 @@ class ViewController: UIViewController {
         
         DataManagerConfigurator(data: solver)
         
+        consoleView.keyboardResizeHandler = KeyboardResizeHandler(consoleView: consoleView)
+        
     }
     
     /// Sets text in thumnaileGameSummary and syncs this would consoleView if `shouldSyncConsole` is `true`
@@ -184,7 +186,7 @@ class ViewController: UIViewController {
         letters.padTo(finalCount: 5, with: " ")
         
         for colNum in 0...4 {
-        
+            
             let letter = String(letters[colNum]).uppercased()
             
             let row = rowToButton[currentRow]!
@@ -208,7 +210,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func uiShowConsole() {
-    
+        
         let showHide: ShowHide = consoleView.isHidden ? .show : .hide
         
         consoleView.showHide(showHide)
@@ -316,8 +318,8 @@ class ViewController: UIViewController {
             var possibleSolutions: (remaining: [Word : Score],
                                     suggested: Word,
                                     repeatedAnswer: Answer?) = ([Word : Score](),
-                                                                       "",
-                                                                       nil)
+                                                                "",
+                                                                nil)
             
             var exacts      = ["-", "-", "-", "-", "-"]
             var inclusions  = ["-", "-", "-", "-", "-"]
@@ -442,7 +444,7 @@ class ViewController: UIViewController {
     private func archiveAnswer() {
         
         if let  word = self.textField.text?.uppercased(),
-                solver.allWords.contains(word) {
+           solver.allWords.contains(word) {
             
             solver.archive(word)
             

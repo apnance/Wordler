@@ -17,13 +17,15 @@ struct WordlerGet: Command {
     var solver: Solver
     
     // - MARK: Command Requirements
-    var commandToken    = Configs.Settings.Console.Commands.Tokens.get
+    static var flags    = ["w", "d", "n", "c"]
     
-    var isGreedy        = false
+    var commandToken    = Configs.Settings.Console.Commands.Tokens.get
     
     var category        = Configs.Settings.Console.Commands.category
     
     var helpText        = Configs.Settings.Console.Commands.HelpText.get
+    
+    let validationPattern: CommandArgPattern? = Configs.Settings.Console.Commands.Validation.get
     
     func process(_ args: [Argument]?) -> CommandOutput {
         
@@ -45,7 +47,7 @@ struct WordlerGet: Command {
         /// Formats content as `CommandOutput`
         func output() -> CommandOutput {
             
-            var output  = CommandOutput()
+            var output  = CommandOutput.empty
             
             for (i, content) in contents.enumerated() {
                 
@@ -84,19 +86,19 @@ struct WordlerGet: Command {
             
             switch option {
                     
-                case "w":
+                case Self.flags[0] : // 'w' Just Word
                     
                     contents.append(answers.reduce("\(arg): ") { $0 + " " + $1.word })
                     
-                case "d":
+                case Self.flags[1] : // 'd' Just Date
                     
                     contents.append(answers.reduce("\(arg): ") { $0 + " " + ($1.date?.simple ?? "")})
                     
-                case "n":
+                case Self.flags[2] : // 'n' NYTimes Puzzle#
                     
                     contents.append(answers.reduce("\(arg): ") { $0 + " " + $1.computedPuzzleNum.description })
                     
-                case "c":
+                case Self.flags[3] : // 'c' Puzzle Count
                     
                     contents.append("\(arg): \(answers.count) puzzle(s)")
                     
